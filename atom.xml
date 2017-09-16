@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2017-09-01T06:44:44.163Z</updated>
+  <updated>2017-09-16T08:27:37.223Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -14,6 +14,225 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx_负载均衡配置</title>
+    <link href="http://aimigit.github.io/2017/09/16/nginx-balance/"/>
+    <id>http://aimigit.github.io/2017/09/16/nginx-balance/</id>
+    <published>2017-09-16T08:03:28.000Z</published>
+    <updated>2017-09-16T08:27:37.223Z</updated>
+    
+    <content type="html"><![CDATA[<p>nginx 目前用的比较多了，官网 <a href="https://nginx.org/" target="_blank" rel="external">https://nginx.org/</a></p>
+<h2 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h2><ul>
+<li>nginx   启动</li>
+<li>nginx   -c /etc/nginx/nginx.conf  指定配置文件启动</li>
+<li>nginx -s stop  关闭</li>
+<li>nginx -t  检测配置文件</li>
+<li>nginx -s reload 重载配置文件</li>
+</ul>
+<h2 id="配置文件nginx-conf例子参考"><a href="#配置文件nginx-conf例子参考" class="headerlink" title="配置文件nginx.conf例子参考"></a>配置文件nginx.conf例子参考</h2><pre><code>user  webuser;
+
+#worker进程数，通常设置等同于CPU数量，auto为自动检测
+worker_processes  auto;
+#worker进程打开最大文件数，可CPU*10000设置
+worker_rlimit_nofile 100000;
+
+#error_log  logs/error.log;
+error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+pid        logs/nginx.pid;
+</code></pre><a id="more"></a>    
+<pre><code>events {
+    worker_connections  1024;
+   #告诉nginx收到一个新链接通知后接受尽可能多的链接
+    multi_accept on;
+   #设置用于复用客户端线程的轮训方法
+   use epoll;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;
+                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;
+                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;
+
+    #设置nginx是否存储访问日志，关闭这个可以让读取磁盘IO操作更快
+    #access_log  logs/access.log  main;
+    #优化磁盘IO设置，指定nginx是否调用sendfile函数来输出文件，普通应用设为on，下载等磁盘IO高的应用，可设为off
+    sendfile        off;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  30;
+    #设置用户保存各种key的共享内存的参数，5m指的是5兆
+    limit_conn_zone $binary_remote_addr zone=addr:5m;
+    #为给定的key设置最大的连接数，这里的key是addr，设定的值是100，就是说允许每一个IP地址最多同时打开100个连接
+    limit_conn addr 100;
+
+    #gzip  on;
+    #gzip_disable &quot;MSIE [1-6].&quot;; 
+    #开发缓存的同时也指定了缓存文件的最大数量，20s如果文件没有请求则删除缓存
+    open_file_cache max=100000 inactive=20s;
+    #指多长时间检查一次缓存的有效信息
+    open_file_cache_valid 60s;
+    #文件缓存最小的访问次数，只有访问超过5次的才会被缓存
+    open_file_cache_min_uses 5;
+    #当搜索一个文件时是否缓存错误信息
+    open_file_cache_errors on;
+
+    #允许客户端请求的最大单文件字节数
+    client_max_body_size 20m;
+    #冲区代理缓冲用户端请求的最大字节数
+    client_header_buffer_size 32k;
+
+    upstream local_host{  
+        #指定轮询权重，weight和访问比率成正比，用于后端服务器性能不均的情况。
+        server 127.0.0.1:8181 weight=1;  
+        server 127.0.0.1:8182 weight=1;   
+        #每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。
+        #ip_hash;  
+
+    }  
+
+    server {
+        listen       80;
+        server_name  www.web.cn;
+
+        charset UTF-8;
+
+        #access_log  logs/host.access.log  main;
+        #网站1
+        location /myweb1/{
+            #真实ip穿透
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass http://www.web.cn:9001;
+        }
+        #网站2
+        location /myweb2/{
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_pass http://www.web.cn:9002;
+        }
+        #接口
+        location /web/api{
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           #负载均衡
+           proxy_pass http://local_host;
+           #关闭日志
+           access_log off;
+        }
+        #静态图片
+        location /bqms/static/api/ {
+             root /home/webapps/image/;
+             index  index.html index.htm;
+             expires 90d;
+             access_log off;
+        }
+        location  / {
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            root   html;
+            index  index.html index.htm;
+
+        }
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # deny access to .htaccess files, if Apache&apos;s document root
+        # concurs with nginx&apos;s one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;nginx 目前用的比较多了，官网 &lt;a href=&quot;https://nginx.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://nginx.org/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;nginx-常用命令&quot;&gt;&lt;a href=&quot;#nginx-常用命令&quot; class=&quot;headerlink&quot; title=&quot;nginx 常用命令&quot;&gt;&lt;/a&gt;nginx 常用命令&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;nginx   启动&lt;/li&gt;
+&lt;li&gt;nginx   -c /etc/nginx/nginx.conf  指定配置文件启动&lt;/li&gt;
+&lt;li&gt;nginx -s stop  关闭&lt;/li&gt;
+&lt;li&gt;nginx -t  检测配置文件&lt;/li&gt;
+&lt;li&gt;nginx -s reload 重载配置文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;配置文件nginx-conf例子参考&quot;&gt;&lt;a href=&quot;#配置文件nginx-conf例子参考&quot; class=&quot;headerlink&quot; title=&quot;配置文件nginx.conf例子参考&quot;&gt;&lt;/a&gt;配置文件nginx.conf例子参考&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;user  webuser;
+
+#worker进程数，通常设置等同于CPU数量，auto为自动检测
+worker_processes  auto;
+#worker进程打开最大文件数，可CPU*10000设置
+worker_rlimit_nofile 100000;
+
+#error_log  logs/error.log;
+error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+pid        logs/nginx.pid;
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="nginx" scheme="http://aimigit.github.io/tags/nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>markdown语法</title>

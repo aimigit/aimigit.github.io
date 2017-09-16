@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://aimigit.github.io">
-  <title>Tag: 技术 | 埃米</title>
+  <title>nginx_负载均衡配置 | 埃米</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="埃米">
-<meta property="og:url" content="http://aimigit.github.io/tags/技术/index.html">
+  <meta name="description" content="nginx 目前用的比较多了，官网 https://nginx.org/ nginx 常用命令 nginx   启动 nginx   -c /etc/nginx/nginx.conf  指定配置文件启动 nginx -s stop  关闭 nginx -t  检测配置文件 nginx -s reload 重载配置文件  配置文件nginx.conf例子参考user  webuser;  #work">
+<meta name="keywords" content="技术,nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx_负载均衡配置">
+<meta property="og:url" content="http://aimigit.github.io/2017/09/16/nginx-balance/index.html">
 <meta property="og:site_name" content="埃米">
+<meta property="og:description" content="nginx 目前用的比较多了，官网 https://nginx.org/ nginx 常用命令 nginx   启动 nginx   -c /etc/nginx/nginx.conf  指定配置文件启动 nginx -s stop  关闭 nginx -t  检测配置文件 nginx -s reload 重载配置文件  配置文件nginx.conf例子参考user  webuser;  #work">
+<meta property="og:updated_time" content="2017-09-16T08:27:37.223Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="埃米">
+<meta name="twitter:title" content="nginx_负载均衡配置">
+<meta name="twitter:description" content="nginx 目前用的比较多了，官网 https://nginx.org/ nginx 常用命令 nginx   启动 nginx   -c /etc/nginx/nginx.conf  指定配置文件启动 nginx -s stop  关闭 nginx -t  检测配置文件 nginx -s reload 重载配置文件  配置文件nginx.conf例子参考user  webuser;  #work">
   
     <link rel="alternative" href="/atom.xml" title="埃米" type="application/atom+xml">
   
@@ -147,36 +152,232 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-nginx-balance" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/16/nginx-balance/" class="archive-article-date">
-  	<time datetime="2017-09-16T08:03:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/16/nginx-balance/">nginx_负载均衡配置</a>
+    <h1 class="article-title" itemprop="name">
+      nginx_负载均衡配置
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/09/16/nginx-balance/" class="archive-article-date">
+  	<time datetime="2017-09-16T08:03:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>nginx 目前用的比较多了，官网 <a href="https://nginx.org/" target="_blank" rel="external">https://nginx.org/</a></p>
+<h2 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h2><ul>
+<li>nginx   启动</li>
+<li>nginx   -c /etc/nginx/nginx.conf  指定配置文件启动</li>
+<li>nginx -s stop  关闭</li>
+<li>nginx -t  检测配置文件</li>
+<li>nginx -s reload 重载配置文件</li>
+</ul>
+<h2 id="配置文件nginx-conf例子参考"><a href="#配置文件nginx-conf例子参考" class="headerlink" title="配置文件nginx.conf例子参考"></a>配置文件nginx.conf例子参考</h2><pre><code>user  webuser;
+
+#worker进程数，通常设置等同于CPU数量，auto为自动检测
+worker_processes  auto;
+#worker进程打开最大文件数，可CPU*10000设置
+worker_rlimit_nofile 100000;
+
+#error_log  logs/error.log;
+error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+pid        logs/nginx.pid;
+</code></pre><a id="more"></a>    
+<pre><code>events {
+    worker_connections  1024;
+   #告诉nginx收到一个新链接通知后接受尽可能多的链接
+    multi_accept on;
+   #设置用于复用客户端线程的轮训方法
+   use epoll;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;
+                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;
+                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;
+
+    #设置nginx是否存储访问日志，关闭这个可以让读取磁盘IO操作更快
+    #access_log  logs/access.log  main;
+    #优化磁盘IO设置，指定nginx是否调用sendfile函数来输出文件，普通应用设为on，下载等磁盘IO高的应用，可设为off
+    sendfile        off;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  30;
+    #设置用户保存各种key的共享内存的参数，5m指的是5兆
+    limit_conn_zone $binary_remote_addr zone=addr:5m;
+    #为给定的key设置最大的连接数，这里的key是addr，设定的值是100，就是说允许每一个IP地址最多同时打开100个连接
+    limit_conn addr 100;
+
+    #gzip  on;
+    #gzip_disable &quot;MSIE [1-6].&quot;; 
+    #开发缓存的同时也指定了缓存文件的最大数量，20s如果文件没有请求则删除缓存
+    open_file_cache max=100000 inactive=20s;
+    #指多长时间检查一次缓存的有效信息
+    open_file_cache_valid 60s;
+    #文件缓存最小的访问次数，只有访问超过5次的才会被缓存
+    open_file_cache_min_uses 5;
+    #当搜索一个文件时是否缓存错误信息
+    open_file_cache_errors on;
+
+    #允许客户端请求的最大单文件字节数
+    client_max_body_size 20m;
+    #冲区代理缓冲用户端请求的最大字节数
+    client_header_buffer_size 32k;
+
+    upstream local_host{  
+        #指定轮询权重，weight和访问比率成正比，用于后端服务器性能不均的情况。
+        server 127.0.0.1:8181 weight=1;  
+        server 127.0.0.1:8182 weight=1;   
+        #每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。
+        #ip_hash;  
+
+    }  
+
+    server {
+        listen       80;
+        server_name  www.web.cn;
+
+        charset UTF-8;
+
+        #access_log  logs/host.access.log  main;
+        #网站1
+        location /myweb1/{
+            #真实ip穿透
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_pass http://www.web.cn:9001;
+        }
+        #网站2
+        location /myweb2/{
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_pass http://www.web.cn:9002;
+        }
+        #接口
+        location /web/api{
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           #负载均衡
+           proxy_pass http://local_host;
+           #关闭日志
+           access_log off;
+        }
+        #静态图片
+        location /bqms/static/api/ {
+             root /home/webapps/image/;
+             index  index.html index.htm;
+             expires 90d;
+             access_log off;
+        }
+        location  / {
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            root   html;
+            index  index.html index.htm;
+
+        }
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # deny access to .htaccess files, if Apache&apos;s document root
+        # concurs with nginx&apos;s one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,103 +393,104 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://aimigit.github.io/2017/09/16/nginx-balance/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/01/markdown_code/" class="archive-article-date">
-  	<time datetime="2017-09-01T05:40:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/01/markdown_code/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">markdown语法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/01/markdown_code/">markdown语法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/31/github_hexo_start/" class="archive-article-date">
-  	<time datetime="2017-08-31T08:11:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/31/github_hexo_start/">github+hexo搭建博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -317,9 +519,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
