@@ -27,6 +27,9 @@
       background: #272822;
     }
   </style>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
   
 
   
@@ -149,6 +152,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hightlight_code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/18/hightlight_code/">引入代码高亮显示</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/18/hightlight_code/" class="archive-article-date">
+  	<time datetime="2017-09-18T03:33:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="代码高亮显示"><a href="#代码高亮显示" class="headerlink" title="代码高亮显示"></a>代码高亮显示</h2><p>代码高亮显示效果，使用的是hightlight.js  <a href="https://highlightjs.org/" target="_blank" rel="external">https://highlightjs.org/</a><br>使用方法很简单</p>
+<ul>
+<li>在页面引入对应代码，我使用的cdn库</li>
+</ul>
+<p>css,有多个样式可选，在官网自行查看<br>&lt;link rel=”stylesheet” href=”//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css”&gt;<br>&lt;script src=”//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js”&gt; &lt;/script&gt;<br>&lt;script&gt;hljs.initHighlightingOnLoad();&lt;/script&gt;</p>
+<ul>
+<li>显示的代码用以下标记括起来，支持多语法java，php，c++等等</li>
+</ul>
+<p>&lt;pre&gt;&lt;code class=”html”&gt;。。。代码。。。&lt;/code&gt;&lt;/pre&gt;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hightlight</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/18/hightlight_code/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-nginx-balance" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -177,19 +266,19 @@
 <li>nginx -t  检测配置文件</li>
 <li>nginx -s reload 重载配置文件</li>
 </ul>
-<h2 id="配置文件nginx-conf例子参考"><a href="#配置文件nginx-conf例子参考" class="headerlink" title="配置文件nginx.conf例子参考"></a>配置文件nginx.conf例子参考</h2><pre><code>user  webuser;
+<h2 id="配置文件nginx-conf例子参考"><a href="#配置文件nginx-conf例子参考" class="headerlink" title="配置文件nginx.conf例子参考"></a>配置文件nginx.conf例子参考</h2><pre><code class="nginx">
+    user  webuser;
 
-#worker进程数，通常设置等同于CPU数量，auto为自动检测
-worker_processes  auto;
-#worker进程打开最大文件数，可CPU*10000设置
-worker_rlimit_nofile 100000;
+    #worker进程数，通常设置等同于CPU数量，auto为自动检测
+    worker_processes  auto;
+    #worker进程打开最大文件数，可CPU*10000设置
+    worker_rlimit_nofile 100000;
 
-#error_log  logs/error.log;
-error_log  logs/error.log  notice;
-#error_log  logs/error.log  info;
+    #error_log  logs/error.log;
+    error_log  logs/error.log  notice;
+    #error_log  logs/error.log  info;
 
-pid        logs/nginx.pid;
-</code></pre>
+    pid        logs/nginx.pid;
         
           <a class="article-more-a" href="/2017/09/16/nginx-balance/#more">more >></a>
         
@@ -450,6 +539,10 @@ pid        logs/nginx.pid;
 
 
 
+// highlight
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </footer>
     </div>
     <script>
@@ -531,6 +624,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
               </li>
              
               <li class="article-tag-list-item">
