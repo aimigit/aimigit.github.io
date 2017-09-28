@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2017-09-28T02:16:46.626Z</updated>
+  <updated>2017-09-28T02:18:17.996Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -20,13 +20,14 @@
     <link href="http://aimigit.github.io/2017/09/28/ntp-time-sync-server/"/>
     <id>http://aimigit.github.io/2017/09/28/ntp-time-sync-server/</id>
     <published>2017-09-28T01:59:42.000Z</published>
-    <updated>2017-09-28T02:16:46.626Z</updated>
+    <updated>2017-09-28T02:18:17.996Z</updated>
     
     <content type="html"><![CDATA[<h2 id="时间同步服务器"><a href="#时间同步服务器" class="headerlink" title="时间同步服务器"></a>时间同步服务器</h2><p>在某些场景，比如抢购，秒杀，支付类，服务器时间等，要求时间精确。<br>查了国家授时中心，竟然没找到同步服务器，有个44的ip地址，测试一下同步失败，不稳定。最后使用阿里云的NTP服务器。收录一下</p>
 <ul>
 <li>阿里云的NTP服务，<br>time1.aliyun.com<br>time2.aliyun.com<br>time3.aliyun.com<br>time4.aliyun.com<br>time5.aliyun.com<br>time6.aliyun.com<br>time7.aliyun.com<br>如果使用ntpdate，可以直接使用time.pool.aliyun.com</li>
 </ul>
 <p>如果是用国外的服务器，可以使用google的。</p>
+<a id="more"></a>    
 <ul>
 <li>谷歌的NTP服务</li>
 </ul>
@@ -39,7 +40,11 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;时间同步服务器&quot;&gt;&lt;a href=&quot;#时间同步服务器&quot; class=&quot;headerlink&quot; title=&quot;时间同步服务器&quot;&gt;&lt;/a&gt;时间同步服务器&lt;/h2&gt;&lt;p&gt;在某些场景，比如抢购，秒杀，支付类，服务器时间等，要求时间精确。&lt;br&gt;查了国家授时中心，竟然没找到
+      &lt;h2 id=&quot;时间同步服务器&quot;&gt;&lt;a href=&quot;#时间同步服务器&quot; class=&quot;headerlink&quot; title=&quot;时间同步服务器&quot;&gt;&lt;/a&gt;时间同步服务器&lt;/h2&gt;&lt;p&gt;在某些场景，比如抢购，秒杀，支付类，服务器时间等，要求时间精确。&lt;br&gt;查了国家授时中心，竟然没找到同步服务器，有个44的ip地址，测试一下同步失败，不稳定。最后使用阿里云的NTP服务器。收录一下&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;阿里云的NTP服务，&lt;br&gt;time1.aliyun.com&lt;br&gt;time2.aliyun.com&lt;br&gt;time3.aliyun.com&lt;br&gt;time4.aliyun.com&lt;br&gt;time5.aliyun.com&lt;br&gt;time6.aliyun.com&lt;br&gt;time7.aliyun.com&lt;br&gt;如果使用ntpdate，可以直接使用time.pool.aliyun.com&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果是用国外的服务器，可以使用google的。&lt;/p&gt;
     
     </summary>
     
