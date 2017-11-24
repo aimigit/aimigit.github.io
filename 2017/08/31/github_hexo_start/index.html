@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://aimigit.github.io/2017/08/31/github_hexo_start/index.html">
 <meta property="og:site_name" content="埃米的博客">
 <meta property="og:description" content="github搭建博客，网上的教程很多了。这边搭建过程，简单记录一下。hexo是博客，需要node.js，部署在github，所以需要下面这些 准备工作 github帐号一个 github软件 node.js软件 hexo软件  环境搭建 github帐号，https://github.com/ 官网注册 下载安装客户端https://desktop.github.com/ 下载安装https://">
-<meta property="og:updated_time" content="2017-09-18T03:18:56.067Z">
+<meta property="og:updated_time" content="2017-10-28T02:37:32.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="github+hexo搭建博客">
 <meta name="twitter:description" content="github搭建博客，网上的教程很多了。这边搭建过程，简单记录一下。hexo是博客，需要node.js，部署在github，所以需要下面这些 准备工作 github帐号一个 github软件 node.js软件 hexo软件  环境搭建 github帐号，https://github.com/ 官网注册 下载安装客户端https://desktop.github.com/ 下载安装https://">
@@ -211,13 +211,11 @@
 <li>下载安装<a href="https://nodejs.org" target="_blank" rel="external">https://nodejs.org</a>  建议直接安装在c盘，使用命令行方便<br>这样环境就搭建好了，hexo后面用命令安装。</li>
 </ul>
 <a id="more"></a>
-<h1 id="安装hexo配置"><a href="#安装hexo配置" class="headerlink" title="安装hexo配置"></a>安装hexo配置</h1><p>在d盘创建文件夹blog<br>打开Git bash命令行窗口，输入安装命令</p>
-<p><pre><code class="bash">npm install -g hexo-cli<br>npm install hexo-deployer-git –save</code></pre></p>
-<p>cd d:/blog<br>换国内镜像点<br>npm config set registry “<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a>“<br>安装<br>hexo init<br>npm install<br>hexo generate<br>hexo server<br>正常启动后在浏览器查看<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p>github帐号创建一个同名的项目 “youname.github.io”。<br>然后获取到项目ssh地址 git@github.com:youname/youname.github.io.git<br>修改d:/blog/_config.yml 文件</p>
-<p><pre><code class="bash">deploy:<br>  type: git<br>  repository: git@github.com:youname/youname.github.io.git<br>  branch: master<br>  </code></pre></p>
-<h2 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h2><p>在 Git Bash 下执行如下命令</p>
-<p><pre><code class="bash">git config –global user.name “YOUR NAME”<br>git config –global user.email “YOUR EMAIL ADDRESS”<br>ssh-keygen -t rsa -b 4096 -C “github帐号邮箱”  一路回车<br>eval “$(ssh-agent -s)”<br>ssh-add ~/.ssh/id_rsa<br>clip &lt; ~/.ssh/id_rsa.pub<br></code></pre><br>登录 Github 帐号，依次点击自己的头像，Settings&gt;SSH and GPG keys&gt;Add SSH key ,把key粘贴进去保存<br>返回Git Bash，输入<br><code>ssh -T git@github.com<br></code><br>如果连接成功，显示Hi XXX! You’ve successfully authenticated, but GitHub does not provide shell access.<br>输入<br><code>hexo deploy<br></code><br>部署成功后，在浏览器输入，youname.github.io<br>到此，搭建博客成功。<br>后续，你可以更改博客主题，绑定独立域名等等。</p>
+<h1 id="安装hexo配置"><a href="#安装hexo配置" class="headerlink" title="安装hexo配置"></a>安装hexo配置</h1><p>在d盘创建文件夹blog<br>打开Git bash命令行窗口，输入安装命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div><div class="line">npm install hexo-deployer-git --save</div><div class="line"></div><div class="line"><span class="built_in">cd</span> d:/blog</div><div class="line">换国内镜像点</div><div class="line">npm config <span class="built_in">set</span> registry <span class="string">"https://registry.npm.taobao.org"</span></div><div class="line">安装</div><div class="line">hexo init</div><div class="line">npm install</div><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
+<p>正常启动后在浏览器查看<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p>github帐号创建一个同名的项目 “youname.github.io”。<br>然后获取到项目ssh地址 git@github.com:youname/youname.github.io.git<br>修改d:/blog/_config.yml 文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repository: git@github.com:youname/youname.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<h2 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h2><p>在 Git Bash 下执行如下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git config --global user.name <span class="string">"YOUR NAME"</span></div><div class="line">git config --global user.email <span class="string">"YOUR EMAIL ADDRESS"</span></div><div class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"github帐号邮箱"</span>  一路回车</div><div class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></div><div class="line">ssh-add ~/.ssh/id_rsa</div><div class="line">clip &lt; ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure></p>
+<p>登录 Github 帐号，依次点击自己的头像，Settings&gt;SSH and GPG keys&gt;Add SSH key ,把key粘贴进去保存<br>返回Git Bash，输入<br><code>ssh -T git@github.com<br></code><br>如果连接成功，显示Hi XXX! You’ve successfully authenticated, but GitHub does not provide shell access.<br>输入<br><code>hexo deploy<br></code><br>部署成功后，在浏览器输入，youname.github.io<br>到此，搭建博客成功。<br>后续，你可以更改博客主题，绑定独立域名等等。</p>
 
       
 
@@ -231,9 +229,19 @@
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>如有帮助，谢谢赞赏<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blog_img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blog_img/wechat_pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
                     
                   </div>
                 </span>
@@ -380,10 +388,11 @@
       	</div>
     </div>
   </div>
-// highlight
+<!--highlight-->
+<!--
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-dark.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<script>hljs.initHighlightingOnLoad();</script> -->
 </footer>
     </div>
     <script>
@@ -468,11 +477,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,7 +485,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">时间同步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">去广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
             
             <div class="clearfix"></div>

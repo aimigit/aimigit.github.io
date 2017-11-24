@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2017-09-28T02:18:17.996Z</updated>
+  <updated>2017-11-24T06:37:27.298Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -14,6 +14,123 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>html手机打开qq客户端</title>
+    <link href="http://aimigit.github.io/2017/11/24/html-to-qq/"/>
+    <id>http://aimigit.github.io/2017/11/24/html-to-qq/</id>
+    <published>2017-11-24T06:08:47.000Z</published>
+    <updated>2017-11-24T06:37:27.298Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>一般网站会有客户qq，或者aap的html5页面有官方联系方式等，在用户点击qq号，直接打开qq客户端，会更方便友好。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"window.open('tencent://message/?uin=QQ号')"</span>&gt;</span>pc打开方式<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=qq号&amp;card_type=person&amp;source=qrcode"</span>&gt;</span>打开QQ<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=群号&amp;card_type=group&amp;source=qrcode"</span>&gt;</span>打开QQ群<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="微信打开网页不能下载app问题"><a href="#微信打开网页不能下载app问题" class="headerlink" title="微信打开网页不能下载app问题"></a>微信打开网页不能下载app问题</h2><p>微信对下载链接做了过滤处理，不能打开下载链接。目前处理方式，把app上传到应用宝，获取应用包的下载地址，作为app下载地址。（店大欺客）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.location.href=<span class="string">"http://a.app.qq.com/o/simple.jsp?pkgname=com.xtone.emojikingdom"</span>;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;一般网站会有客户qq，或者aap的html5页面有官方联系方式等，在用户点击qq号，直接打开qq客户端，会更方便友好。&lt;/p&gt;
+&lt;h2 id
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="html5" scheme="http://aimigit.github.io/tags/html5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>java-ehcache缓存技术</title>
+    <link href="http://aimigit.github.io/2017/10/27/java-ehcache/"/>
+    <id>http://aimigit.github.io/2017/10/27/java-ehcache/</id>
+    <published>2017-10-27T08:31:42.000Z</published>
+    <updated>2017-10-28T02:43:54.490Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>常见的三种缓存技术ehcache,memcache,redis。ehcache的特点是快速，轻量，memcache,redis主要用在分布式集群场景。ehcache快的原因是提供了堆栈缓存，直接存在jvm，程序直接调用。<br>由于不同版本的使用方式不同，本文主要讲ehcache 3.4.0使用方式。<br>官网：<a href="http://www.ehcache.org/" target="_blank" rel="external">http://www.ehcache.org/</a></p>
+<h2 id="Ehcache支持的数据存储"><a href="#Ehcache支持的数据存储" class="headerlink" title="Ehcache支持的数据存储"></a>Ehcache支持的数据存储</h2><ul>
+<li>On-Heap Store - 利用Java的堆栈内存来存储缓存条目。该层使用与Java应用程序相同的堆内存，所有这些都必须由JVM垃圾回收器进行扫描。JVM使用的堆空间越多，应用程序性能将受到垃圾回收暂停的影响越多。这个非常快，但通常是最有限的存储资源。</li>
+<li>Off-Heap Store - 仅限可用的RAM限制。不受Java垃圾回收（GC）的约束。相当快，但比On-Heap Store慢，因为在存储和重新访问数据时，必须将数据移入和移出JVM堆。</li>
+</ul>
+<a id="more"></a>    
+<ul>
+<li>磁盘存储 - 使用磁盘（文件系统）来存储缓存条目。这种类型的存储资源通常非常丰富，但比基于RAM的慢得多。对于使用磁盘存储的所有应用程序，建议使用快速专用磁盘来优化吞吐量。</li>
+<li>群集存储 - 此数据存储是远程服务器上的缓存。远程服务器可以可选地具有提供改进的高可用性的故障切换服务器。由于集群存储由于诸如网络延迟以及建立客户端/服务器一致性等因素而带来性能损失，因此本层本质上比本地非堆存储慢。</li>
+</ul>
+<p>4个级别，性能由快到慢，存储量由小到大。这里有几个注意，<br>On-Heap 的性能超快，但不能配置太大，会影响jvm资源回收。<br>Off-Heap 最大要低于服务器内存大小，同时要小于运行环境的大小，通过 -XX:MaxDirectMemorySize 参数配置。<br>磁盘存储，建议服务器使用SSD硬盘。<br>群集存储，是通过Terracotta Server 实现。</p>
+<h2 id="使用方式1：java-类方式"><a href="#使用方式1：java-类方式" class="headerlink" title="使用方式1：java 类方式"></a>使用方式1：java 类方式</h2><ul>
+<li>项目引入 ehcache-3.4.0.jar<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="comment">// 构建一个缓存管理器</span></div><div class="line">	CacheManager cacheManager = CacheManagerBuilder.newCacheManagerBuilder().build(<span class="keyword">true</span>);</div><div class="line">	<span class="comment">// cacheManager.init();</span></div><div class="line">	<span class="comment">// cacheConfiguration -100个换成最大，缓存过期时间1分钟</span></div><div class="line">	CacheConfiguration&lt;String, String&gt; cacheConfiguration = CacheConfigurationBuilder</div><div class="line">			.newCacheConfigurationBuilder(String.class, String.class, ResourcePoolsBuilder.heap(<span class="number">100</span>).offheap(<span class="number">100</span>, MemoryUnit.MB))</div><div class="line">			.withExpiry(Expirations.timeToLiveExpiration(Duration.of(<span class="number">1</span>, TimeUnit.MINUTES  )))</div><div class="line">			.build();</div><div class="line">	<span class="comment">// 根据配置创建一个缓存容器</span></div><div class="line">	Cache&lt;String, String&gt; myCache = cacheManager.createCache(<span class="string">"myCache"</span>, cacheConfiguration);</div><div class="line">	myCache.put(<span class="string">"test"</span>, <span class="string">"hello Ehcache"</span>);</div><div class="line">	<span class="comment">// 循环直到数据过期 否包含该key</span></div><div class="line">	<span class="keyword">while</span> (myCache.containsKey(<span class="string">"test"</span>)) &#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			System.out.println(<span class="string">"值:"</span> + myCache.get(<span class="string">"test"</span>));</div><div class="line">			Thread.sleep(<span class="number">2000</span>);</div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	System.out.println(<span class="string">"1缓存已过期"</span>);</div><div class="line">	System.out.println(<span class="string">"值:"</span> + myCache.get(<span class="string">"test"</span>));</div><div class="line">	<span class="comment">//关闭</span></div><div class="line">	cacheManager.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="使用方式2：xml方式"><a href="#使用方式2：xml方式" class="headerlink" title="使用方式2：xml方式"></a>使用方式2：xml方式</h2><ul>
+<li>项目引入 ehcache-3.4.0.jar</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">config</span></span></div><div class="line"><span class="tag">	<span class="attr">xmlns:xsi</span>=<span class="string">'http://www.w3.org/2001/XMLSchema-instance'</span></span></div><div class="line"><span class="tag">	<span class="attr">xmlns</span>=<span class="string">'http://www.ehcache.org/v3'</span></span></div><div class="line"><span class="tag">	<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core.xsd"</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">cache</span> <span class="attr">alias</span>=<span class="string">"myDefault"</span>&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">key-type</span>&gt;</span>java.lang.String<span class="tag">&lt;/<span class="name">key-type</span>&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">value-type</span>&gt;</span>java.util.ArrayList<span class="tag">&lt;/<span class="name">value-type</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 生存周期 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">expiry</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">ttl</span> <span class="attr">unit</span>=<span class="string">"hours"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">ttl</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">expiry</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">		<span class="comment">&lt;!-- 堆栈内存--&gt;</span></div><div class="line">	  <span class="tag">&lt;<span class="name">heap</span> <span class="attr">unit</span>=<span class="string">"entries"</span>&gt;</span>1000<span class="tag">&lt;/<span class="name">heap</span>&gt;</span> </div><div class="line">	   <span class="comment">&lt;!-- 堆外内存--&gt;</span></div><div class="line">	  <span class="tag">&lt;<span class="name">offheap</span> <span class="attr">unit</span>=<span class="string">"MB"</span>&gt;</span>100<span class="tag">&lt;/<span class="name">offheap</span>&gt;</span> </div><div class="line">	<span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div><div class="line">  </div><div class="line">  <span class="tag">&lt;<span class="name">cache</span> <span class="attr">alias</span>=<span class="string">"myFast"</span>&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">key-type</span>&gt;</span>java.lang.String<span class="tag">&lt;/<span class="name">key-type</span>&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">value-type</span>&gt;</span>java.lang.String<span class="tag">&lt;/<span class="name">value-type</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">expiry</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">ttl</span> <span class="attr">unit</span>=<span class="string">"minutes"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">ttl</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">expiry</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">resources</span>&gt;</span></div><div class="line">	  <span class="tag">&lt;<span class="name">heap</span> <span class="attr">unit</span>=<span class="string">"entries"</span>&gt;</span>2000<span class="tag">&lt;/<span class="name">heap</span>&gt;</span> </div><div class="line">	  <span class="tag">&lt;<span class="name">offheap</span> <span class="attr">unit</span>=<span class="string">"MB"</span>&gt;</span>50<span class="tag">&lt;/<span class="name">offheap</span>&gt;</span> </div><div class="line">	<span class="tag">&lt;/<span class="name">resources</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">cache</span>&gt;</span></div><div class="line">  </div><div class="line"><span class="tag">&lt;/<span class="name">config</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.test.cache;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.net.URL;</div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.ehcache.Cache;</div><div class="line"><span class="keyword">import</span> org.ehcache.CacheManager;</div><div class="line"><span class="keyword">import</span> org.ehcache.config.builders.CacheManagerBuilder;</div><div class="line"><span class="keyword">import</span> org.ehcache.xml.XmlConfiguration;</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: MyCache </span></div><div class="line"><span class="comment"> * <span class="doctag">@Description</span>: ehcache缓存管理</span></div><div class="line"><span class="comment"> * <span class="doctag">@version</span>: V1.0  </span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span>: CWQ</span></div><div class="line"><span class="comment"> * <span class="doctag">@date</span>: 2017年10月25日 下午5:09:12</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyCache</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> CacheManager cacheManager;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Cache&lt;String, ArrayList&gt; cache;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> Cache&lt;String, String&gt; cacheFast;</div><div class="line"></div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		<span class="keyword">if</span> (cacheManager == <span class="keyword">null</span>) &#123;</div><div class="line">			URL myUrl = MyCache.class.getResource(<span class="string">"/ehcache.xml"</span>);</div><div class="line">			XmlConfiguration xmlConfig = <span class="keyword">new</span> XmlConfiguration(myUrl);</div><div class="line">			cacheManager = CacheManagerBuilder.newCacheManager(xmlConfig);</div><div class="line">			cacheManager.init();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (cache == <span class="keyword">null</span>) &#123;</div><div class="line">			cache = cacheManager.getCache(<span class="string">"myDefault"</span>, String.class, ArrayList.class);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (cacheFast == <span class="keyword">null</span>) &#123;</div><div class="line">			cacheFast = cacheManager.getCache(<span class="string">"myFast"</span>, String.class, String.class);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		ArrayList ls = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line">		ls.add(<span class="string">"aa"</span>);</div><div class="line">		ls.add(<span class="string">"bb"</span>);</div><div class="line">		<span class="keyword">try</span> &#123;cache.put(<span class="string">"1"</span>, ls);</div><div class="line">			<span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</div><div class="line">				System.out.println(cache.get(<span class="string">"1"</span>));</div><div class="line">				</div><div class="line">				Thread.sleep(<span class="number">1000L</span>);</div><div class="line">				</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">			<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">		<span class="comment">// cacheManager.close();</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2种方式都可以，xml配置文件比较灵活，但是要注意xml格式严格按<a href="http://www.ehcache.org/schema/ehcache-core.xsd" target="_blank" rel="external">http://www.ehcache.org/schema/ehcache-core.xsd</a> 书写。<br>注意节点的顺序<br>key-type<br>value-type<br>expiry<br>eviction-advisor<br>loader-writer<br>listeners<br>resources OR heap<br>more …</p>
+<h2 id="其他注意事项"><a href="#其他注意事项" class="headerlink" title="其他注意事项"></a>其他注意事项</h2><p><offheap unit="MB">100</offheap> 配置了堆外缓存，value-type 类型要serializer 的对象，通过序列化，在调用的时候，就从堆外拿进jvm。<br>空间不足的话，要配置 -XX:MaxDirectMemorySize，比如tomcat -Xms128M -Xmx512M -XX:PermSize=64M -XX:MaxPermSize=128M,默认用的-Xmx 参数。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;常见的三种缓存技术ehcache,memcache,redis。ehcache的特点是快速，轻量，memcache,redis主要用在分布式集群场景。ehcache快的原因是提供了堆栈缓存，直接存在jvm，程序直接调用。&lt;br&gt;由于不同版本的使用方式不同，本文主要讲ehcache 3.4.0使用方式。&lt;br&gt;官网：&lt;a href=&quot;http://www.ehcache.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.ehcache.org/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Ehcache支持的数据存储&quot;&gt;&lt;a href=&quot;#Ehcache支持的数据存储&quot; class=&quot;headerlink&quot; title=&quot;Ehcache支持的数据存储&quot;&gt;&lt;/a&gt;Ehcache支持的数据存储&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;On-Heap Store - 利用Java的堆栈内存来存储缓存条目。该层使用与Java应用程序相同的堆内存，所有这些都必须由JVM垃圾回收器进行扫描。JVM使用的堆空间越多，应用程序性能将受到垃圾回收暂停的影响越多。这个非常快，但通常是最有限的存储资源。&lt;/li&gt;
+&lt;li&gt;Off-Heap Store - 仅限可用的RAM限制。不受Java垃圾回收（GC）的约束。相当快，但比On-Heap Store慢，因为在存储和重新访问数据时，必须将数据移入和移出JVM堆。&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="cache" scheme="http://aimigit.github.io/tags/cache/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小米电视去广告</title>
+    <link href="http://aimigit.github.io/2017/10/02/xiaomitv-adblock/"/>
+    <id>http://aimigit.github.io/2017/10/02/xiaomitv-adblock/</id>
+    <published>2017-10-02T13:57:12.000Z</published>
+    <updated>2017-10-28T02:42:35.485Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概叙"><a href="#概叙" class="headerlink" title="概叙"></a>概叙</h2><p>小米系列的产品，刚开始主打发烧友，便宜又做工好，性价比高。陆陆续续买了不少小米的产品，主要考虑可以组网，做智能家居。<br>后面公司规模扩大，开始频繁投放广告，产品也变得平庸了。小米电视升级后，开机广告，暂停广告，关机也要广告，实在不能忍。<br>广告类型主要有2种，1个是电视平台的广告，开关机广告那些。另一个是视频播放里面的广告，类似优酷视频那种。<br>目前能去的是第一种，第二种会去的分享一下。</p>
+<h2 id="去广告方法1"><a href="#去广告方法1" class="headerlink" title="去广告方法1"></a>去广告方法1</h2><p>家里路由器有网址屏蔽功能，直接把广告网址屏蔽，<br>“ad.xiaomi.com”,”ad1.xiaomi.com”,”ad.mi.com”添加进黑名单。<br>这个方式是从广告来源过滤，如果小米改了网址就失效了。</p>
+<h2 id="方法2禁用广告app"><a href="#方法2禁用广告app" class="headerlink" title="方法2禁用广告app"></a>方法2禁用广告app</h2><a id="more"></a>
+<p>动手能力强的，推荐用这种。直接连接电视，禁用广告相关app，但是不能乱杀，有开不了机的风险。<br>电视用的是android系统，可以理解为不能打电话的手机。我们不需要root。<br>准备2个软件</p>
+<ul>
+<li>电脑</li>
+<li>adb工具</li>
+<li><p>Debloater<br>在你的电脑安装以上2个软件，adb工具我直接用刷机精灵的adb命令行功能。</p>
+</li>
+<li><p>电脑和电视连接同一个路由，在同一个局域网。</p>
+</li>
+<li>查看电视的ip，比如192.168.1.5。</li>
+<li>电视打开adb调试</li>
+<li>电脑打开adb命令行,输入adb connnet 192.168.1.5，连接成功。</li>
+<li>电脑打开Debloater，Read Device Packages，这时候可以看到所有安装的app</li>
+<li>禁用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">com.miui.systemAdSolution  广告</div><div class="line">com.xiaomi.mitv.advertise  开屏广告</div><div class="line">com.xiaomi.mitv.assistant.manual</div><div class="line">com.xiaomi.mitv.tvpush.tvpushservice</div><div class="line">com.xiaomi.tv.appupgrade  应用升级</div><div class="line">com.xiaomi.mitv.upgrade  系统升级</div><div class="line">com.miui.cloudservice</div></pre></td></tr></table></figure>
+<p>然后关机，重新开机，系统广告消息了，心情很爽，同事关闭了升级，不会被强制升级。<br>还能禁用更多，网上有精简列表，有兴趣的自行研究，千万不要禁用关键app，电视会启动不了。</p>
+<h2 id="附录包名对应的app，系统版本不同，数量有差异"><a href="#附录包名对应的app，系统版本不同，数量有差异" class="headerlink" title="附录包名对应的app，系统版本不同，数量有差异"></a>附录包名对应的app，系统版本不同，数量有差异</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package:/data/app/com.mitv.video-1.apk=com.mitv.video</div><div class="line">package:/data/app/com.xiaomi.mitv.payment-1.apk=com.xiaomi.mitv.payment</div><div class="line">package:/vendor/app/MiTVWifiDisplay.apk=com.xiaomi.mitv.wfd</div><div class="line">package:/system/priv-app/DefaultContainerService.apk=com.android.defcontainer</div><div class="line">package:/system/app/QuickSearchBox.apk=com.android.quicksearchbox</div><div class="line">package:/system/priv-app/Contacts.apk=com.android.contacts</div><div class="line">package:/system/priv-app/TeleService.apk=com.android.phone</div><div class="line">package:/system/app/HTMLViewer.apk=com.android.htmlviewer</div><div class="line">package:/vendor/app/SmartHomeTV.apk=com.xiaomi.smarthome.tv</div><div class="line">package:/system/app/Bluetooth.apk=com.android.bluetooth</div><div class="line">package:/system/priv-app/CalendarProvider.apk=com.android.providers.calendar</div><div class="line">package:/data/app/com.xiaomi.tv.gallery-2.apk=com.xiaomi.tv.gallery</div><div class="line">package:/vendor/app/MiTVService.apk=com.xiaomi.mitv.services</div><div class="line">package:/system/app/Browser.apk=com.android.browser</div><div class="line">package:/vendor/app/MiMusic2.apk=com.xiaomi.mimusic</div><div class="line">package:/vendor/app/MiTVUpgrade.apk=com.xiaomi.mitv.upgrade</div><div class="line">package:/vendor/app/PushService.apk=com.miui.cloudservice</div><div class="line">package:/vendor/app/MiTVPay.apk=com.xiaomi.mitv.pay</div><div class="line">package:/system/app/DownloadProviderUi.apk=com.android.providers.downloads.ui</div><div class="line">package:/system/app/DocumentsUI.apk=com.android.documentsui</div><div class="line">package:/system/priv-app/SharedStorageBackup.apk=com.android.sharedstoragebackup</div><div class="line">package:/vendor/app/DeviceReport.apk=com.xiaomi.devicereport</div><div class="line">package:/system/priv-app/VpnDialogs.apk=com.android.vpndialogs</div><div class="line">package:/vendor/app/jiajia-jianshenfang_T6.apk=com.jiajia.yundonghui.mitv</div><div class="line">package:/vendor/app/MiTVCommentService.apk=com.xiaomi.mitv.commentservice</div><div class="line">package:/system/app/Provision.apk=com.android.provision</div><div class="line">package:/vendor/app/MiTvGameCenter.apk=com.xiaomi.mibox.gamecenter</div><div class="line">package:/vendor/app/BaiduCloud.apk=com.baidu.tv.download</div><div class="line">package:/system/priv-app/MediaProvider.apk=com.android.providers.media</div><div class="line">package:/vendor/app/AppUpgrade.apk=com.xiaomi.tv.appupgrade</div><div class="line">package:/vendor/app/cm-sdk-release.apk=com.cleanmaster.sdk</div><div class="line">package:/system/app/CertInstaller.apk=com.android.certinstaller</div><div class="line">package:/vendor/app/DlnaTVService.apk=com.xiaomi.dlnatvservice</div><div class="line">package:/vendor/app/MiTVMediaExplorerDaemon.apk=com.xiaomi.mitv.media</div><div class="line">package:/system/app/TvService.apk=mitv.service</div><div class="line">package:/vendor/app/MiTVMultiCast.apk=com.hpplay.happyplay.aw.xm</div><div class="line">package:/vendor/app/MiGameCenterSDKService.apk=com.xiaomi.gamecenter.sdk.service.mibox</div><div class="line">package:/vendor/app/AirkanTVService.apk=com.duokan.airkan.tvbox</div><div class="line">package:/system/priv-app/Settings.apk=com.android.settings</div><div class="line">package:/vendor/app/MiTVSettingsProvider.apk=com.xiaomi.mitv.providers.settings</div><div class="line">package:/vendor/app/PhotoSlideShow.apk=com.duokan.application.photoviewer</div><div class="line">package:/data/app/com.android.packageinstaller-1.apk=com.android.packageinstaller</div><div class="line">package:/system/app/TelephonyProvider.apk=com.android.providers.telephony</div><div class="line">package:/vendor/app/UDTService.apk=com.xiaomi.milink.udt</div><div class="line">package:/system/app/PicoTts.apk=com.svox.pico</div><div class="line">package:/data/app/com.xiaomi.mitv.shop-1.apk=com.xiaomi.mitv.shop</div><div class="line">package:/vendor/app/MiTVSystemUI.apk=com.xiaomi.mitv.systemui</div><div class="line">package:/system/priv-app/FusedLocation.apk=com.android.location.fused</div><div class="line">package:/system/priv-app/BackupRestoreation.apk=com.android.backup</div><div class="line">package:/system/priv-app/SettingsProvider.apk=com.android.providers.settings</div><div class="line">package:/vendor/app/Mipay.apk=com.mipay.wallet.tv</div><div class="line">package:/system/priv-app/DownloadProvider.apk=com.android.providers.downloads</div><div class="line">package:/data/app/com.xiaomi.mitv.advertise-1.apk=com.xiaomi.mitv.advertise</div><div class="line">package:/system/app/SoundRecorder.apk=com.android.soundrecorder</div><div class="line">package:/vendor/app/MiBoxLockScreen.apk=com.xiaomi.mibox.lockscreen</div><div class="line">package:/system/app/LatinIME.apk=com.android.inputmethod.latin</div><div class="line">package:/system/priv-app/ProxyHandler.apk=com.android.proxyhandler</div><div class="line">package:/vendor/app/XMAccountManager.apk=com.xiaomi.account</div><div class="line">package:/vendor/app/TVPushService.apk=com.xiaomi.mitv.tvpush.tvpushservice</div><div class="line">package:/vendor/app/mitvmediaplayer.apk=com.xiaomi.mitv.player</div><div class="line">package:/vendor/app/XMAccountAuth.apk=com.xiaomi.account.auth</div><div class="line">package:/vendor/app/RemoteControllerService.apk=com.xiaomi.mitv.remotecontroller.service</div><div class="line">package:/vendor/app/CloudAlbum.apk=com.duokan.cloudalbum</div><div class="line">package:/data/app/com.xiaomi.tweather-1.apk=com.xiaomi.tweather</div><div class="line">package:/system/app/UserDictionaryProvider.apk=com.android.providers.userdictionary</div><div class="line">package:/system/app/Factory.apk=com.duokan.factorytest</div><div class="line">package:/vendor/app/MiTVPinyinIME.apk=com.android.inputmethod.pinyin</div><div class="line">package:/vendor/app/MiTVDesktop.apk=com.xiaomi.tv.desktop</div><div class="line">package:/vendor/app/MiTVMediaExplorer.apk=com.xiaomi.mitv.mediaexplorer</div><div class="line">package:/system/app/PacProcessor.apk=com.android.pacprocessor</div><div class="line">package:/data/app/com.xiaomi.voicecontrol-1.apk=com.xiaomi.voicecontrol</div><div class="line">package:/vendor/app/MiTVDownload.apk=com.xiaomi.mitv.download</div><div class="line">package:/system/framework/framework-res.apk=android</div><div class="line">package:/system/priv-app/ContactsProvider.apk=com.android.providers.contacts</div><div class="line">package:/system/priv-app/ExternalStorageProvider.apk=com.android.externalstorage</div><div class="line">package:/vendor/app/NameService.apk=com.xiaomi.tv.nameservice</div><div class="line">package:/system/app/BasicDreams.apk=com.android.dreams.basic</div><div class="line">package:/vendor/app/SystemUI_M8.apk=com.android.systemui</div><div class="line">package:/vendor/app/MiTVStat.apk=com.xiaomi.statistic</div><div class="line">package:/system/app/KeyChain.apk=com.android.keychain</div><div class="line">package:/vendor/app/MiTVUserView.apk=com.xiaomi.tv.mitvuser</div><div class="line">package:/system/app/MiTVSettings-new.apk=com.xiaomi.mitv.settings</div><div class="line">package:/system/app/TVCalendar.apk=com.xiaomi.mitv.calendar</div><div class="line">package:/data/app/com.xiaomi.mitv.assistant.manual-1.apk=com.xiaomi.mitv.assistant.manual</div><div class="line">package:/system/priv-app/Keyguard.apk=com.android.keyguard</div><div class="line">package:/vendor/app/BaiduInput.apk=com.baidu.input</div><div class="line">package:/data/app/com.xiaomi.mitv.appstore-2.apk=com.xiaomi.mitv.appstore</div><div class="line">package:/system/priv-app/Shell.apk=com.android.shell</div><div class="line">package:/vendor/app/XiaomiServiceFramework.apk=com.xiaomi.xmsf</div><div class="line">package:/data/app/com.xiaomi.mitv.tvmanager-2.apk=com.xiaomi.mitv.tvmanager</div><div class="line">package:/vendor/app/SearchCenter.apk=com.xiaomi.mitv.searchcenter</div><div class="line">package:/system/priv-app/CleanMasterTV.apk=com.cmcm.cleanmaster.tv</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概叙&quot;&gt;&lt;a href=&quot;#概叙&quot; class=&quot;headerlink&quot; title=&quot;概叙&quot;&gt;&lt;/a&gt;概叙&lt;/h2&gt;&lt;p&gt;小米系列的产品，刚开始主打发烧友，便宜又做工好，性价比高。陆陆续续买了不少小米的产品，主要考虑可以组网，做智能家居。&lt;br&gt;后面公司规模扩大，开始频繁投放广告，产品也变得平庸了。小米电视升级后，开机广告，暂停广告，关机也要广告，实在不能忍。&lt;br&gt;广告类型主要有2种，1个是电视平台的广告，开关机广告那些。另一个是视频播放里面的广告，类似优酷视频那种。&lt;br&gt;目前能去的是第一种，第二种会去的分享一下。&lt;/p&gt;
+&lt;h2 id=&quot;去广告方法1&quot;&gt;&lt;a href=&quot;#去广告方法1&quot; class=&quot;headerlink&quot; title=&quot;去广告方法1&quot;&gt;&lt;/a&gt;去广告方法1&lt;/h2&gt;&lt;p&gt;家里路由器有网址屏蔽功能，直接把广告网址屏蔽，&lt;br&gt;“ad.xiaomi.com”,”ad1.xiaomi.com”,”ad.mi.com”添加进黑名单。&lt;br&gt;这个方式是从广告来源过滤，如果小米改了网址就失效了。&lt;/p&gt;
+&lt;h2 id=&quot;方法2禁用广告app&quot;&gt;&lt;a href=&quot;#方法2禁用广告app&quot; class=&quot;headerlink&quot; title=&quot;方法2禁用广告app&quot;&gt;&lt;/a&gt;方法2禁用广告app&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="生活" scheme="http://aimigit.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+      <category term="去广告" scheme="http://aimigit.github.io/tags/%E5%8E%BB%E5%B9%BF%E5%91%8A/"/>
+    
+  </entry>
   
   <entry>
     <title>ntp_时间同步服务器</title>
@@ -91,7 +208,7 @@
     <link href="http://aimigit.github.io/2017/09/16/nginx-balance/"/>
     <id>http://aimigit.github.io/2017/09/16/nginx-balance/</id>
     <published>2017-09-16T08:03:28.000Z</published>
-    <updated>2017-09-18T02:59:39.184Z</updated>
+    <updated>2017-10-28T02:40:27.671Z</updated>
     
     <content type="html"><![CDATA[<p>nginx 目前用的比较多了，官网 <a href="https://nginx.org/" target="_blank" rel="external">https://nginx.org/</a></p>
 <h2 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h2><ul>
@@ -101,180 +218,8 @@
 <li>nginx -t  检测配置文件</li>
 <li>nginx -s reload 重载配置文件</li>
 </ul>
-<h2 id="配置文件nginx-conf例子参考"><a href="#配置文件nginx-conf例子参考" class="headerlink" title="配置文件nginx.conf例子参考"></a>配置文件nginx.conf例子参考</h2><pre><code class="nginx">
-    user  webuser;
-
-    #worker进程数，通常设置等同于CPU数量，auto为自动检测
-    worker_processes  auto;
-    #worker进程打开最大文件数，可CPU*10000设置
-    worker_rlimit_nofile 100000;
-
-    #error_log  logs/error.log;
-    error_log  logs/error.log  notice;
-    #error_log  logs/error.log  info;
-
-    pid        logs/nginx.pid;
-
 <a id="more"></a>    
-
-    events {
-        worker_connections  1024;
-       #告诉nginx收到一个新链接通知后接受尽可能多的链接
-        multi_accept on;
-       #设置用于复用客户端线程的轮训方法
-       use epoll;
-    }
-
-
-    http {
-        include       mime.types;
-        default_type  application/octet-stream;
-
-        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                          '$status $body_bytes_sent "$http_referer" '
-                          '"$http_user_agent" "$http_x_forwarded_for"';
-
-        #设置nginx是否存储访问日志，关闭这个可以让读取磁盘IO操作更快
-        #access_log  logs/access.log  main;
-        #优化磁盘IO设置，指定nginx是否调用sendfile函数来输出文件，普通应用设为on，下载等磁盘IO高的应用，可设为off
-        sendfile        off;
-        #tcp_nopush     on;
-
-        #keepalive_timeout  0;
-        keepalive_timeout  30;
-        #设置用户保存各种key的共享内存的参数，5m指的是5兆
-        limit_conn_zone $binary_remote_addr zone=addr:5m;
-        #为给定的key设置最大的连接数，这里的key是addr，设定的值是100，就是说允许每一个IP地址最多同时打开100个连接
-        limit_conn addr 100;
-
-        #gzip  on;
-        #gzip_disable "MSIE [1-6]."; 
-        #开发缓存的同时也指定了缓存文件的最大数量，20s如果文件没有请求则删除缓存
-        open_file_cache max=100000 inactive=20s;
-        #指多长时间检查一次缓存的有效信息
-        open_file_cache_valid 60s;
-        #文件缓存最小的访问次数，只有访问超过5次的才会被缓存
-        open_file_cache_min_uses 5;
-        #当搜索一个文件时是否缓存错误信息
-        open_file_cache_errors on;
-
-        #允许客户端请求的最大单文件字节数
-        client_max_body_size 20m;
-        #冲区代理缓冲用户端请求的最大字节数
-        client_header_buffer_size 32k;
-
-        upstream local_host{  
-            #指定轮询权重，weight和访问比率成正比，用于后端服务器性能不均的情况。
-            server 127.0.0.1:8181 weight=1;  
-            server 127.0.0.1:8182 weight=1;   
-            #每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。
-            #ip_hash;  
-
-        }  
-
-        server {
-            listen       80;
-            server_name  www.web.cn;
-
-            charset UTF-8;
-
-            #access_log  logs/host.access.log  main;
-            #网站1
-            location /myweb1/{
-                #真实ip穿透
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_pass http://www.web.cn:9001;
-            }
-            #网站2
-            location /myweb2/{
-               proxy_set_header Host $host;
-               proxy_set_header X-Real-IP $remote_addr;
-               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-               proxy_pass http://www.web.cn:9002;
-            }
-            #接口
-            location /web/api{
-               proxy_set_header Host $host;
-               proxy_set_header X-Real-IP $remote_addr;
-               proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-               #负载均衡
-               proxy_pass http://local_host;
-               #关闭日志
-               access_log off;
-            }
-            #静态图片
-            location /bqms/static/api/ {
-                 root /home/webapps/image/;
-                 index  index.html index.htm;
-                 expires 90d;
-                 access_log off;
-            }
-            location  / {
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                root   html;
-                index  index.html index.htm;
-
-            }
-            #error_page  404              /404.html;
-
-            # redirect server error pages to the static page /50x.html
-            #
-            error_page   500 502 503 504  /50x.html;
-            location = /50x.html {
-                root   html;
-            }
-
-            # deny access to .htaccess files, if Apache's document root
-            # concurs with nginx's one
-            #
-            #location ~ /\.ht {
-            #    deny  all;
-            #}
-        }
-
-
-        # another virtual host using mix of IP-, name-, and port-based configuration
-        #
-        #server {
-        #    listen       8000;
-        #    listen       somename:8080;
-        #    server_name  somename  alias  another.alias;
-
-        #    location / {
-        #        root   html;
-        #        index  index.html index.htm;
-        #    }
-        #}
-
-
-        # HTTPS server
-        #
-        #server {
-        #    listen       443 ssl;
-        #    server_name  localhost;
-
-        #    ssl_certificate      cert.pem;
-        #    ssl_certificate_key  cert.key;
-
-        #    ssl_session_cache    shared:SSL:1m;
-        #    ssl_session_timeout  5m;
-
-        #    ssl_ciphers  HIGH:!aNULL:!MD5;
-        #    ssl_prefer_server_ciphers  on;
-
-        #    location / {
-        #        root   html;
-        #        index  index.html index.htm;
-        #    }
-        #}
-
-    }
-
-</code></pre>]]></content>
+<h2 id="配置文件nginx-conf例子参考"><a href="#配置文件nginx-conf例子参考" class="headerlink" title="配置文件nginx.conf例子参考"></a>配置文件nginx.conf例子参考</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div></pre></td><td class="code"><pre><div class="line">   <span class="attribute">user</span>  webuser;</div><div class="line"></div><div class="line"><span class="comment">#worker进程数，通常设置等同于CPU数量，auto为自动检测</span></div><div class="line"><span class="attribute">worker_processes</span>  auto;</div><div class="line"><span class="comment">#worker进程打开最大文件数，可CPU*10000设置</span></div><div class="line"><span class="attribute">worker_rlimit_nofile</span> <span class="number">100000</span>;</div><div class="line"></div><div class="line"><span class="comment">#error_log  logs/error.log;</span></div><div class="line"><span class="attribute">error_log</span>  logs/error.log  <span class="literal">notice</span>;</div><div class="line"><span class="comment">#error_log  logs/error.log  info;</span></div><div class="line"></div><div class="line"><span class="attribute">pid</span>        logs/nginx.pid;</div><div class="line"></div><div class="line"><span class="section">events</span> &#123;</div><div class="line">    <span class="attribute">worker_connections</span>  <span class="number">1024</span>;</div><div class="line">   <span class="comment">#告诉nginx收到一个新链接通知后接受尽可能多的链接</span></div><div class="line">    <span class="attribute">multi_accept</span> <span class="literal">on</span>;</div><div class="line">   <span class="comment">#设置用于复用客户端线程的轮训方法</span></div><div class="line">   <span class="attribute">use</span> <span class="literal">epoll</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="section">http</span> &#123;</div><div class="line">    <span class="attribute">include</span>       mime.types;</div><div class="line">    <span class="attribute">default_type</span>  application/octet-stream;</div><div class="line"></div><div class="line">    <span class="attribute">log_format</span>  main  <span class="string">'<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] "<span class="variable">$request</span>" '</span></div><div class="line">                      <span class="string">'<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> "<span class="variable">$http_referer</span>" '</span></div><div class="line">                      <span class="string">'"<span class="variable">$http_user_agent</span>" "<span class="variable">$http_x_forwarded_for</span>"'</span>;</div><div class="line">   </div><div class="line">    <span class="comment">#设置nginx是否存储访问日志，关闭这个可以让读取磁盘IO操作更快</span></div><div class="line">    <span class="comment">#access_log  logs/access.log  main;</span></div><div class="line">    <span class="comment">#优化磁盘IO设置，指定nginx是否调用sendfile函数来输出文件，普通应用设为on，下载等磁盘IO高的应用，可设为off</span></div><div class="line">    <span class="attribute">sendfile</span>        <span class="literal">off</span>;</div><div class="line">    <span class="comment">#tcp_nopush     on;</span></div><div class="line"></div><div class="line">    <span class="comment">#keepalive_timeout  0;</span></div><div class="line">    <span class="attribute">keepalive_timeout</span>  <span class="number">30</span>;</div><div class="line">    <span class="comment">#设置用户保存各种key的共享内存的参数，5m指的是5兆</span></div><div class="line">    <span class="attribute">limit_conn_zone</span> <span class="variable">$binary_remote_addr</span> zone=addr:<span class="number">5m</span>;</div><div class="line">    <span class="comment">#为给定的key设置最大的连接数，这里的key是addr，设定的值是100，就是说允许每一个IP地址最多同时打开100个连接</span></div><div class="line">    <span class="attribute">limit_conn</span> addr <span class="number">100</span>;</div><div class="line"></div><div class="line">    <span class="comment">#gzip  on;</span></div><div class="line">    <span class="comment">#gzip_disable "MSIE [1-6]."; </span></div><div class="line">    <span class="comment">#开发缓存的同时也指定了缓存文件的最大数量，20s如果文件没有请求则删除缓存</span></div><div class="line">    <span class="attribute">open_file_cache</span> max=<span class="number">100000</span> inactive=<span class="number">20s</span>;</div><div class="line">    <span class="comment">#指多长时间检查一次缓存的有效信息</span></div><div class="line">    <span class="attribute">open_file_cache_valid</span> <span class="number">60s</span>;</div><div class="line">    <span class="comment">#文件缓存最小的访问次数，只有访问超过5次的才会被缓存</span></div><div class="line">    <span class="attribute">open_file_cache_min_uses</span> <span class="number">5</span>;</div><div class="line">    <span class="comment">#当搜索一个文件时是否缓存错误信息</span></div><div class="line">    <span class="attribute">open_file_cache_errors</span> <span class="literal">on</span>;</div><div class="line"></div><div class="line">    <span class="comment">#允许客户端请求的最大单文件字节数</span></div><div class="line">    <span class="attribute">client_max_body_size</span> <span class="number">20m</span>;</div><div class="line">    <span class="comment">#冲区代理缓冲用户端请求的最大字节数</span></div><div class="line">    <span class="attribute">client_header_buffer_size</span> <span class="number">32k</span>;</div><div class="line">   </div><div class="line">    <span class="attribute">upstream</span> local_host&#123;  </div><div class="line">        <span class="comment">#指定轮询权重，weight和访问比率成正比，用于后端服务器性能不均的情况。</span></div><div class="line">        <span class="attribute">server</span> <span class="number">127.0.0.1:8181</span> weight=<span class="number">1</span>;  </div><div class="line">        <span class="attribute">server</span> <span class="number">127.0.0.1:8182</span> weight=<span class="number">1</span>;   </div><div class="line">        <span class="comment">#每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。</span></div><div class="line">        <span class="comment">#ip_hash;  </span></div><div class="line"></div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    <span class="section">server</span> &#123;</div><div class="line">        <span class="attribute">listen</span>       <span class="number">80</span>;</div><div class="line">        <span class="attribute">server_name</span>  www.web.cn;</div><div class="line"></div><div class="line">        <span class="attribute">charset</span> UTF-<span class="number">8</span>;</div><div class="line"></div><div class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></div><div class="line">		<span class="comment">#网站1</span></div><div class="line">        <span class="attribute">location</span> /myweb1/&#123;</div><div class="line">			<span class="comment">#真实ip穿透</span></div><div class="line">            <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</div><div class="line">            <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">            <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line">            <span class="attribute">proxy_pass</span> http://www.web.cn:9001;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">#网站2</span></div><div class="line">        <span class="attribute">location</span> /myweb2/&#123;</div><div class="line">           <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</div><div class="line">           <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">           <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line">           <span class="attribute">proxy_pass</span> http://www.web.cn:9002;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">#接口</span></div><div class="line">        <span class="attribute">location</span> /web/api&#123;</div><div class="line">           <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</div><div class="line">           <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">           <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line">		   <span class="comment">#负载均衡</span></div><div class="line">           <span class="attribute">proxy_pass</span> http://local_host;</div><div class="line">		   <span class="comment">#关闭日志</span></div><div class="line">           <span class="attribute">access_log</span> <span class="literal">off</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">#静态图片</span></div><div class="line">        <span class="attribute">location</span> /bqms/static/api/ &#123;</div><div class="line">             <span class="attribute">root</span> /home/webapps/image/;</div><div class="line">             <span class="attribute">index</span>  index.html index.htm;</div><div class="line">             <span class="attribute">expires</span> <span class="number">90d</span>;</div><div class="line">             <span class="attribute">access_log</span> <span class="literal">off</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="attribute">location</span>  / &#123;</div><div class="line">            <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</div><div class="line">            <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</div><div class="line">            <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</div><div class="line">            <span class="attribute">root</span>   html;</div><div class="line">            <span class="attribute">index</span>  index.html index.htm;</div><div class="line"> </div><div class="line">        &#125;</div><div class="line">        <span class="comment">#error_page  404              /404.html;</span></div><div class="line">        </div><div class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></div><div class="line">        <span class="comment">#</span></div><div class="line">        <span class="attribute">error_page</span>   <span class="number">500</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span>  /50x.html;</div><div class="line">        <span class="attribute">location</span> = /50x.html &#123;</div><div class="line">            <span class="attribute">root</span>   html;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></div><div class="line">        <span class="comment"># concurs with nginx's one</span></div><div class="line">        <span class="comment">#</span></div><div class="line">        <span class="comment">#location ~ /\.ht &#123;</span></div><div class="line">        <span class="comment">#    deny  all;</span></div><div class="line">        <span class="comment">#&#125;</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment">#server &#123;</span></div><div class="line">    <span class="comment">#    listen       8000;</span></div><div class="line">    <span class="comment">#    listen       somename:8080;</span></div><div class="line">    <span class="comment">#    server_name  somename  alias  another.alias;</span></div><div class="line"></div><div class="line">    <span class="comment">#    location / &#123;</span></div><div class="line">    <span class="comment">#        root   html;</span></div><div class="line">    <span class="comment">#        index  index.html index.htm;</span></div><div class="line">    <span class="comment">#    &#125;</span></div><div class="line">    <span class="comment">#&#125;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment"># HTTPS server</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment">#server &#123;</span></div><div class="line">    <span class="comment">#    listen       443 ssl;</span></div><div class="line">    <span class="comment">#    server_name  localhost;</span></div><div class="line"></div><div class="line">    <span class="comment">#    ssl_certificate      cert.pem;</span></div><div class="line">    <span class="comment">#    ssl_certificate_key  cert.key;</span></div><div class="line"></div><div class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;</span></div><div class="line">    <span class="comment">#    ssl_session_timeout  5m;</span></div><div class="line"></div><div class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span></div><div class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;</span></div><div class="line"></div><div class="line">    <span class="comment">#    location / &#123;</span></div><div class="line">    <span class="comment">#        root   html;</span></div><div class="line">    <span class="comment">#        index  index.html index.htm;</span></div><div class="line">    <span class="comment">#    &#125;</span></div><div class="line">    <span class="comment">#&#125;</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -286,19 +231,6 @@
 &lt;li&gt;nginx -t  检测配置文件&lt;/li&gt;
 &lt;li&gt;nginx -s reload 重载配置文件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;配置文件nginx-conf例子参考&quot;&gt;&lt;a href=&quot;#配置文件nginx-conf例子参考&quot; class=&quot;headerlink&quot; title=&quot;配置文件nginx.conf例子参考&quot;&gt;&lt;/a&gt;配置文件nginx.conf例子参考&lt;/h2&gt;&lt;pre&gt;&lt;code class=&quot;nginx&quot;&gt;
-    user  webuser;
-
-    #worker进程数，通常设置等同于CPU数量，auto为自动检测
-    worker_processes  auto;
-    #worker进程打开最大文件数，可CPU*10000设置
-    worker_rlimit_nofile 100000;
-
-    #error_log  logs/error.log;
-    error_log  logs/error.log  notice;
-    #error_log  logs/error.log  info;
-
-    pid        logs/nginx.pid;
     
     </summary>
     
@@ -384,7 +316,7 @@
     <link href="http://aimigit.github.io/2017/08/31/github_hexo_start/"/>
     <id>http://aimigit.github.io/2017/08/31/github_hexo_start/</id>
     <published>2017-08-31T08:11:09.000Z</published>
-    <updated>2017-09-18T03:18:56.067Z</updated>
+    <updated>2017-10-28T02:37:32.449Z</updated>
     
     <content type="html"><![CDATA[<p>github搭建博客，网上的教程很多了。这边搭建过程，简单记录一下。<br>hexo是博客，需要node.js，部署在github，所以需要下面这些</p>
 <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
@@ -399,13 +331,11 @@
 <li>下载安装<a href="https://nodejs.org" target="_blank" rel="external">https://nodejs.org</a>  建议直接安装在c盘，使用命令行方便<br>这样环境就搭建好了，hexo后面用命令安装。</li>
 </ul>
 <a id="more"></a>
-<h1 id="安装hexo配置"><a href="#安装hexo配置" class="headerlink" title="安装hexo配置"></a>安装hexo配置</h1><p>在d盘创建文件夹blog<br>打开Git bash命令行窗口，输入安装命令</p>
-<p><pre><code class="bash">npm install -g hexo-cli<br>npm install hexo-deployer-git –save</code></pre></p>
-<p>cd d:/blog<br>换国内镜像点<br>npm config set registry “<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a>“<br>安装<br>hexo init<br>npm install<br>hexo generate<br>hexo server<br>正常启动后在浏览器查看<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p>github帐号创建一个同名的项目 “youname.github.io”。<br>然后获取到项目ssh地址 git@github.com:youname/youname.github.io.git<br>修改d:/blog/_config.yml 文件</p>
-<p><pre><code class="bash">deploy:<br>  type: git<br>  repository: git@github.com:youname/youname.github.io.git<br>  branch: master<br>  </code></pre></p>
-<h2 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h2><p>在 Git Bash 下执行如下命令</p>
-<p><pre><code class="bash">git config –global user.name “YOUR NAME”<br>git config –global user.email “YOUR EMAIL ADDRESS”<br>ssh-keygen -t rsa -b 4096 -C “github帐号邮箱”  一路回车<br>eval “$(ssh-agent -s)”<br>ssh-add ~/.ssh/id_rsa<br>clip &lt; ~/.ssh/id_rsa.pub<br></code></pre><br>登录 Github 帐号，依次点击自己的头像，Settings&gt;SSH and GPG keys&gt;Add SSH key ,把key粘贴进去保存<br>返回Git Bash，输入<br><code>ssh -T git@github.com<br></code><br>如果连接成功，显示Hi XXX! You’ve successfully authenticated, but GitHub does not provide shell access.<br>输入<br><code>hexo deploy<br></code><br>部署成功后，在浏览器输入，youname.github.io<br>到此，搭建博客成功。<br>后续，你可以更改博客主题，绑定独立域名等等。</p>
+<h1 id="安装hexo配置"><a href="#安装hexo配置" class="headerlink" title="安装hexo配置"></a>安装hexo配置</h1><p>在d盘创建文件夹blog<br>打开Git bash命令行窗口，输入安装命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div><div class="line">npm install hexo-deployer-git --save</div><div class="line"></div><div class="line"><span class="built_in">cd</span> d:/blog</div><div class="line">换国内镜像点</div><div class="line">npm config <span class="built_in">set</span> registry <span class="string">"https://registry.npm.taobao.org"</span></div><div class="line">安装</div><div class="line">hexo init</div><div class="line">npm install</div><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
+<p>正常启动后在浏览器查看<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p>github帐号创建一个同名的项目 “youname.github.io”。<br>然后获取到项目ssh地址 git@github.com:youname/youname.github.io.git<br>修改d:/blog/_config.yml 文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repository: git@github.com:youname/youname.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<h2 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h2><p>在 Git Bash 下执行如下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git config --global user.name <span class="string">"YOUR NAME"</span></div><div class="line">git config --global user.email <span class="string">"YOUR EMAIL ADDRESS"</span></div><div class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"github帐号邮箱"</span>  一路回车</div><div class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></div><div class="line">ssh-add ~/.ssh/id_rsa</div><div class="line">clip &lt; ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure></p>
+<p>登录 Github 帐号，依次点击自己的头像，Settings&gt;SSH and GPG keys&gt;Add SSH key ,把key粘贴进去保存<br>返回Git Bash，输入<br><code>ssh -T git@github.com<br></code><br>如果连接成功，显示Hi XXX! You’ve successfully authenticated, but GitHub does not provide shell access.<br>输入<br><code>hexo deploy<br></code><br>部署成功后，在浏览器输入，youname.github.io<br>到此，搭建博客成功。<br>后续，你可以更改博客主题，绑定独立域名等等。</p>
 ]]></content>
     
     <summary type="html">
