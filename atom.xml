@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2018-03-29T09:40:03.220Z</updated>
+  <updated>2018-03-29T09:41:48.131Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>linux-add-font</title>
+    <title>linux添加字体</title>
     <link href="http://aimigit.github.io/2018/03/29/linux-add-font/"/>
     <id>http://aimigit.github.io/2018/03/29/linux-add-font/</id>
     <published>2018-03-29T09:16:37.000Z</published>
-    <updated>2018-03-29T09:40:03.220Z</updated>
+    <updated>2018-03-29T09:41:48.131Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>linux自带的字体比较少，在做图片文字合成时，需要指定的文字字体。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">查看系统中的字体</div><div class="line"><span class="built_in">fc</span>-list</div><div class="line">查看系统中的中文字体</div><div class="line"><span class="built_in">fc</span>-list :lang=zh</div><div class="line"></div><div class="line">[root@localhost ~]<span class="comment"># fc-list</span></div><div class="line">Bitstream Vera Sans Mono:style=Bold</div><div class="line">Bitstream Vera Sans:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Bold</div><div class="line">Bitstream Vera Serif:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Bold Oblique</div><div class="line">Bitstream Vera Sans:style=Bold Oblique</div><div class="line">文鼎PL中楷Uni,AR PL ZenKai Uni:style=Medium</div><div class="line">Bitstream Vera Sans Mono:style=Roman</div><div class="line">Fixed:style=Regular</div><div class="line">文鼎PL细上海宋Uni,AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni:style=Regular</div><div class="line">Bitstream Vera Serif:style=Bold</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
