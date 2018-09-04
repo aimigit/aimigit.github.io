@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2018-06-13T08:26:15.526Z</updated>
+  <updated>2018-06-13T08:26:16.000Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://aimigit.github.io/2018/06/13/mysql-cursor-proc/"/>
     <id>http://aimigit.github.io/2018/06/13/mysql-cursor-proc/</id>
     <published>2018-06-13T08:11:03.000Z</published>
-    <updated>2018-06-13T08:26:15.526Z</updated>
+    <updated>2018-06-13T08:26:16.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为了处理老数据，从一张父表，两张子表复制数据。涉及到生成id关联以及子表多条记录复制，使用了存储过程，cursor遍历结果集。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>  <a id="more"></a>    
@@ -46,7 +46,7 @@
     <link href="http://aimigit.github.io/2018/04/12/java-gif-image/"/>
     <id>http://aimigit.github.io/2018/04/12/java-gif-image/</id>
     <published>2018-04-12T08:19:55.000Z</published>
-    <updated>2018-04-12T09:53:19.742Z</updated>
+    <updated>2018-04-12T09:53:20.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Gif概述"><a href="#Gif概述" class="headerlink" title="Gif概述"></a>Gif概述</h2><p>GIF(Graphics Interchange Format)的原义是“图像互换格式”，是CompuServe公司在 1987 年开发的图像文件格式。GIF文件的数据，是一种基于LZW算法的连续色调的无损压缩格式。其压缩率一般在50%左右，它不属于任何应用程序。GIF格式可以存多幅彩色图像，如果把存于一个文件中的多幅图像数据逐幅读出并显示到屏幕上，就可构成一种最简单的动画。<br>GIF格式自1987年由CompuServe公司引入后，因其体积小、成像相对清晰，特别适合于初期慢速的互联网，而大受欢迎。<br>目前网络上流行的动图表情包，以Gif格式为主。大概原理是多张连续图片，以一定的时间间隔轮播，形成每帧动画效果。<br>要在Gif图片上加文字，就要在每帧的相同位置，画上文字。</p>
 <h2 id="java-画图"><a href="#java-画图" class="headerlink" title="java 画图"></a>java 画图</h2><p>使用了第三方文件  LZWEncoder.java,NeuQuant.java,GifDecoder.java,AnimatedGifEncoder.java</p>
@@ -72,7 +72,7 @@
     <link href="http://aimigit.github.io/2018/03/29/linux-add-font/"/>
     <id>http://aimigit.github.io/2018/03/29/linux-add-font/</id>
     <published>2018-03-29T09:16:37.000Z</published>
-    <updated>2018-03-29T09:41:48.131Z</updated>
+    <updated>2018-03-29T09:41:50.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>linux自带的字体比较少，在做图片文字合成时，需要指定的文字字体。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">查看系统中的字体</div><div class="line"><span class="built_in">fc</span>-list</div><div class="line">查看系统中的中文字体</div><div class="line"><span class="built_in">fc</span>-list :lang=zh</div><div class="line"></div><div class="line">[root@localhost ~]<span class="comment"># fc-list</span></div><div class="line">Bitstream Vera Sans Mono:style=Bold</div><div class="line">Bitstream Vera Sans:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Bold</div><div class="line">Bitstream Vera Serif:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Bold Oblique</div><div class="line">Bitstream Vera Sans:style=Bold Oblique</div><div class="line">文鼎PL中楷Uni,AR PL ZenKai Uni:style=Medium</div><div class="line">Bitstream Vera Sans Mono:style=Roman</div><div class="line">Fixed:style=Regular</div><div class="line">文鼎PL细上海宋Uni,AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni:style=Regular</div><div class="line">Bitstream Vera Serif:style=Bold</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -97,7 +97,7 @@
     <link href="http://aimigit.github.io/2018/01/17/html-jump/"/>
     <id>http://aimigit.github.io/2018/01/17/html-jump/</id>
     <published>2018-01-17T08:58:22.000Z</published>
-    <updated>2018-01-23T08:44:17.365Z</updated>
+    <updated>2018-01-23T08:44:18.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="html的实现"><a href="#html的实现" class="headerlink" title="html的实现"></a>html的实现</h2><p>优点：简单<br>缺点：Struts Tiles中无法使用</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 以下方式只是刷新不跳转到其他页面 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"10"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 以下方式定时转到其他页面 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"5;url=hello.html"</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -127,7 +127,7 @@
     <link href="http://aimigit.github.io/2017/12/07/nginx-worker-connections/"/>
     <id>http://aimigit.github.io/2017/12/07/nginx-worker-connections/</id>
     <published>2017-12-07T07:14:31.000Z</published>
-    <updated>2017-12-07T07:27:59.345Z</updated>
+    <updated>2017-12-07T07:28:00.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="异常信息"><a href="#异常信息" class="headerlink" title="异常信息"></a>异常信息</h2><p>[alert] 14102#0: 1024 worker_connections are not enough</p>
 <p>worker_connections 参数默认1024，不够用的话配置大一些，同时小于worker_rlimit_nofile 参数值。<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#worker进程数，通常设置等同于CPU数量，auto为自动检测</span></div><div class="line"><span class="attribute">worker_processes</span>  auto;</div><div class="line"><span class="comment">#worker进程打开最大文件数，可CPU*10000设置</span></div><div class="line"><span class="attribute">worker_rlimit_nofile</span> <span class="number">100000</span>;</div><div class="line"></div><div class="line"><span class="section">events</span> &#123;</div><div class="line">    <span class="attribute">worker_connections</span>  <span class="number">10240</span>;</div><div class="line">   <span class="comment">#告诉nginx收到一个新链接通知后接受尽可能多的链接</span></div><div class="line">    <span class="attribute">multi_accept</span> <span class="literal">on</span>;</div><div class="line">   <span class="comment">#设置用于复用客户端线程的轮训方法</span></div><div class="line">   <span class="attribute">use</span> <span class="literal">epoll</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -154,7 +154,7 @@
     <link href="http://aimigit.github.io/2017/11/30/nginx-image-server/"/>
     <id>http://aimigit.github.io/2017/11/30/nginx-image-server/</id>
     <published>2017-11-30T08:57:57.000Z</published>
-    <updated>2017-11-30T09:12:25.993Z</updated>
+    <updated>2017-11-30T09:12:26.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h2><p>前面写nginx做反向代理，负载均衡的配置。本文写nginx做http服务器的配置，把静态文件都交给nginx管理。</p>
 <ul>
@@ -192,7 +192,7 @@
     <link href="http://aimigit.github.io/2017/11/24/html-to-qq/"/>
     <id>http://aimigit.github.io/2017/11/24/html-to-qq/</id>
     <published>2017-11-24T06:08:47.000Z</published>
-    <updated>2017-11-24T06:39:34.135Z</updated>
+    <updated>2017-11-24T06:39:36.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>一般网站会有客户qq，或者aap的html5页面有官方联系方式等，在用户点击qq号，直接打开qq客户端，会更方便友好。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"window.open('tencent://message/?uin=QQ号')"</span>&gt;</span>pc打开方式<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=qq号&amp;card_type=person&amp;source=qrcode"</span>&gt;</span>打开QQ<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=群号&amp;card_type=group&amp;source=qrcode"</span>&gt;</span>打开QQ群<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -218,7 +218,7 @@
     <link href="http://aimigit.github.io/2017/10/27/java-ehcache/"/>
     <id>http://aimigit.github.io/2017/10/27/java-ehcache/</id>
     <published>2017-10-27T08:31:42.000Z</published>
-    <updated>2017-10-28T02:43:54.490Z</updated>
+    <updated>2017-10-28T02:43:56.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>常见的三种缓存技术ehcache,memcache,redis。ehcache的特点是快速，轻量，memcache,redis主要用在分布式集群场景。ehcache快的原因是提供了堆栈缓存，直接存在jvm，程序直接调用。<br>由于不同版本的使用方式不同，本文主要讲ehcache 3.4.0使用方式。<br>官网：<a href="http://www.ehcache.org/" target="_blank" rel="external">http://www.ehcache.org/</a></p>
 <h2 id="Ehcache支持的数据存储"><a href="#Ehcache支持的数据存储" class="headerlink" title="Ehcache支持的数据存储"></a>Ehcache支持的数据存储</h2><ul>
@@ -266,7 +266,7 @@
     <link href="http://aimigit.github.io/2017/10/02/xiaomitv-adblock/"/>
     <id>http://aimigit.github.io/2017/10/02/xiaomitv-adblock/</id>
     <published>2017-10-02T13:57:12.000Z</published>
-    <updated>2017-10-28T02:42:35.485Z</updated>
+    <updated>2017-10-28T02:42:36.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概叙"><a href="#概叙" class="headerlink" title="概叙"></a>概叙</h2><p>小米系列的产品，刚开始主打发烧友，便宜又做工好，性价比高。陆陆续续买了不少小米的产品，主要考虑可以组网，做智能家居。<br>后面公司规模扩大，开始频繁投放广告，产品也变得平庸了。小米电视升级后，开机广告，暂停广告，关机也要广告，实在不能忍。<br>广告类型主要有2种，1个是电视平台的广告，开关机广告那些。另一个是视频播放里面的广告，类似优酷视频那种。<br>目前能去的是第一种，第二种会去的分享一下。</p>
 <h2 id="去广告方法1"><a href="#去广告方法1" class="headerlink" title="去广告方法1"></a>去广告方法1</h2><p>家里路由器有网址屏蔽功能，直接把广告网址屏蔽，<br>“ad.xiaomi.com”,”ad1.xiaomi.com”,”ad.mi.com”添加进黑名单。<br>这个方式是从广告来源过滤，如果小米改了网址就失效了。</p>
@@ -309,7 +309,7 @@
     <link href="http://aimigit.github.io/2017/09/28/ntp-time-sync-server/"/>
     <id>http://aimigit.github.io/2017/09/28/ntp-time-sync-server/</id>
     <published>2017-09-28T01:59:42.000Z</published>
-    <updated>2017-09-28T02:18:17.996Z</updated>
+    <updated>2017-09-28T02:18:18.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="时间同步服务器"><a href="#时间同步服务器" class="headerlink" title="时间同步服务器"></a>时间同步服务器</h2><p>在某些场景，比如抢购，秒杀，支付类，服务器时间等，要求时间精确。<br>查了国家授时中心，竟然没找到同步服务器，有个44的ip地址，测试一下同步失败，不稳定。最后使用阿里云的NTP服务器。收录一下</p>
 <ul>
@@ -349,7 +349,7 @@
     <link href="http://aimigit.github.io/2017/09/18/hightlight_code/"/>
     <id>http://aimigit.github.io/2017/09/18/hightlight_code/</id>
     <published>2017-09-18T03:33:26.000Z</published>
-    <updated>2017-09-18T04:30:25.783Z</updated>
+    <updated>2017-09-18T04:30:26.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="代码高亮显示"><a href="#代码高亮显示" class="headerlink" title="代码高亮显示"></a>代码高亮显示</h2><p>代码高亮显示效果，使用的是hightlight.js  <a href="https://highlightjs.org/" target="_blank" rel="external">https://highlightjs.org/</a><br>使用方法很简单</p>
 <ul>
@@ -380,7 +380,7 @@
     <link href="http://aimigit.github.io/2017/09/16/nginx-balance/"/>
     <id>http://aimigit.github.io/2017/09/16/nginx-balance/</id>
     <published>2017-09-16T08:03:28.000Z</published>
-    <updated>2017-10-28T02:40:27.671Z</updated>
+    <updated>2017-10-28T02:40:28.000Z</updated>
     
     <content type="html"><![CDATA[<p>nginx 目前用的比较多了，官网 <a href="https://nginx.org/" target="_blank" rel="external">https://nginx.org/</a></p>
 <h2 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h2><ul>
@@ -418,7 +418,7 @@
     <link href="http://aimigit.github.io/2017/09/01/markdown_code/"/>
     <id>http://aimigit.github.io/2017/09/01/markdown_code/</id>
     <published>2017-09-01T05:40:18.000Z</published>
-    <updated>2017-09-01T06:44:44.163Z</updated>
+    <updated>2017-09-01T06:44:46.000Z</updated>
     
     <content type="html"><![CDATA[<p>hexo 支持markdown，为了让博客写的更优美，建议学习一下。</p>
 <h1 id="markdown语法"><a href="#markdown语法" class="headerlink" title="markdown语法"></a>markdown语法</h1><p><img src="/assets/blog_img/markdown.jpg" alt="markdown"></p>
@@ -488,7 +488,7 @@
     <link href="http://aimigit.github.io/2017/08/31/github_hexo_start/"/>
     <id>http://aimigit.github.io/2017/08/31/github_hexo_start/</id>
     <published>2017-08-31T08:11:09.000Z</published>
-    <updated>2017-10-28T02:37:32.449Z</updated>
+    <updated>2018-09-04T05:54:43.575Z</updated>
     
     <content type="html"><![CDATA[<p>github搭建博客，网上的教程很多了。这边搭建过程，简单记录一下。<br>hexo是博客，需要node.js，部署在github，所以需要下面这些</p>
 <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
@@ -499,7 +499,7 @@
 </ol>
 <h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><ul>
 <li>github帐号，<a href="https://github.com/" target="_blank" rel="external">https://github.com/</a> 官网注册</li>
-<li>下载安装客户端<a href="https://desktop.github.com/" target="_blank" rel="external">https://desktop.github.com/</a></li>
+<li>下载安装客户端<a href="https://git-scm.com/downloads" target="_blank" rel="external">https://git-scm.com/downloads</a></li>
 <li>下载安装<a href="https://nodejs.org" target="_blank" rel="external">https://nodejs.org</a>  建议直接安装在c盘，使用命令行方便<br>这样环境就搭建好了，hexo后面用命令安装。</li>
 </ul>
 <a id="more"></a>
@@ -521,7 +521,7 @@
 &lt;/ol&gt;
 &lt;h1 id=&quot;环境搭建&quot;&gt;&lt;a href=&quot;#环境搭建&quot; class=&quot;headerlink&quot; title=&quot;环境搭建&quot;&gt;&lt;/a&gt;环境搭建&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;github帐号，&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/&lt;/a&gt; 官网注册&lt;/li&gt;
-&lt;li&gt;下载安装客户端&lt;a href=&quot;https://desktop.github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://desktop.github.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;下载安装客户端&lt;a href=&quot;https://git-scm.com/downloads&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://git-scm.com/downloads&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;下载安装&lt;a href=&quot;https://nodejs.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://nodejs.org&lt;/a&gt;  建议直接安装在c盘，使用命令行方便&lt;br&gt;这样环境就搭建好了，hexo后面用命令安装。&lt;/li&gt;
 &lt;/ul&gt;
     
