@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2018-09-04T06:27:11.967Z</updated>
+  <updated>2018-09-04T07:00:08.671Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一些常用插件</title>
+    <link href="http://aimigit.github.io/2018/09/04/some-plugin/"/>
+    <id>http://aimigit.github.io/2018/09/04/some-plugin/</id>
+    <published>2018-09-04T06:45:58.000Z</published>
+    <updated>2018-09-04T07:00:08.671Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="eclipse插件"><a href="#eclipse插件" class="headerlink" title="eclipse插件"></a>eclipse插件</h2><p>Decompiler |java反编译插件<br>Properties |Editor 中文配置文件插件<br>Darkest Dark Theme|黑色主题<br>Subclipse |svn插件</p>
+<h2 id="chrome插件"><a href="#chrome插件" class="headerlink" title="chrome插件"></a>chrome插件</h2><p>uBlock Origin |广告拦截<br>Restlet Client |REST请求测试工具<br>Tampermonkey|油猴脚本管理<br>Chrono下载管理器|下载管理<br>Dark Reader|黑色主题<br>WebRTC Control|关闭WebRTC</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;eclipse插件&quot;&gt;&lt;a href=&quot;#eclipse插件&quot; class=&quot;headerlink&quot; title=&quot;eclipse插件&quot;&gt;&lt;/a&gt;eclipse插件&lt;/h2&gt;&lt;p&gt;Decompiler |java反编译插件&lt;br&gt;Properties |Edito
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="插件" scheme="http://aimigit.github.io/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>多机更新 Hexo 博客</title>
