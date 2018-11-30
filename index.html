@@ -175,6 +175,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-log4j2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/30/log4j2/">log4j2+Slf4j日志配置文件</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/30/log4j2/" class="archive-article-date">
+  	<time datetime="2018-11-30T02:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="log4j简介"><a href="#log4j简介" class="headerlink" title="log4j简介"></a>log4j简介</h2><p>log4j是java常见的日志输出框架，<br>2015年5月，Apache宣布Log4J 1.x 停止更新。最新版为1.2.17。<br>如今，Log4J 2.x已更新至2.11。<br>官方网址：<a href="http://logging.apache.org/log4j/2.x/" target="_blank" rel="external">http://logging.apache.org/log4j/2.x/</a></p>
+<h2 id="配置文件介绍"><a href="#配置文件介绍" class="headerlink" title="配置文件介绍"></a>配置文件介绍</h2><h3 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h3><p>trace：追踪，就是程序推进一下，可以写个trace输出</p>
+<p>debug：调试，一般作为最低级别，trace基本不用。</p>
+<p>info：输出重要的信息，使用较多</p>
+<p>warn：警告，有些信息不是错误信息，但也要给程序员一些提示。</p>
+<p>error：错误信息。用的也很多。</p>
+<p>fatal：致命错误。级别较高，这种级别不用调试了，重写吧……</p>
+<p>机制：如果一条日志信息的级别大于等于配置文件的级别，就记录。</p>
+<h3 id="输出源"><a href="#输出源" class="headerlink" title="输出源"></a>输出源</h3><p>CONSOLE（输出到控制台）、FILE（输出到文件）等。</p>
+        
+          <a class="article-more-a" href="/2018/11/30/log4j2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">log4j2</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/30/log4j2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-some-plugin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -908,90 +1000,6 @@
 
 
   
-    <article id="post-java-ehcache" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/27/java-ehcache/">java-ehcache缓存技术</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/27/java-ehcache/" class="archive-article-date">
-  	<time datetime="2017-10-27T08:31:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>常见的三种缓存技术ehcache,memcache,redis。ehcache的特点是快速，轻量，memcache,redis主要用在分布式集群场景。ehcache快的原因是提供了堆栈缓存，直接存在jvm，程序直接调用。<br>由于不同版本的使用方式不同，本文主要讲ehcache 3.4.0使用方式。<br>官网：<a href="http://www.ehcache.org/" target="_blank" rel="external">http://www.ehcache.org/</a></p>
-<h2 id="Ehcache支持的数据存储"><a href="#Ehcache支持的数据存储" class="headerlink" title="Ehcache支持的数据存储"></a>Ehcache支持的数据存储</h2><ul>
-<li>On-Heap Store - 利用Java的堆栈内存来存储缓存条目。该层使用与Java应用程序相同的堆内存，所有这些都必须由JVM垃圾回收器进行扫描。JVM使用的堆空间越多，应用程序性能将受到垃圾回收暂停的影响越多。这个非常快，但通常是最有限的存储资源。</li>
-<li>Off-Heap Store - 仅限可用的RAM限制。不受Java垃圾回收（GC）的约束。相当快，但比On-Heap Store慢，因为在存储和重新访问数据时，必须将数据移入和移出JVM堆。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/10/27/java-ehcache/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">cache</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/27/java-ehcache/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1102,11 +1110,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+                <a href="javascript:void(0)" class="js-tag color2">log4j2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1114,7 +1126,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1126,15 +1138,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">插件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">时间同步</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1146,7 +1158,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
+                <a href="javascript:void(0)" class="js-tag color5">时间同步</a>
               </li>
             
             <div class="clearfix"></div>
