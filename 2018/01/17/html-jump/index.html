@@ -207,7 +207,7 @@
 <p>我们也可以自己构造。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.prototype.startWith=<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;     </div><div class="line">  <span class="keyword">var</span> reg=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"^"</span>+str);     </div><div class="line">  <span class="keyword">return</span> reg.test(<span class="keyword">this</span>);        </div><div class="line">&#125;  </div><div class="line"></div><div class="line"><span class="built_in">String</span>.prototype.endWith=<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;     </div><div class="line">  <span class="keyword">var</span> reg=<span class="keyword">new</span> <span class="built_in">RegExp</span>(str+<span class="string">"$"</span>);     </div><div class="line">  <span class="keyword">return</span> reg.test(<span class="keyword">this</span>);        </div><div class="line">&#125;</div><div class="line"><span class="comment">//或者用indexOf判断</span></div><div class="line"><span class="keyword">var</span> index = str.indexOf(<span class="string">'abc'</span>);</div><div class="line"><span class="keyword">if</span>(index==<span class="number">0</span>)&#123;</div><div class="line"><span class="comment">//以'abc'开头</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="正则转换回车换行符"><a href="#正则转换回车换行符" class="headerlink" title="正则转换回车换行符"></a>正则转换回车换行符</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertCRLF</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(str!=<span class="literal">null</span>)</div><div class="line">	str = str.replace(<span class="regexp">/[\n]/g</span>,<span class="string">"&lt;br&gt;"</span>)</div><div class="line">	<span class="keyword">return</span> str;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-        <span id="busuanzi_container_page_pv" style="font-size:10px;font-style:italic;">
+        <span id="busuanzi_container_page_pv" style="font-size:12px;font-style:italic;float:right;">
                 点击量 <span id="busuanzi_value_page_pv"></span>次
         </span>
 
@@ -507,19 +507,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
