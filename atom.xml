@@ -95,9 +95,9 @@
     
       <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
-      <category term="log4j2" scheme="http://aimigit.github.io/tags/log4j2/"/>
-    
       <category term="java" scheme="http://aimigit.github.io/tags/java/"/>
+    
+      <category term="log4j2" scheme="http://aimigit.github.io/tags/log4j2/"/>
     
   </entry>
   

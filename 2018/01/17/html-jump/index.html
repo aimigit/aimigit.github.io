@@ -206,6 +206,11 @@
 <h2 id="正则构造startWith，endWith方法"><a href="#正则构造startWith，endWith方法" class="headerlink" title="正则构造startWith，endWith方法"></a>正则构造startWith，endWith方法</h2><p>javascript 没有原生的这2个方法，一般用indexOf判断，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//或者用indexOf判断</span></div><div class="line"><span class="keyword">var</span> index = str.indexOf(<span class="string">'abc'</span>);</div><div class="line"><span class="keyword">if</span>(index==<span class="number">0</span>)&#123;</div><div class="line"><span class="comment">//以'abc'开头</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>我们也可以自己构造。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">String</span>.prototype.startWith=<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;     </div><div class="line">  <span class="keyword">var</span> reg=<span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"^"</span>+str);     </div><div class="line">  <span class="keyword">return</span> reg.test(<span class="keyword">this</span>);        </div><div class="line">&#125;  </div><div class="line"></div><div class="line"><span class="built_in">String</span>.prototype.endWith=<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;     </div><div class="line">  <span class="keyword">var</span> reg=<span class="keyword">new</span> <span class="built_in">RegExp</span>(str+<span class="string">"$"</span>);     </div><div class="line">  <span class="keyword">return</span> reg.test(<span class="keyword">this</span>);        </div><div class="line">&#125;</div><div class="line"><span class="comment">//或者用indexOf判断</span></div><div class="line"><span class="keyword">var</span> index = str.indexOf(<span class="string">'abc'</span>);</div><div class="line"><span class="keyword">if</span>(index==<span class="number">0</span>)&#123;</div><div class="line"><span class="comment">//以'abc'开头</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="正则转换回车换行符"><a href="#正则转换回车换行符" class="headerlink" title="正则转换回车换行符"></a>正则转换回车换行符</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">convertCRLF</span>(<span class="params">str</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(str!=<span class="literal">null</span>)</div><div class="line">	str = str.replace(<span class="regexp">/[\n]/g</span>,<span class="string">"&lt;br&gt;"</span>)</div><div class="line">	<span class="keyword">return</span> str;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+        <span id="busuanzi_container_page_pv" style="font-size:12px;">
+                点击量 <span id="busuanzi_value_page_pv"></span>次
+        </span>
+
       
 
       
@@ -262,10 +267,6 @@
       
 
       
-
-      <span id="busuanzi_container_page_pv" style="font-size:12px;">
-         <span id="busuanzi_value_page_pv"></span>次
-      </span>
 
       
         
@@ -380,12 +381,11 @@
     <div id="footer-info">
     	<div class="footer-left">
     		&copy; 2018 aimigit
-        <span id="busuanzi_container_site_uv"> 
-          访客数<span id="busuanzi_value_site_uv"></span>人次
-        </span>
 
-    	</div>
-
+       <span id="busuanzi_container_site_pv">访问量<span id="busuanzi_value_site_pv"></span>次</span>
+       <span id="busuanzi_container_site_uv">访客数<span id="busuanzi_value_site_uv">181236</span>人</span>
+       </div>
+       
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
       	</div>
@@ -483,11 +483,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,18 +504,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">log4j2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,6 +519,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间同步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
@@ -532,10 +536,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">去广告</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">时间同步</a>
               </li>
             
             <div class="clearfix"></div>
