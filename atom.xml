@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2018-12-27T03:39:49.772Z</updated>
+  <updated>2019-01-10T12:07:47.631Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -16,11 +16,115 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>js-for循环遍历</title>
+    <link href="http://aimigit.github.io/2019/01/10/js-for/"/>
+    <id>http://aimigit.github.io/2019/01/10/js-for/</id>
+    <published>2019-01-10T11:41:51.000Z</published>
+    <updated>2019-01-10T12:07:47.631Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><p>以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。<br>for..in 不应该被用来迭代一个下标顺序很重要的 Array .<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>, <span class="attr">c</span>:<span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"><span class="comment">/*a = 1</span></div><div class="line"><span class="comment">  b = 2 </span></div><div class="line"><span class="comment">  c = 3 */</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*0 = a </span></div><div class="line"><span class="comment">  1 = b </span></div><div class="line"><span class="comment">  2 = c */</span></div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h4 id="小demo"><a href="#小demo" class="headerlink" title="小demo"></a>小demo</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取数组key</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getObjectKeys</span>(<span class="params">object</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">var</span> keys = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> property <span class="keyword">in</span> object)</div><div class="line">      keys.push(property);</div><div class="line">    <span class="keyword">return</span> keys;</div><div class="line">&#125;</div><div class="line"><span class="comment">//获取数组value</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getObjectValues</span>(<span class="params">object</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">var</span> values = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> property <span class="keyword">in</span> object)</div><div class="line">      values.push(object[property]);</div><div class="line">    <span class="keyword">return</span> values;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><p>常见的语法<br>用于创建一个循环,它包含了三个可选的表达式,三个可选的表达式包围在圆括号中并由分号分隔,后面跟随一个语句或一组语句在循环中执行.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> ([initialization]; [condition]; [final-expression])</div><div class="line">   statement</div></pre></td></tr></table></figure></p>
+<p>小例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</div><div class="line">   <span class="built_in">console</span>.log(i);</div><div class="line">   <span class="comment">// more statements</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (; i &lt; <span class="number">9</span>; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">    <span class="comment">// more statements</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>;; i++) &#123;</div><div class="line">   <span class="built_in">console</span>.log(i);</div><div class="line">   <span class="keyword">if</span> (i &gt; <span class="number">3</span>) <span class="keyword">break</span>;</div><div class="line">   <span class="comment">// more statements</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h2><p>forEach() 方法对数组的每个元素执行一次提供的函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">array.forEach(callback(currentValue, index, array)&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;, <span class="keyword">this</span>)</div><div class="line"></div><div class="line">array.forEach(callback[, thisArg])</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">let</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line"></div><div class="line">a.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(element);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="jquery-each"><a href="#jquery-each" class="headerlink" title="jquery $.each"></a>jquery $.each</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$.each([ <span class="number">52</span>, <span class="number">97</span> ], <span class="function"><span class="keyword">function</span>(<span class="params"> index, value </span>) </span>&#123;</div><div class="line">  alert( index + <span class="string">": "</span> + value );</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="string">"flammable"</span>: <span class="string">"inflammable"</span>,</div><div class="line">  <span class="string">"duh"</span>: <span class="string">"no duh"</span></div><div class="line">&#125;;</div><div class="line">$.each( obj, <span class="function"><span class="keyword">function</span>(<span class="params"> key, value </span>) </span>&#123;</div><div class="line">  alert( key + <span class="string">": "</span> + value );</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="jquery-each-dom"><a href="#jquery-each-dom" class="headerlink" title="jquery $.each dom"></a>jquery $.each dom</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$.each($(<span class="string">"input:hidden"</span>), <span class="function"><span class="keyword">function</span>(<span class="params">i,val</span>)</span>&#123;  </div><div class="line">     alert(val);</div><div class="line">     alert(i);</div><div class="line">     alert(val.name);</div><div class="line">     alert(val.value);   </div><div class="line"> &#125;); </div><div class="line"></div><div class="line"> $(<span class="string">"input:hidden"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i,val</span>)</span>&#123;  <span class="comment">//第一个参数表示索引下标，第二个参数表示当前索引元素</span></div><div class="line">    alert(i);</div><div class="line">    alert(val.name);</div><div class="line">    alert(val.value);       </div><div class="line">&#125;);</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;for…in&quot;&gt;&lt;a href=&quot;#for…in&quot; class=&quot;headerlink&quot; title=&quot;for…in&quot;&gt;&lt;/a&gt;for…in&lt;/h2&gt;&lt;p&gt;以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。&lt;br&gt;for..in 不应该被用来迭代一个下标顺序很重要的 Array .&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj1 = &amp;#123;&lt;span class=&quot;attr&quot;&gt;a&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;b&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;attr&quot;&gt;c&lt;/span&gt;:&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;&amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; obj2 = [&lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;b&#39;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; key &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; obj1) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( key + &lt;span class=&quot;string&quot;&gt;&quot; = &quot;&lt;/span&gt; + obj1[key]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*a = 1&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  b = 2 &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  c = 3 */&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; key &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; obj1) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log( key + &lt;span class=&quot;string&quot;&gt;&quot; = &quot;&lt;/span&gt; + obj1[key]);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/*0 = a &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  1 = b &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;  2 = c */&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="js" scheme="http://aimigit.github.io/tags/js/"/>
+    
+      <category term="json" scheme="http://aimigit.github.io/tags/json/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js-json对象和字符串转换</title>
+    <link href="http://aimigit.github.io/2019/01/09/js-json-object/"/>
+    <id>http://aimigit.github.io/2019/01/09/js-json-object/</id>
+    <published>2019-01-09T03:17:56.000Z</published>
+    <updated>2019-01-10T11:40:45.194Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="json简介"><a href="#json简介" class="headerlink" title="json简介"></a>json简介</h2><p>json是一种数据格式，不管java，php，python，object-c语言都支持，所以用来跨平台数据交互，app端，web端，小程序等等通过服务端API接口返回json数据。xml格式几乎很少见到了。</p>
+<p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。</p>
+<h3 id="JSON两种结构："><a href="#JSON两种结构：" class="headerlink" title="JSON两种结构："></a>JSON两种结构：</h3><p>官网：<a href="http://www.json.org/json-zh.html" target="_blank" rel="external">http://www.json.org/json-zh.html</a></p>
+<ul>
+<li>“名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。</li>
+<li>值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。</li>
+</ul>
+<p><img src="http://www.json.org/object.gif" width="60%" height="60%"></p>
+<a id="more"></a>
+<h2 id="js"><a href="#js" class="headerlink" title="js"></a>js</h2><h3 id="js-字符串转对象"><a href="#js-字符串转对象" class="headerlink" title="js 字符串转对象"></a>js 字符串转对象</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法1</span></div><div class="line"><span class="built_in">JSON</span>.parse(jsonstr)；</div><div class="line"><span class="comment">//Jquery 方法</span></div><div class="line">$.parseJSON( jsonstr)</div><div class="line"><span class="comment">//方法3</span></div><div class="line">　<span class="built_in">eval</span>(<span class="string">'('</span> + jsonstr + <span class="string">')'</span>);（不推荐，会执行代码）</div></pre></td></tr></table></figure>
+<h3 id="js-对象转字符串"><a href="#js-对象转字符串" class="headerlink" title="js 对象转字符串"></a>js 对象转字符串</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//方法1</span></div><div class="line"><span class="built_in">JSON</span>.stringify(jsonobj)；</div><div class="line"><span class="comment">//方法2</span></div><div class="line">obj.toJSONString()</div></pre></td></tr></table></figure>
+<h3 id="js构造对象小Demo"><a href="#js构造对象小Demo" class="headerlink" title="js构造对象小Demo"></a>js构造对象小Demo</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveAsObject</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				<span class="keyword">var</span> data = [];</div><div class="line">				<span class="keyword">var</span> person1 = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">				person1.name=<span class="string">"张三"</span>;</div><div class="line">				person1.age=<span class="number">18</span>;</div><div class="line">				person1.sex=<span class="string">"男"</span>;</div><div class="line">				data.push(person1);</div><div class="line">				</div><div class="line">				<span class="keyword">var</span> person2 = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">				person2.name=<span class="string">"小丽"</span>;</div><div class="line">				person2.age=<span class="number">20</span>;</div><div class="line">				person2.sex=<span class="string">"女"</span>;</div><div class="line">				data.push(person2);</div><div class="line">			</div><div class="line">				<span class="keyword">var</span> json_str = <span class="built_in">JSON</span>.stringify(data);</div><div class="line">				<span class="keyword">var</span> cc = jQuery.parseJSON(json_str);</div><div class="line">				$.each(cc, <span class="function"><span class="keyword">function</span>(<span class="params">index,item</span>) </span>&#123;</div><div class="line">					<span class="built_in">console</span>.log(item)</div><div class="line">				&#125;);</div><div class="line">			&#125;</div></pre></td></tr></table></figure>
+<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><h3 id="json字符串转对象"><a href="#json字符串转对象" class="headerlink" title="json字符串转对象"></a>json字符串转对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1、使用JSONObject</span></div><div class="line">JSONObject jsonObject=JSONObject.fromObject(jsonStr);</div><div class="line">Student stu=(Student)JSONObject.toBean(jsonStr, Student.class);</div><div class="line"></div><div class="line"><span class="comment">//2、使用JSONArray</span></div><div class="line">JSONArray jsonArray=JSONArray.fromObject(jsonStr);</div></pre></td></tr></table></figure>
+<h3 id="对象转json字符串"><a href="#对象转json字符串" class="headerlink" title="对象转json字符串"></a>对象转json字符串</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1、使用JSONObject</span></div><div class="line">JSONObject listObject=JSONObject.fromObject(obj);</div><div class="line"><span class="comment">//2、使用JSONArray</span></div><div class="line">JSONArray listArray=JSONArray.fromObject(obj);</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;json简介&quot;&gt;&lt;a href=&quot;#json简介&quot; class=&quot;headerlink&quot; title=&quot;json简介&quot;&gt;&lt;/a&gt;json简介&lt;/h2&gt;&lt;p&gt;json是一种数据格式，不管java，php，python，object-c语言都支持，所以用来跨平台数据交互，app端，web端，小程序等等通过服务端API接口返回json数据。xml格式几乎很少见到了。&lt;/p&gt;
+&lt;p&gt;JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。&lt;/p&gt;
+&lt;h3 id=&quot;JSON两种结构：&quot;&gt;&lt;a href=&quot;#JSON两种结构：&quot; class=&quot;headerlink&quot; title=&quot;JSON两种结构：&quot;&gt;&lt;/a&gt;JSON两种结构：&lt;/h3&gt;&lt;p&gt;官网：&lt;a href=&quot;http://www.json.org/json-zh.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.json.org/json-zh.html&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。&lt;/li&gt;
+&lt;li&gt;值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.json.org/object.gif&quot; width=&quot;60%&quot; height=&quot;60%&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="js" scheme="http://aimigit.github.io/tags/js/"/>
+    
+      <category term="json" scheme="http://aimigit.github.io/tags/json/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>js浏览器全屏和时钟方法</title>
+    <link href="http://aimigit.github.io/2019/01/09/js-full-screen/"/>
+    <id>http://aimigit.github.io/2019/01/09/js-full-screen/</id>
+    <published>2019-01-09T02:46:55.000Z</published>
+    <updated>2019-01-10T11:40:45.172Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="js浏览器全屏方法"><a href="#js浏览器全屏方法" class="headerlink" title="js浏览器全屏方法"></a>js浏览器全屏方法</h2><p>浏览器F11全屏展示，js代码自动全屏，浏览器会认为有安全问题，所以要放个按钮触发，<br>在Chrome,Firefox,IE11测试通过。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//全屏</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fullscreen</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> el = <span class="built_in">document</span>.documentElement;</div><div class="line">  <span class="keyword">var</span> isFullscreen=<span class="built_in">document</span>.fullScreen||<span class="built_in">document</span>.mozFullScreen||<span class="built_in">document</span>.webkitIsFullScreen;</div><div class="line">  <span class="keyword">if</span>(!isFullscreen)&#123;<span class="comment">//进入全屏,多重短路表达式</span></div><div class="line">	  (el.requestFullscreen&amp;&amp;el.requestFullscreen())||</div><div class="line">	  (el.mozRequestFullScreen&amp;&amp;el.mozRequestFullScreen())||</div><div class="line">	  (el.webkitRequestFullscreen&amp;&amp;el.webkitRequestFullscreen())||(el.msRequestFullscreen&amp;&amp;el.msRequestFullscreen());</div><div class="line">  &#125;<span class="keyword">else</span>&#123; <span class="comment">//退出全屏,三目运算符</span></div><div class="line">	  <span class="built_in">document</span>.exitFullscreen?<span class="built_in">document</span>.exitFullscreen():</div><div class="line">	  <span class="built_in">document</span>.mozCancelFullScreen?<span class="built_in">document</span>.mozCancelFullScreen():</div><div class="line">	  <span class="built_in">document</span>.webkitExitFullscreen?<span class="built_in">document</span>.webkitExitFullscreen():<span class="string">''</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用</span></div><div class="line">$(<span class="string">".fullScreen"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		fullscreen();</div><div class="line">	&#125;);</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="IE问题"><a href="#IE问题" class="headerlink" title="IE问题"></a>IE问题</h3><p>在页面加入样式解决<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span>&#123;<span class="attribute">width</span>: <span class="number">100%</span>;&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="js时钟方法"><a href="#js时钟方法" class="headerlink" title="js时钟方法"></a>js时钟方法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"time"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**时间*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">clock</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//在月份、日期、小时等小于10前面补0</span></div><div class="line">	<span class="keyword">var</span> padDate = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> value &lt; <span class="number">10</span> ? <span class="string">'0'</span> + value : value;</div><div class="line">	&#125;;</div><div class="line">    <span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">	<span class="keyword">var</span> year = date.getFullYear();</div><div class="line">	<span class="keyword">var</span> month = padDate(date.getMonth() + <span class="number">1</span>);</div><div class="line">	<span class="keyword">var</span> da = padDate(date.getDate());</div><div class="line">	<span class="keyword">var</span> day = date.getDay(); <span class="comment">//获取当前星期几   </span></div><div class="line">	<span class="keyword">var</span> h = padDate(date.getHours());</div><div class="line">	<span class="keyword">var</span> m = padDate(date.getMinutes());</div><div class="line">	<span class="keyword">var</span> s = padDate(date.getSeconds());</div><div class="line">	<span class="keyword">var</span> vWeek = [ <span class="string">"星期天"</span>, <span class="string">"星期一"</span>, <span class="string">"星期二"</span>, <span class="string">"星期三"</span>, <span class="string">"星期四"</span>, <span class="string">"星期五"</span>,<span class="string">"星期六"</span> ];</div><div class="line">	<span class="keyword">var</span> fullTime = year + <span class="string">'.'</span> + month + <span class="string">'.'</span> + da  + <span class="string">' '</span> + h + <span class="string">':'</span></div><div class="line">			+ m + <span class="string">':'</span> + s + <span class="string">' '</span> + vWeek[day];</div><div class="line">  $(<span class="string">".time"</span>).html(fullTime);</div><div class="line">&#125;</div><div class="line"><span class="comment">//调用，1秒刷新一次</span></div><div class="line">	setInterval(clock,<span class="number">1000</span>);</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;js浏览器全屏方法&quot;&gt;&lt;a href=&quot;#js浏览器全屏方法&quot; class=&quot;headerlink&quot; title=&quot;js浏览器全屏方法&quot;&gt;&lt;/a&gt;js浏览器全屏方法&lt;/h2&gt;&lt;p&gt;浏览器F11全屏展示，js代码自动全屏，浏览器会认为有安全问题，所以要放个按钮触发，&lt;br&gt;在Chrome,Firefox,IE11测试通过。&lt;br&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//全屏&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;fullscreen&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; el = &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.documentElement;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; isFullscreen=&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.fullScreen||&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.mozFullScreen||&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.webkitIsFullScreen;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt;(!isFullscreen)&amp;#123;&lt;span class=&quot;comment&quot;&gt;//进入全屏,多重短路表达式&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  (el.requestFullscreen&amp;amp;&amp;amp;el.requestFullscreen())||&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  (el.mozRequestFullScreen&amp;amp;&amp;amp;el.mozRequestFullScreen())||&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  (el.webkitRequestFullscreen&amp;amp;&amp;amp;el.webkitRequestFullscreen())||(el.msRequestFullscreen&amp;amp;&amp;amp;el.msRequestFullscreen());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt;&amp;#123; &lt;span class=&quot;comment&quot;&gt;//退出全屏,三目运算符&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.exitFullscreen?&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.exitFullscreen():&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.mozCancelFullScreen?&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.mozCancelFullScreen():&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	  &lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.webkitExitFullscreen?&lt;span class=&quot;built_in&quot;&gt;document&lt;/span&gt;.webkitExitFullscreen():&lt;span class=&quot;string&quot;&gt;&#39;&#39;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//调用&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&quot;.fullScreen&quot;&lt;/span&gt;).click(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;		fullscreen();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&amp;#125;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="js" scheme="http://aimigit.github.io/tags/js/"/>
+    
+      <category term="json" scheme="http://aimigit.github.io/tags/json/"/>
+    
+  </entry>
+  
+  <entry>
     <title>aria2下载神器常用命令</title>
     <link href="http://aimigit.github.io/2018/12/27/aria2-command/"/>
     <id>http://aimigit.github.io/2018/12/27/aria2-command/</id>
     <published>2018-12-27T03:12:49.000Z</published>
-    <updated>2018-12-27T03:39:49.772Z</updated>
+    <updated>2019-01-10T11:40:45.018Z</updated>
     
     <content type="html"><![CDATA[<h2 id="aria2简介"><a href="#aria2简介" class="headerlink" title="aria2简介"></a>aria2简介</h2><p>Aria2是一款免费开源跨平台且不限速的多线程下载软件，Aria2的优点是速度快、体积小、资源占用少；支持 HTTP / FTP / BT / Magnet 磁力链接等类型的文件下载；支持 Win、Mac、Linux系统，甚至在树莓派、NAS、路由器等设备上都能安装它。强大的地方，结合第三方插件，可以扩展，下载百度网盘等资源，居家下片必备神器。<br>官网：<a href="https://aria2.github.io" target="_blank" rel="external">https://aria2.github.io</a></p>
 <a id="more"></a>
@@ -94,7 +198,7 @@
     <link href="http://aimigit.github.io/2018/12/26/mybatis-showsql/"/>
     <id>http://aimigit.github.io/2018/12/26/mybatis-showsql/</id>
     <published>2018-12-26T10:59:21.000Z</published>
-    <updated>2018-12-26T11:12:03.964Z</updated>
+    <updated>2019-01-10T11:40:45.248Z</updated>
     
     <content type="html"><![CDATA[<h2 id="springmvc-配置方式"><a href="#springmvc-配置方式" class="headerlink" title="springmvc 配置方式"></a>springmvc 配置方式</h2><p>在mybatis-config.xml中配置加一个setting<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE configuration</span></div><div class="line"><span class="meta">        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></div><div class="line"><span class="meta">        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 打印查询语句 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"STDOUT_LOGGING"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -122,7 +226,7 @@
     <link href="http://aimigit.github.io/2018/11/30/log4j2/"/>
     <id>http://aimigit.github.io/2018/11/30/log4j2/</id>
     <published>2018-11-30T02:47:00.000Z</published>
-    <updated>2018-11-30T03:03:20.230Z</updated>
+    <updated>2019-01-10T11:40:45.223Z</updated>
     
     <content type="html"><![CDATA[<h2 id="log4j简介"><a href="#log4j简介" class="headerlink" title="log4j简介"></a>log4j简介</h2><p>log4j是java常见的日志输出框架，<br>2015年5月，Apache宣布Log4J 1.x 停止更新。最新版为1.2.17。<br>如今，Log4J 2.x已更新至2.11。<br>官方网址：<a href="http://logging.apache.org/log4j/2.x/" target="_blank" rel="external">http://logging.apache.org/log4j/2.x/</a></p>
 <h2 id="配置文件介绍"><a href="#配置文件介绍" class="headerlink" title="配置文件介绍"></a>配置文件介绍</h2><h3 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h3><p>trace：追踪，就是程序推进一下，可以写个trace输出</p>
@@ -180,7 +284,7 @@
     <link href="http://aimigit.github.io/2018/09/04/some-plugin/"/>
     <id>http://aimigit.github.io/2018/09/04/some-plugin/</id>
     <published>2018-09-04T06:45:58.000Z</published>
-    <updated>2018-09-04T07:00:08.671Z</updated>
+    <updated>2019-01-10T11:40:45.326Z</updated>
     
     <content type="html"><![CDATA[<h2 id="eclipse插件"><a href="#eclipse插件" class="headerlink" title="eclipse插件"></a>eclipse插件</h2><p>Decompiler |java反编译插件<br>Properties |Editor 中文配置文件插件<br>Darkest Dark Theme|黑色主题<br>Subclipse |svn插件</p>
 <h2 id="chrome插件"><a href="#chrome插件" class="headerlink" title="chrome插件"></a>chrome插件</h2><p>uBlock Origin |广告拦截<br>Restlet Client |REST请求测试工具<br>Tampermonkey|油猴脚本管理<br>Chrono下载管理器|下载管理<br>Dark Reader|黑色主题<br>WebRTC Control|关闭WebRTC</p>
@@ -204,7 +308,7 @@
     <link href="http://aimigit.github.io/2018/09/04/hexo-multi-pc/"/>
     <id>http://aimigit.github.io/2018/09/04/hexo-multi-pc/</id>
     <published>2018-09-04T06:21:52.000Z</published>
-    <updated>2018-09-04T06:27:11.967Z</updated>
+    <updated>2019-01-10T11:40:45.057Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-动手前的思考"><a href="#1-动手前的思考" class="headerlink" title="1. 动手前的思考"></a>1. 动手前的思考</h2><p>还是按照我个人的老习惯，在动手前，先来理清思路，看看我们大概需要做哪些操作，为什么要做这些？这篇文章默认读者已经在另外一台电脑上部署好了，现在只是需要在另外一台电脑上部署。如果读者关注的只是如何使用 Hexo + Github Pages 搭建自己的博客，可以移步我之前的一篇文章 《知行合一 | 用 Hexo 搭建博客》。</p>
 <p>既然博客的生产环境是 Hexo + Github Pages，那么重部署的工作就围绕着 Hexo 和 Github Pages 展开。回顾一下，两者在我们搭建博客的时候具体扮演着什么角色。</p>
@@ -241,7 +345,7 @@
     <link href="http://aimigit.github.io/2018/06/13/mysql-cursor-proc/"/>
     <id>http://aimigit.github.io/2018/06/13/mysql-cursor-proc/</id>
     <published>2018-06-13T08:11:03.000Z</published>
-    <updated>2018-06-13T08:26:16.000Z</updated>
+    <updated>2019-01-10T11:40:45.262Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为了处理老数据，从一张父表，两张子表复制数据。涉及到生成id关联以及子表多条记录复制，使用了存储过程，cursor遍历结果集。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>  <a id="more"></a>    
@@ -267,7 +371,7 @@
     <link href="http://aimigit.github.io/2018/04/12/java-gif-image/"/>
     <id>http://aimigit.github.io/2018/04/12/java-gif-image/</id>
     <published>2018-04-12T08:19:55.000Z</published>
-    <updated>2018-04-12T09:53:20.000Z</updated>
+    <updated>2019-01-10T11:40:45.150Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Gif概述"><a href="#Gif概述" class="headerlink" title="Gif概述"></a>Gif概述</h2><p>GIF(Graphics Interchange Format)的原义是“图像互换格式”，是CompuServe公司在 1987 年开发的图像文件格式。GIF文件的数据，是一种基于LZW算法的连续色调的无损压缩格式。其压缩率一般在50%左右，它不属于任何应用程序。GIF格式可以存多幅彩色图像，如果把存于一个文件中的多幅图像数据逐幅读出并显示到屏幕上，就可构成一种最简单的动画。<br>GIF格式自1987年由CompuServe公司引入后，因其体积小、成像相对清晰，特别适合于初期慢速的互联网，而大受欢迎。<br>目前网络上流行的动图表情包，以Gif格式为主。大概原理是多张连续图片，以一定的时间间隔轮播，形成每帧动画效果。<br>要在Gif图片上加文字，就要在每帧的相同位置，画上文字。</p>
 <h2 id="java-画图"><a href="#java-画图" class="headerlink" title="java 画图"></a>java 画图</h2><p>使用了第三方文件  LZWEncoder.java,NeuQuant.java,GifDecoder.java,AnimatedGifEncoder.java</p>
@@ -293,7 +397,7 @@
     <link href="http://aimigit.github.io/2018/03/29/linux-add-font/"/>
     <id>http://aimigit.github.io/2018/03/29/linux-add-font/</id>
     <published>2018-03-29T09:16:37.000Z</published>
-    <updated>2018-03-29T09:41:50.000Z</updated>
+    <updated>2019-01-10T11:40:45.207Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>linux自带的字体比较少，在做图片文字合成时，需要指定的文字字体。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">查看系统中的字体</div><div class="line"><span class="built_in">fc</span>-list</div><div class="line">查看系统中的中文字体</div><div class="line"><span class="built_in">fc</span>-list :lang=zh</div><div class="line"></div><div class="line">[root@localhost ~]<span class="comment"># fc-list</span></div><div class="line">Bitstream Vera Sans Mono:style=Bold</div><div class="line">Bitstream Vera Sans:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Bold</div><div class="line">Bitstream Vera Serif:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Bold Oblique</div><div class="line">Bitstream Vera Sans:style=Bold Oblique</div><div class="line">文鼎PL中楷Uni,AR PL ZenKai Uni:style=Medium</div><div class="line">Bitstream Vera Sans Mono:style=Roman</div><div class="line">Fixed:style=Regular</div><div class="line">文鼎PL细上海宋Uni,AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni:style=Regular</div><div class="line">Bitstream Vera Serif:style=Bold</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -318,7 +422,7 @@
     <link href="http://aimigit.github.io/2018/01/17/html-jump/"/>
     <id>http://aimigit.github.io/2018/01/17/html-jump/</id>
     <published>2018-01-17T08:58:22.000Z</published>
-    <updated>2018-01-23T08:44:18.000Z</updated>
+    <updated>2019-01-10T11:40:45.109Z</updated>
     
     <content type="html"><![CDATA[<h2 id="html的实现"><a href="#html的实现" class="headerlink" title="html的实现"></a>html的实现</h2><p>优点：简单<br>缺点：Struts Tiles中无法使用</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 以下方式只是刷新不跳转到其他页面 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"10"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 以下方式定时转到其他页面 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"5;url=hello.html"</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -348,7 +452,7 @@
     <link href="http://aimigit.github.io/2017/12/07/nginx-worker-connections/"/>
     <id>http://aimigit.github.io/2017/12/07/nginx-worker-connections/</id>
     <published>2017-12-07T07:14:31.000Z</published>
-    <updated>2017-12-07T07:28:00.000Z</updated>
+    <updated>2019-01-10T11:40:45.302Z</updated>
     
     <content type="html"><![CDATA[<h2 id="异常信息"><a href="#异常信息" class="headerlink" title="异常信息"></a>异常信息</h2><p>[alert] 14102#0: 1024 worker_connections are not enough</p>
 <p>worker_connections 参数默认1024，不够用的话配置大一些，同时小于worker_rlimit_nofile 参数值。<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#worker进程数，通常设置等同于CPU数量，auto为自动检测</span></div><div class="line"><span class="attribute">worker_processes</span>  auto;</div><div class="line"><span class="comment">#worker进程打开最大文件数，可CPU*10000设置</span></div><div class="line"><span class="attribute">worker_rlimit_nofile</span> <span class="number">100000</span>;</div><div class="line"></div><div class="line"><span class="section">events</span> &#123;</div><div class="line">    <span class="attribute">worker_connections</span>  <span class="number">10240</span>;</div><div class="line">   <span class="comment">#告诉nginx收到一个新链接通知后接受尽可能多的链接</span></div><div class="line">    <span class="attribute">multi_accept</span> <span class="literal">on</span>;</div><div class="line">   <span class="comment">#设置用于复用客户端线程的轮训方法</span></div><div class="line">   <span class="attribute">use</span> <span class="literal">epoll</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -375,7 +479,7 @@
     <link href="http://aimigit.github.io/2017/11/30/nginx-image-server/"/>
     <id>http://aimigit.github.io/2017/11/30/nginx-image-server/</id>
     <published>2017-11-30T08:57:57.000Z</published>
-    <updated>2017-11-30T09:12:26.000Z</updated>
+    <updated>2019-01-10T11:40:45.290Z</updated>
     
     <content type="html"><![CDATA[<h2 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h2><p>前面写nginx做反向代理，负载均衡的配置。本文写nginx做http服务器的配置，把静态文件都交给nginx管理。</p>
 <ul>
@@ -413,7 +517,7 @@
     <link href="http://aimigit.github.io/2017/11/24/html-to-qq/"/>
     <id>http://aimigit.github.io/2017/11/24/html-to-qq/</id>
     <published>2017-11-24T06:08:47.000Z</published>
-    <updated>2017-11-24T06:39:36.000Z</updated>
+    <updated>2019-01-10T11:40:45.121Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>一般网站会有客户qq，或者aap的html5页面有官方联系方式等，在用户点击qq号，直接打开qq客户端，会更方便友好。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"window.open('tencent://message/?uin=QQ号')"</span>&gt;</span>pc打开方式<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=qq号&amp;card_type=person&amp;source=qrcode"</span>&gt;</span>打开QQ<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=群号&amp;card_type=group&amp;source=qrcode"</span>&gt;</span>打开QQ群<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -439,7 +543,7 @@
     <link href="http://aimigit.github.io/2017/10/27/java-ehcache/"/>
     <id>http://aimigit.github.io/2017/10/27/java-ehcache/</id>
     <published>2017-10-27T08:31:42.000Z</published>
-    <updated>2017-10-28T02:43:56.000Z</updated>
+    <updated>2019-01-10T11:40:45.136Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>常见的三种缓存技术ehcache,memcache,redis。ehcache的特点是快速，轻量，memcache,redis主要用在分布式集群场景。ehcache快的原因是提供了堆栈缓存，直接存在jvm，程序直接调用。<br>由于不同版本的使用方式不同，本文主要讲ehcache 3.4.0使用方式。<br>官网：<a href="http://www.ehcache.org/" target="_blank" rel="external">http://www.ehcache.org/</a></p>
 <h2 id="Ehcache支持的数据存储"><a href="#Ehcache支持的数据存储" class="headerlink" title="Ehcache支持的数据存储"></a>Ehcache支持的数据存储</h2><ul>
@@ -487,7 +591,7 @@
     <link href="http://aimigit.github.io/2017/10/02/xiaomitv-adblock/"/>
     <id>http://aimigit.github.io/2017/10/02/xiaomitv-adblock/</id>
     <published>2017-10-02T13:57:12.000Z</published>
-    <updated>2017-10-28T02:42:36.000Z</updated>
+    <updated>2019-01-10T11:40:45.343Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概叙"><a href="#概叙" class="headerlink" title="概叙"></a>概叙</h2><p>小米系列的产品，刚开始主打发烧友，便宜又做工好，性价比高。陆陆续续买了不少小米的产品，主要考虑可以组网，做智能家居。<br>后面公司规模扩大，开始频繁投放广告，产品也变得平庸了。小米电视升级后，开机广告，暂停广告，关机也要广告，实在不能忍。<br>广告类型主要有2种，1个是电视平台的广告，开关机广告那些。另一个是视频播放里面的广告，类似优酷视频那种。<br>目前能去的是第一种，第二种会去的分享一下。</p>
 <h2 id="去广告方法1"><a href="#去广告方法1" class="headerlink" title="去广告方法1"></a>去广告方法1</h2><p>家里路由器有网址屏蔽功能，直接把广告网址屏蔽，<br>“ad.xiaomi.com”,”ad1.xiaomi.com”,”ad.mi.com”添加进黑名单。<br>这个方式是从广告来源过滤，如果小米改了网址就失效了。</p>
@@ -530,7 +634,7 @@
     <link href="http://aimigit.github.io/2017/09/28/ntp-time-sync-server/"/>
     <id>http://aimigit.github.io/2017/09/28/ntp-time-sync-server/</id>
     <published>2017-09-28T01:59:42.000Z</published>
-    <updated>2017-09-28T02:18:18.000Z</updated>
+    <updated>2019-01-10T11:40:45.315Z</updated>
     
     <content type="html"><![CDATA[<h2 id="时间同步服务器"><a href="#时间同步服务器" class="headerlink" title="时间同步服务器"></a>时间同步服务器</h2><p>在某些场景，比如抢购，秒杀，支付类，服务器时间等，要求时间精确。<br>查了国家授时中心，竟然没找到同步服务器，有个44的ip地址，测试一下同步失败，不稳定。最后使用阿里云的NTP服务器。收录一下</p>
 <ul>
@@ -570,7 +674,7 @@
     <link href="http://aimigit.github.io/2017/09/18/hightlight_code/"/>
     <id>http://aimigit.github.io/2017/09/18/hightlight_code/</id>
     <published>2017-09-18T03:33:26.000Z</published>
-    <updated>2017-09-18T04:30:26.000Z</updated>
+    <updated>2019-01-10T11:40:45.071Z</updated>
     
     <content type="html"><![CDATA[<h2 id="代码高亮显示"><a href="#代码高亮显示" class="headerlink" title="代码高亮显示"></a>代码高亮显示</h2><p>代码高亮显示效果，使用的是hightlight.js  <a href="https://highlightjs.org/" target="_blank" rel="external">https://highlightjs.org/</a><br>使用方法很简单</p>
 <ul>
@@ -601,7 +705,7 @@
     <link href="http://aimigit.github.io/2017/09/16/nginx-balance/"/>
     <id>http://aimigit.github.io/2017/09/16/nginx-balance/</id>
     <published>2017-09-16T08:03:28.000Z</published>
-    <updated>2017-10-28T02:40:28.000Z</updated>
+    <updated>2019-01-10T11:40:45.275Z</updated>
     
     <content type="html"><![CDATA[<p>nginx 目前用的比较多了，官网 <a href="https://nginx.org/" target="_blank" rel="external">https://nginx.org/</a></p>
 <h2 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h2><ul>
@@ -631,127 +735,6 @@
       <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
       <category term="nginx" scheme="http://aimigit.github.io/tags/nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>markdown语法</title>
-    <link href="http://aimigit.github.io/2017/09/01/markdown_code/"/>
-    <id>http://aimigit.github.io/2017/09/01/markdown_code/</id>
-    <published>2017-09-01T05:40:18.000Z</published>
-    <updated>2017-09-01T06:44:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>hexo 支持markdown，为了让博客写的更优美，建议学习一下。</p>
-<h1 id="markdown语法"><a href="#markdown语法" class="headerlink" title="markdown语法"></a>markdown语法</h1><p><img src="/assets/blog_img/markdown.jpg" alt="markdown"></p>
-<ol>
-<li><p>标题设置（让字体变大，和word的标题意思一样）<br>在Markdown当中设置标题，有两种方式：<br>第一种：通过在文字下方添加“=”和“-”，他们分别表示一级标题和二级标题。<br>第二种：在文字开头加上 “#”，通过“#”数量表示几级标题。（一共只有1~6级标题，1级标题字体最大）</p>
-</li>
-<li><p>块注释（blockquote）<br>通过在文字开头添加“&gt;”表示块注释。（当&gt;和文字之间添加五个blank时，块注释的文字会有变化。）</p>
-</li>
-</ol>
-<a id="more"></a>
-<ol>
-<li><p>斜体<br>将需要设置为斜体的文字两端使用1个“*”或者“_”夹起来</p>
-</li>
-<li><p>粗体<br>将需要设置为斜体的文字两端使用2个“*”或者“_”夹起来</p>
-</li>
-<li><p>无序列表<br>在文字开头添加(<em>, +, and -)实现无序列表。但是要注意在(</em>, +, and -)和文字之间需要添加空格。（建议：一个文档中只是用一种无序列表的表示方式）</p>
-</li>
-<li><p>有序列表<br>使用数字后面跟上句号。（还要有空格）</p>
-</li>
-<li><p>链接（Links）<br>Markdown中有两种方式，实现链接，分别为内联方式和引用方式。<br>内联方式：This is an <a href="http://example.com/" target="_blank" rel="external">example link</a>.<br>引用方式：<br>I get 10 times more traffic from <a href="http://google.com/" title="Google" target="_blank" rel="external">Google</a> than from <a href="http://search.yahoo.com/" title="Yahoo Search" target="_blank" rel="external">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search" target="_blank" rel="external">MSN</a>.  </p>
-</li>
-</ol>
-<ol>
-<li>图片（Images）<br>图片的处理方式和链接的处理方式，非常的类似。<br>内联方式：<img src="/path/to/img.jpg" alt="alt text" title="Title"><br>引用方式：<br><img src="/path/to/img.jpg" alt="alt text" title="Title"> </li>
-</ol>
-<ol>
-<li><p>代码（HTML中所谓的Code）<br>实现方式有两种：<br>第一种：简单文字出现一个代码框。使用<code>&lt;blockquote&gt;</code>。（<code>不是单引号而是左上角的ESC下面~中的</code>）<br>第二种：大片文字需要实现代码框。使用Tab和四个空格。</p>
-</li>
-<li><p>脚注（footnote）<br>实现方式如下：<br>hello<a href="hi">^hello</a></p>
-</li>
-</ol>
-<ol>
-<li>下划线<br>在空白行下方添加三条“-”横线。（前面讲过在文字下方添加“-”，实现的2级标题）</li>
-</ol>
-<h1 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h1><p>支持的软件非常多，找个自己喜欢的就行。</p>
-<ul>
-<li>在线工具<a href="https://stackedit.io/editor" target="_blank" rel="external">https://stackedit.io/editor</a></li>
-<li>Typora</li>
-<li>谷歌浏览器插件 Minimalist Markdown Editor</li>
-<li>Sublime Text</li>
-<li>Atom</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;hexo 支持markdown，为了让博客写的更优美，建议学习一下。&lt;/p&gt;
-&lt;h1 id=&quot;markdown语法&quot;&gt;&lt;a href=&quot;#markdown语法&quot; class=&quot;headerlink&quot; title=&quot;markdown语法&quot;&gt;&lt;/a&gt;markdown语法&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/assets/blog_img/markdown.jpg&quot; alt=&quot;markdown&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;标题设置（让字体变大，和word的标题意思一样）&lt;br&gt;在Markdown当中设置标题，有两种方式：&lt;br&gt;第一种：通过在文字下方添加“=”和“-”，他们分别表示一级标题和二级标题。&lt;br&gt;第二种：在文字开头加上 “#”，通过“#”数量表示几级标题。（一共只有1~6级标题，1级标题字体最大）&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;块注释（blockquote）&lt;br&gt;通过在文字开头添加“&amp;gt;”表示块注释。（当&amp;gt;和文字之间添加五个blank时，块注释的文字会有变化。）&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-    
-      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="markdown" scheme="http://aimigit.github.io/tags/markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>github+hexo搭建博客</title>
-    <link href="http://aimigit.github.io/2017/08/31/github_hexo_start/"/>
-    <id>http://aimigit.github.io/2017/08/31/github_hexo_start/</id>
-    <published>2017-08-31T08:11:09.000Z</published>
-    <updated>2018-09-04T05:54:43.575Z</updated>
-    
-    <content type="html"><![CDATA[<p>github搭建博客，网上的教程很多了。这边搭建过程，简单记录一下。<br>hexo是博客，需要node.js，部署在github，所以需要下面这些</p>
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ol>
-<li>github帐号一个</li>
-<li>github软件</li>
-<li>node.js软件</li>
-<li>hexo软件</li>
-</ol>
-<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><ul>
-<li>github帐号，<a href="https://github.com/" target="_blank" rel="external">https://github.com/</a> 官网注册</li>
-<li>下载安装客户端<a href="https://git-scm.com/downloads" target="_blank" rel="external">https://git-scm.com/downloads</a></li>
-<li>下载安装<a href="https://nodejs.org" target="_blank" rel="external">https://nodejs.org</a>  建议直接安装在c盘，使用命令行方便<br>这样环境就搭建好了，hexo后面用命令安装。</li>
-</ul>
-<a id="more"></a>
-<h1 id="安装hexo配置"><a href="#安装hexo配置" class="headerlink" title="安装hexo配置"></a>安装hexo配置</h1><p>在d盘创建文件夹blog<br>打开Git bash命令行窗口，输入安装命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div><div class="line">npm install hexo-deployer-git --save</div><div class="line"></div><div class="line"><span class="built_in">cd</span> d:/blog</div><div class="line">换国内镜像点</div><div class="line">npm config <span class="built_in">set</span> registry <span class="string">"https://registry.npm.taobao.org"</span></div><div class="line">安装</div><div class="line">hexo init</div><div class="line">npm install</div><div class="line">hexo generate</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
-<p>正常启动后在浏览器查看<a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p>github帐号创建一个同名的项目 “youname.github.io”。<br>然后获取到项目ssh地址 git@github.com:youname/youname.github.io.git<br>修改d:/blog/_config.yml 文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repository: git@github.com:youname/youname.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<h2 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h2><p>在 Git Bash 下执行如下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git config --global user.name <span class="string">"YOUR NAME"</span></div><div class="line">git config --global user.email <span class="string">"YOUR EMAIL ADDRESS"</span></div><div class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"github帐号邮箱"</span>  一路回车</div><div class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></div><div class="line">ssh-add ~/.ssh/id_rsa</div><div class="line">clip &lt; ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure></p>
-<p>登录 Github 帐号，依次点击自己的头像，Settings&gt;SSH and GPG keys&gt;Add SSH key ,把key粘贴进去保存<br>返回Git Bash，输入<br><code>ssh -T git@github.com<br></code><br>如果连接成功，显示Hi XXX! You’ve successfully authenticated, but GitHub does not provide shell access.<br>输入<br><code>hexo deploy<br></code><br>部署成功后，在浏览器输入，youname.github.io<br>到此，搭建博客成功。<br>后续，你可以更改博客主题，绑定独立域名等等。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;github搭建博客，网上的教程很多了。这边搭建过程，简单记录一下。&lt;br&gt;hexo是博客，需要node.js，部署在github，所以需要下面这些&lt;/p&gt;
-&lt;h1 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;github帐号一个&lt;/li&gt;
-&lt;li&gt;github软件&lt;/li&gt;
-&lt;li&gt;node.js软件&lt;/li&gt;
-&lt;li&gt;hexo软件&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&quot;环境搭建&quot;&gt;&lt;a href=&quot;#环境搭建&quot; class=&quot;headerlink&quot; title=&quot;环境搭建&quot;&gt;&lt;/a&gt;环境搭建&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;github帐号，&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/&lt;/a&gt; 官网注册&lt;/li&gt;
-&lt;li&gt;下载安装客户端&lt;a href=&quot;https://git-scm.com/downloads&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://git-scm.com/downloads&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;下载安装&lt;a href=&quot;https://nodejs.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://nodejs.org&lt;/a&gt;  建议直接安装在c盘，使用命令行方便&lt;br&gt;这样环境就搭建好了，hexo后面用命令安装。&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-    
-      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="hexo" scheme="http://aimigit.github.io/tags/hexo/"/>
     
   </entry>
   
