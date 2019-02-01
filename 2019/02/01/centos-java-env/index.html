@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://aimigit.github.io">
-  <title>js-for循环遍历 | 埃米的博客</title>
+  <title>centos7 安装java环境 | 埃米的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="for…in以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。for..in 不应该被用来迭代一个下标顺序很重要的 Array .12345678910111213141516var obj1 = &amp;#123;a:1, b:2, c:3&amp;#125;;var obj2 = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];for (var key in obj1) &amp;#123;  console">
-<meta name="keywords" content="技术,js,json">
+  <meta name="description" content="tar方式安装JDK在服务器用wget一直下载失败。官网下载jdk1.8，https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html下载后上传到服务器123456789101112131415161718#查看服务器javajava version#解压tar -zxvf jdk-8u20">
+<meta name="keywords" content="技术,java,linux,mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js-for循环遍历">
-<meta property="og:url" content="http://aimigit.github.io/2019/01/10/js-for/index.html">
+<meta property="og:title" content="centos7 安装java环境">
+<meta property="og:url" content="http://aimigit.github.io/2019/02/01/centos-java-env/index.html">
 <meta property="og:site_name" content="埃米的博客">
-<meta property="og:description" content="for…in以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。for..in 不应该被用来迭代一个下标顺序很重要的 Array .12345678910111213141516var obj1 = &amp;#123;a:1, b:2, c:3&amp;#125;;var obj2 = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];for (var key in obj1) &amp;#123;  console">
-<meta property="og:updated_time" content="2019-01-10T12:07:47.631Z">
+<meta property="og:description" content="tar方式安装JDK在服务器用wget一直下载失败。官网下载jdk1.8，https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html下载后上传到服务器123456789101112131415161718#查看服务器javajava version#解压tar -zxvf jdk-8u20">
+<meta property="og:updated_time" content="2019-02-01T09:23:34.082Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js-for循环遍历">
-<meta name="twitter:description" content="for…in以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。for..in 不应该被用来迭代一个下标顺序很重要的 Array .12345678910111213141516var obj1 = &amp;#123;a:1, b:2, c:3&amp;#125;;var obj2 = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];for (var key in obj1) &amp;#123;  console">
+<meta name="twitter:title" content="centos7 安装java环境">
+<meta name="twitter:description" content="tar方式安装JDK在服务器用wget一直下载失败。官网下载jdk1.8，https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html下载后上传到服务器123456789101112131415161718#查看服务器javajava version#解压tar -zxvf jdk-8u20">
   
     <link rel="alternative" href="/atom.xml" title="埃米的博客" type="application/atom+xml">
   
@@ -178,34 +178,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-js-for" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-centos-java-env" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      js-for循环遍历
+      centos7 安装java环境
     </h1>
   
 
         
-        <a href="/2019/01/10/js-for/" class="archive-article-date">
-  	<time datetime="2019-01-10T11:41:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-10</time>
+        <a href="/2019/02/01/centos-java-env/" class="archive-article-date">
+  	<time datetime="2019-02-01T08:38:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><p>以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。<br>for..in 不应该被用来迭代一个下标顺序很重要的 Array .<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>, <span class="attr">c</span>:<span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"><span class="comment">/*a = 1</span></div><div class="line"><span class="comment">  b = 2 </span></div><div class="line"><span class="comment">  c = 3 */</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*0 = a </span></div><div class="line"><span class="comment">  1 = b </span></div><div class="line"><span class="comment">  2 = c */</span></div></pre></td></tr></table></figure></p>
+        <h2 id="tar方式安装JDK"><a href="#tar方式安装JDK" class="headerlink" title="tar方式安装JDK"></a>tar方式安装JDK</h2><p>在服务器用wget一直下载失败。<br>官网下载jdk1.8，<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>下载后上传到服务器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">查看服务器java</span></div><div class="line">java version</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash">解压</span></div><div class="line">tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/local/jdk1.8.0_202</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash">配置环境变量</span></div><div class="line">vim /etc/profile</div><div class="line"><span class="meta">#</span><span class="bash">向文件里面追加以下内容：</span></div><div class="line"><span class="meta">#</span><span class="bash"><span class="built_in">set</span> java environment</span></div><div class="line">JAVA_HOME=/usr/java/jdk1.8.0_152</div><div class="line">JRE_HOME=$JAVA_HOME/jre</div><div class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</div><div class="line">export JAVA_HOME JRE_HOME PATH CLASSPATH</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash">使配置文件生效</span></div><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h4 id="小demo"><a href="#小demo" class="headerlink" title="小demo"></a>小demo</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取数组key</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getObjectKeys</span>(<span class="params">object</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">var</span> keys = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> property <span class="keyword">in</span> object)</div><div class="line">      keys.push(property);</div><div class="line">    <span class="keyword">return</span> keys;</div><div class="line">&#125;</div><div class="line"><span class="comment">//获取数组value</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getObjectValues</span>(<span class="params">object</span>)</span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">var</span> values = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> property <span class="keyword">in</span> object)</div><div class="line">      values.push(object[property]);</div><div class="line">    <span class="keyword">return</span> values;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h2><p>常见的语法<br>用于创建一个循环,它包含了三个可选的表达式,三个可选的表达式包围在圆括号中并由分号分隔,后面跟随一个语句或一组语句在循环中执行.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> ([initialization]; [condition]; [final-expression])</div><div class="line">   statement</div></pre></td></tr></table></figure></p>
-<p>小例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</div><div class="line">   <span class="built_in">console</span>.log(i);</div><div class="line">   <span class="comment">// more statements</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (; i &lt; <span class="number">9</span>; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(i);</div><div class="line">    <span class="comment">// more statements</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>;; i++) &#123;</div><div class="line">   <span class="built_in">console</span>.log(i);</div><div class="line">   <span class="keyword">if</span> (i &gt; <span class="number">3</span>) <span class="keyword">break</span>;</div><div class="line">   <span class="comment">// more statements</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h2><p>forEach() 方法对数组的每个元素执行一次提供的函数。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">array.forEach(callback(currentValue, index, array)&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;, <span class="keyword">this</span>)</div><div class="line"></div><div class="line">array.forEach(callback[, thisArg])</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">let</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line"></div><div class="line">a.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">element</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(element);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<h2 id="jquery-each"><a href="#jquery-each" class="headerlink" title="jquery $.each"></a>jquery $.each</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$.each([ <span class="number">52</span>, <span class="number">97</span> ], <span class="function"><span class="keyword">function</span>(<span class="params"> index, value </span>) </span>&#123;</div><div class="line">  alert( index + <span class="string">": "</span> + value );</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  <span class="string">"flammable"</span>: <span class="string">"inflammable"</span>,</div><div class="line">  <span class="string">"duh"</span>: <span class="string">"no duh"</span></div><div class="line">&#125;;</div><div class="line">$.each( obj, <span class="function"><span class="keyword">function</span>(<span class="params"> key, value </span>) </span>&#123;</div><div class="line">  alert( key + <span class="string">": "</span> + value );</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h4 id="jquery-each-dom"><a href="#jquery-each-dom" class="headerlink" title="jquery $.each dom"></a>jquery $.each dom</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$.each($(<span class="string">"input:hidden"</span>), <span class="function"><span class="keyword">function</span>(<span class="params">i,val</span>)</span>&#123;  </div><div class="line">     alert(val);</div><div class="line">     alert(i);</div><div class="line">     alert(val.name);</div><div class="line">     alert(val.value);   </div><div class="line"> &#125;); </div><div class="line"></div><div class="line"> $(<span class="string">"input:hidden"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i,val</span>)</span>&#123;  <span class="comment">//第一个参数表示索引下标，第二个参数表示当前索引元素</span></div><div class="line">    alert(i);</div><div class="line">    alert(val.name);</div><div class="line">    alert(val.value);       </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="rpm方式安装mysql"><a href="#rpm方式安装mysql" class="headerlink" title="rpm方式安装mysql"></a>rpm方式安装mysql</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">下载mysql5.7</span></div><div class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</div><div class="line"><span class="meta">#</span><span class="bash">rpm方式安装</span></div><div class="line">rpm -ivh mysql57-community-release-el7-11.noarch.rpm </div><div class="line">yum install mysql-community-server</div><div class="line"><span class="meta">#</span><span class="bash">一路y</span></div><div class="line"><span class="meta">#</span><span class="bash">安装完成，重启mysql</span></div><div class="line">service mysqld restart</div><div class="line"><span class="meta">#</span><span class="bash">第一次没有密码登入</span></div><div class="line">mysql -u root</div><div class="line"><span class="meta">#</span><span class="bash">设置密码</span></div><div class="line">set password for 'root'@'localhost' =password('password');</div><div class="line"><span class="meta">#</span><span class="bash">安装完成</span></div></pre></td></tr></table></figure>
+<h4 id="打开远程登入"><a href="#打开远程登入" class="headerlink" title="打开远程登入"></a>打开远程登入</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">登入</span></div><div class="line">mysql -u root -p</div><div class="line"><span class="meta">#</span><span class="bash">输入密码</span></div><div class="line"><span class="meta">#</span><span class="bash">切换库</span></div><div class="line">use mysql</div><div class="line"><span class="meta">#</span><span class="bash">查看用户</span></div><div class="line">select host,user,authentication_string from user;</div><div class="line"><span class="meta">#</span><span class="bash">情况1，授权已有账号</span></div><div class="line">grant all privileges on *.* to root@'%'identified by 'password';</div><div class="line"><span class="meta">#</span><span class="bash">情况2，创建新账号</span></div><div class="line">create user 'username'@'%' identified by 'password';</div><div class="line"><span class="meta">#</span><span class="bash">刷新权限</span></div><div class="line">flush privileges;</div></pre></td></tr></table></figure>
+<h4 id="修改账号密码"><a href="#修改账号密码" class="headerlink" title="修改账号密码"></a>修改账号密码</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">修改密码</span></div><div class="line">update user set authentication_string=password("新密码") where user="root";</div></pre></td></tr></table></figure>
+<h2 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat"></a>安装tomcat</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">下载tomcat</span></div><div class="line">wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz</div><div class="line"><span class="meta">#</span><span class="bash">解压</span></div><div class="line">tar -zxvf apache-tomcat-9.0.14.tar.gz</div></pre></td></tr></table></figure>
 
         <span id="busuanzi_container_page_pv" style="font-size:12px;font-style:italic;float:right;">
                 点击量 <span id="busuanzi_value_page_pv"></span>次
@@ -258,11 +256,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
         		</li>
       		
 		</ul>
@@ -318,7 +320,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://aimigit.github.io/2019/01/10/js-for/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://aimigit.github.io/2019/02/01/centos-java-env/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -332,18 +334,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/02/01/centos-java-env/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          centos7 安装java环境
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/09/js-json-object/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js-json对象和字符串转换</div>
+    <a href="/2019/01/10/js-for/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js-for循环遍历</div>
       <i class="icon-circle-right"></i>
     </a>
   
