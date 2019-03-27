@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://aimigit.github.io/2019/02/01/centos-java-env/index.html">
 <meta property="og:site_name" content="埃米的博客">
 <meta property="og:description" content="tar方式安装JDK在服务器用wget一直下载失败。官网下载jdk1.8，https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html下载后上传到服务器123456789101112131415161718#查看服务器javajava version#解压tar -zxvf jdk-8u20">
-<meta property="og:updated_time" content="2019-02-01T09:23:34.082Z">
+<meta property="og:updated_time" content="2019-02-01T09:27:38.918Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 安装java环境">
 <meta name="twitter:description" content="tar方式安装JDK在服务器用wget一直下载失败。官网下载jdk1.8，https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html下载后上传到服务器123456789101112131415161718#查看服务器javajava version#解压tar -zxvf jdk-8u20">
@@ -198,10 +198,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="tar方式安装JDK"><a href="#tar方式安装JDK" class="headerlink" title="tar方式安装JDK"></a>tar方式安装JDK</h2><p>在服务器用wget一直下载失败。<br>官网下载jdk1.8，<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>下载后上传到服务器<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">查看服务器java</span></div><div class="line">java version</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash">解压</span></div><div class="line">tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/local/jdk1.8.0_202</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash">配置环境变量</span></div><div class="line">vim /etc/profile</div><div class="line"><span class="meta">#</span><span class="bash">向文件里面追加以下内容：</span></div><div class="line"><span class="meta">#</span><span class="bash"><span class="built_in">set</span> java environment</span></div><div class="line">JAVA_HOME=/usr/java/jdk1.8.0_152</div><div class="line">JRE_HOME=$JAVA_HOME/jre</div><div class="line">PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</div><div class="line">CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</div><div class="line">export JAVA_HOME JRE_HOME PATH CLASSPATH</div><div class="line"></div><div class="line"><span class="meta">#</span><span class="bash">使配置文件生效</span></div><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
+        <h2 id="tar方式安装JDK"><a href="#tar方式安装JDK" class="headerlink" title="tar方式安装JDK"></a>tar方式安装JDK</h2><p>在服务器用wget一直下载失败。<br>官网下载jdk1.8，<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>下载后上传到服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#查看服务器java</span></div><div class="line">java version</div><div class="line"></div><div class="line"><span class="comment">#解压</span></div><div class="line">tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/<span class="built_in">local</span>/jdk1.8.0_202</div><div class="line"></div><div class="line"><span class="comment">#配置环境变量</span></div><div class="line">vim /etc/profile</div><div class="line"><span class="comment">#向文件里面追加以下内容：</span></div><div class="line"><span class="comment">#set java environment</span></div><div class="line">JAVA_HOME=/usr/java/jdk1.8.0_152</div><div class="line">JRE_HOME=<span class="variable">$JAVA_HOME</span>/jre</div><div class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$JRE_HOME</span>/bin</div><div class="line">CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar:<span class="variable">$JRE_HOME</span>/lib</div><div class="line"><span class="built_in">export</span> JAVA_HOME JRE_HOME PATH CLASSPATH</div><div class="line"></div><div class="line"><span class="comment">#使配置文件生效</span></div><div class="line"><span class="built_in">source</span> /etc/profile</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h2 id="rpm方式安装mysql"><a href="#rpm方式安装mysql" class="headerlink" title="rpm方式安装mysql"></a>rpm方式安装mysql</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">下载mysql5.7</span></div><div class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</div><div class="line"><span class="meta">#</span><span class="bash">rpm方式安装</span></div><div class="line">rpm -ivh mysql57-community-release-el7-11.noarch.rpm </div><div class="line">yum install mysql-community-server</div><div class="line"><span class="meta">#</span><span class="bash">一路y</span></div><div class="line"><span class="meta">#</span><span class="bash">安装完成，重启mysql</span></div><div class="line">service mysqld restart</div><div class="line"><span class="meta">#</span><span class="bash">第一次没有密码登入</span></div><div class="line">mysql -u root</div><div class="line"><span class="meta">#</span><span class="bash">设置密码</span></div><div class="line">set password for 'root'@'localhost' =password('password');</div><div class="line"><span class="meta">#</span><span class="bash">安装完成</span></div></pre></td></tr></table></figure>
-<h4 id="打开远程登入"><a href="#打开远程登入" class="headerlink" title="打开远程登入"></a>打开远程登入</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">登入</span></div><div class="line">mysql -u root -p</div><div class="line"><span class="meta">#</span><span class="bash">输入密码</span></div><div class="line"><span class="meta">#</span><span class="bash">切换库</span></div><div class="line">use mysql</div><div class="line"><span class="meta">#</span><span class="bash">查看用户</span></div><div class="line">select host,user,authentication_string from user;</div><div class="line"><span class="meta">#</span><span class="bash">情况1，授权已有账号</span></div><div class="line">grant all privileges on *.* to root@'%'identified by 'password';</div><div class="line"><span class="meta">#</span><span class="bash">情况2，创建新账号</span></div><div class="line">create user 'username'@'%' identified by 'password';</div><div class="line"><span class="meta">#</span><span class="bash">刷新权限</span></div><div class="line">flush privileges;</div></pre></td></tr></table></figure>
+<h2 id="rpm方式安装mysql"><a href="#rpm方式安装mysql" class="headerlink" title="rpm方式安装mysql"></a>rpm方式安装mysql</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#下载mysql5.7</span></div><div class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</div><div class="line"><span class="comment">#rpm方式安装</span></div><div class="line">rpm -ivh mysql57-community-release-el7-11.noarch.rpm </div><div class="line">yum install mysql-community-server</div><div class="line"><span class="comment">#一路y</span></div><div class="line"><span class="comment">#安装完成，重启mysql</span></div><div class="line">service mysqld restart</div><div class="line"><span class="comment">#第一次没有密码登入</span></div><div class="line">mysql -u root</div><div class="line"><span class="comment">#设置密码</span></div><div class="line"><span class="built_in">set</span> password <span class="keyword">for</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> =password(<span class="string">'password'</span>);</div><div class="line"><span class="comment">#安装完成</span></div></pre></td></tr></table></figure>
+<h4 id="打开远程登入"><a href="#打开远程登入" class="headerlink" title="打开远程登入"></a>打开远程登入</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#登入</span></div><div class="line">mysql -u root -p</div><div class="line"><span class="comment">#输入密码</span></div><div class="line"><span class="comment">#切换库</span></div><div class="line">use mysql</div><div class="line"><span class="comment">#查看用户</span></div><div class="line">select host,user,authentication_string from user;</div><div class="line"><span class="comment">#情况1，授权已有账号</span></div><div class="line">grant all privileges on *.* to root@<span class="string">'%'</span>identified by <span class="string">'password'</span>;</div><div class="line"><span class="comment">#情况2，创建新账号</span></div><div class="line">create user <span class="string">'username'</span>@<span class="string">'%'</span> identified by <span class="string">'password'</span>;</div><div class="line"><span class="comment">#刷新权限</span></div><div class="line">flush privileges;</div></pre></td></tr></table></figure>
 <h4 id="修改账号密码"><a href="#修改账号密码" class="headerlink" title="修改账号密码"></a>修改账号密码</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">修改密码</span></div><div class="line">update user set authentication_string=password("新密码") where user="root";</div></pre></td></tr></table></figure>
 <h2 id="安装tomcat"><a href="#安装tomcat" class="headerlink" title="安装tomcat"></a>安装tomcat</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span><span class="bash">下载tomcat</span></div><div class="line">wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.tar.gz</div><div class="line"><span class="meta">#</span><span class="bash">解压</span></div><div class="line">tar -zxvf apache-tomcat-9.0.14.tar.gz</div></pre></td></tr></table></figure>
 
@@ -333,6 +333,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/03/27/mysql-table-dic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          mysql生成数据字典
+        
+      </div>
+    </a>
   
   
     <a href="/2019/01/10/js-for/" id="article-nav-older" class="article-nav-link-wrap">
@@ -472,19 +481,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">aria2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,11 +497,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,15 +517,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color1">aria2</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -541,6 +546,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">去广告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
