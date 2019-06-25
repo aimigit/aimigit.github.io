@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://aimigit.github.io/2019/06/24/mysql-user-password/index.html">
 <meta property="og:site_name" content="埃米的博客">
 <meta property="og:description" content="MySQL创建用户与破解密码一. 创建用户命令:1CREATE USER &apos;username&apos;@&apos;host&apos; IDENTIFIED BY &apos;password&apos;; 说明：username：你将创建的用户名host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%password：该用户的登陆密码，密码可以为空，如果为空则该用">
-<meta property="og:updated_time" content="2019-06-24T15:33:18.177Z">
+<meta property="og:updated_time" content="2019-06-25T15:38:52.351Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL创建用户与破解密码">
 <meta name="twitter:description" content="MySQL创建用户与破解密码一. 创建用户命令:1CREATE USER &apos;username&apos;@&apos;host&apos; IDENTIFIED BY &apos;password&apos;; 说明：username：你将创建的用户名host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%password：该用户的登陆密码，密码可以为空，如果为空则该用">
@@ -233,7 +233,7 @@
 </ol>
 <p>重新杀 MySQL ，用正常方法启动 MySQL 。</p>
 <h1 id="破解navicat保存的密码"><a href="#破解navicat保存的密码" class="headerlink" title="破解navicat保存的密码"></a>破解navicat保存的密码</h1><p>不想重置密码，破解navicat保存的星号密码，打开命令行CMD，输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">reg query HKEY_CURRENT_USER\SOFTWARE\PremiumSoft\Navicat\Servers /s /v UserName</div><div class="line"></div><div class="line">reg query HKEY_CURRENT_USER\SOFTWARE\PremiumSoft\Navicat\Servers /s /v <span class="built_in">pwd</span></div></pre></td></tr></table></figure></p>
-<p>把对应密码复制到解密工具还原。<br>解密工具：navicatpwd.exe</p>
+<p>把对应密码复制到解密工具还原。win10系统环境，测试可用<br>解密工具：navicatpwd.exe<br>下载地址：<a href="https://download.csdn.net/download/victor55555/11256815" target="_blank" rel="external">https://download.csdn.net/download/victor55555/11256815</a></p>
 
 
         <span id="busuanzi_container_page_pv" style="font-size:12px;font-style:italic;float:right;">
@@ -519,11 +519,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,19 +539,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">密码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+                <a href="javascript:void(0)" class="js-tag color3">密码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2019-06-24T15:33:18.177Z</updated>
+  <updated>2019-06-25T15:38:52.351Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://aimigit.github.io/2019/06/24/mysql-user-password/"/>
     <id>http://aimigit.github.io/2019/06/24/mysql-user-password/</id>
     <published>2019-06-24T15:01:23.000Z</published>
-    <updated>2019-06-24T15:33:18.177Z</updated>
+    <updated>2019-06-25T15:38:52.351Z</updated>
     
     <content type="html"><![CDATA[<h1 id="MySQL创建用户与破解密码"><a href="#MySQL创建用户与破解密码" class="headerlink" title="MySQL创建用户与破解密码"></a>MySQL创建用户与破解密码</h1><h2 id="一-创建用户"><a href="#一-创建用户" class="headerlink" title="一. 创建用户"></a>一. 创建用户</h2><p>命令:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'username'</span>@<span class="string">'host'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</div></pre></td></tr></table></figure></p>
 <p>说明：<br>username：你将创建的用户名<br>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%<br>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</p>
@@ -57,7 +57,7 @@
 </ol>
 <p>重新杀 MySQL ，用正常方法启动 MySQL 。</p>
 <h1 id="破解navicat保存的密码"><a href="#破解navicat保存的密码" class="headerlink" title="破解navicat保存的密码"></a>破解navicat保存的密码</h1><p>不想重置密码，破解navicat保存的星号密码，打开命令行CMD，输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">reg query HKEY_CURRENT_USER\SOFTWARE\PremiumSoft\Navicat\Servers /s /v UserName</div><div class="line"></div><div class="line">reg query HKEY_CURRENT_USER\SOFTWARE\PremiumSoft\Navicat\Servers /s /v <span class="built_in">pwd</span></div></pre></td></tr></table></figure></p>
-<p>把对应密码复制到解密工具还原。<br>解密工具：navicatpwd.exe</p>
+<p>把对应密码复制到解密工具还原。win10系统环境，测试可用<br>解密工具：navicatpwd.exe<br>下载地址：<a href="https://download.csdn.net/download/victor55555/11256815" target="_blank" rel="external">https://download.csdn.net/download/victor55555/11256815</a></p>
 ]]></content>
     
     <summary type="html">
