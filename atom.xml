@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2019-06-25T15:38:52.351Z</updated>
+  <updated>2019-08-12T02:49:36.593Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -16,11 +16,61 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>yapi部署</title>
+    <link href="http://aimigit.github.io/2019/08/12/yapi-deploy/"/>
+    <id>http://aimigit.github.io/2019/08/12/yapi-deploy/</id>
+    <published>2019-08-12T02:18:12.000Z</published>
+    <updated>2019-08-12T02:49:36.593Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-yapi简介"><a href="#1-yapi简介" class="headerlink" title="1. yapi简介"></a>1. yapi简介</h1><p>YApi 是一款多人协作的 api 管理平台，提供了 api 文档管理，api 数据 模拟（Mock），调试和自动化测试 api 等功能。主要解决前后端分离带来的以下痛点：</p>
+<ul>
+<li><p>接口文档不可靠。很多小伙伴管理接口文档，有使用wiki的，有word文档的，甚至还有用聊天软件口口相传的，后端接口对于前端就像一个黑盒子，经常遇到问题是接口因未知原因增加参数了，参数名变了，参数被删除了。 </p>
+</li>
+<li><p>mock 数据生成方案没有统一出口。我们都有这样的经历，前端开发功能依赖后端，解决方案有自己在代码注入json的，还有后端工程师临时搭建一套测试数据服务器，这种情况下势必会影响工作效率和代码质量，也不能及时进行更新。 </p>
+</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>资源分散，无法共享。接口调试每个开发者单独维护一套Postman接口集，每个人无法共用其他人的接口集，存在大量重复填写请求参数工作，最重要的是postman没法跟接口定义关联起来，导致后端没有动力去维护接口文档。 </p>
+</li>
+<li><p>集成 api 自动化测试困难。yapi 提供了可视化的 api 自动化测试方案，只需要简单的填写参数，增加断言，就能实现 api 自动化测试。</p>
+</li>
+</ul>
+<p>项目源码：<a href="https://github.com/YMFE/yapi" target="_blank" rel="external">https://github.com/YMFE/yapi</a><br>帮助文档：<a href="https://hellosean1025.github.io/yapi/documents/index.html" target="_blank" rel="external">https://hellosean1025.github.io/yapi/documents/index.html</a></p>
+<h1 id="2-环境搭建"><a href="#2-环境搭建" class="headerlink" title="2. 环境搭建"></a>2. 环境搭建</h1><h2 id="2-1-安装-Node"><a href="#2-1-安装-Node" class="headerlink" title="2.1 安装 Node"></a>2.1 安装 Node</h2><p>Window：<br>直接下载安装，地址：<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a><br>Linux：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -sL https://rpm.nodesource.com/setup_8.x | bash -</div><div class="line">yum install -y nodejs</div></pre></td></tr></table></figure></p>
+<h2 id="2-2-安装-MongoDB"><a href="#2-2-安装-MongoDB" class="headerlink" title="2.2 安装 MongoDB"></a>2.2 安装 MongoDB</h2><p>Window：<br>直接下载安装，地址：<a href="https://www.mongodb.com/" target="_blank" rel="external">https://www.mongodb.com/</a><br>Linux：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">vi /etc/yum.repos.d/mongodb-org-4.0.repo</div><div class="line"></div><div class="line">[mongodb-org-4.0]</div><div class="line">name=MongoDB Repository</div><div class="line">baseurl=https://repo.mongodb.org/yum/redhat/<span class="variable">$releasever</span>/mongodb-org/4.0/x86_64/</div><div class="line">gpgcheck=1</div><div class="line">enabled=1</div><div class="line">gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc</div><div class="line"></div><div class="line">sudo yum install -y mongodb-org</div><div class="line">sudo service mongod start</div><div class="line">sudo chkconfig mongod on</div><div class="line">sudo service mongod stop</div><div class="line">sudo service mongod restart</div></pre></td></tr></table></figure></p>
+<h2 id="2-3-安装yapi"><a href="#2-3-安装yapi" class="headerlink" title="2.3 安装yapi"></a>2.3 安装yapi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install -g yapi-cli --registry https://registry.npm.taobao.org</div><div class="line">yapi server</div><div class="line"></div><div class="line">访问http:\ip:9090进行yapi部署</div></pre></td></tr></table></figure>
+<p>在线安装成功后，提示：<br>初始化管理员账号成功,账号名：”test@xxx.com”，密码：”ymfe.org”<br>部署成功，请切换到部署目录，输入： “node vendors/server/app.js” 指令启动服务器, 然后在浏览器打开 <a href="http://127.0.0.1:3000" target="_blank" rel="external">http://127.0.0.1:3000</a> 访问</p>
+<p>根据提示，请切换到部署目录，输入： “node vendors/server/app.js” 指令启动服务器<br>这时候就部署成功了，但是在命令窗口前端运行，一关掉就停了。</p>
+<h2 id="2-4-安装pm2"><a href="#2-4-安装pm2" class="headerlink" title="2.4 安装pm2"></a>2.4 安装pm2</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install pm2 -g</div><div class="line">启动</div><div class="line">pm2 start <span class="string">"vendors/server/app.js"</span> --name yapi</div><div class="line">查看</div><div class="line">pm2 info yapi</div></pre></td></tr></table></figure>
+<p>END.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-yapi简介&quot;&gt;&lt;a href=&quot;#1-yapi简介&quot; class=&quot;headerlink&quot; title=&quot;1. yapi简介&quot;&gt;&lt;/a&gt;1. yapi简介&lt;/h1&gt;&lt;p&gt;YApi 是一款多人协作的 api 管理平台，提供了 api 文档管理，api 数据 模拟（Mock），调试和自动化测试 api 等功能。主要解决前后端分离带来的以下痛点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;接口文档不可靠。很多小伙伴管理接口文档，有使用wiki的，有word文档的，甚至还有用聊天软件口口相传的，后端接口对于前端就像一个黑盒子，经常遇到问题是接口因未知原因增加参数了，参数名变了，参数被删除了。 &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;mock 数据生成方案没有统一出口。我们都有这样的经历，前端开发功能依赖后端，解决方案有自己在代码注入json的，还有后端工程师临时搭建一套测试数据服务器，这种情况下势必会影响工作效率和代码质量，也不能及时进行更新。 &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="yapi" scheme="http://aimigit.github.io/tags/yapi/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MySQL创建用户与破解密码</title>
     <link href="http://aimigit.github.io/2019/06/24/mysql-user-password/"/>
     <id>http://aimigit.github.io/2019/06/24/mysql-user-password/</id>
     <published>2019-06-24T15:01:23.000Z</published>
-    <updated>2019-06-25T15:38:52.351Z</updated>
+    <updated>2019-06-25T15:38:52.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="MySQL创建用户与破解密码"><a href="#MySQL创建用户与破解密码" class="headerlink" title="MySQL创建用户与破解密码"></a>MySQL创建用户与破解密码</h1><h2 id="一-创建用户"><a href="#一-创建用户" class="headerlink" title="一. 创建用户"></a>一. 创建用户</h2><p>命令:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'username'</span>@<span class="string">'host'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</div></pre></td></tr></table></figure></p>
 <p>说明：<br>username：你将创建的用户名<br>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%<br>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</p>
@@ -83,7 +133,7 @@
     <link href="http://aimigit.github.io/2019/03/27/mysql-table-dic/"/>
     <id>http://aimigit.github.io/2019/03/27/mysql-table-dic/</id>
     <published>2019-03-27T11:56:30.000Z</published>
-    <updated>2019-03-27T11:59:48.000Z</updated>
+    <updated>2019-03-27T11:59:48.421Z</updated>
     
     <content type="html"><![CDATA[<h2 id="mysql生成数据字典"><a href="#mysql生成数据字典" class="headerlink" title="mysql生成数据字典"></a>mysql生成数据字典</h2><p>通过information_schema 读取数据库信息<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">	C.TABLE_NAME <span class="keyword">AS</span> <span class="string">'表'</span>,</div><div class="line">	T.TABLE_COMMENT <span class="keyword">AS</span> <span class="string">'表名'</span>,</div><div class="line">	C.COLUMN_NAME <span class="keyword">AS</span> <span class="string">'字段名'</span>,</div><div class="line">	C.COLUMN_TYPE <span class="keyword">AS</span> <span class="string">'数据类型'</span>,</div><div class="line">	C.COLUMN_COMMENT <span class="keyword">AS</span> <span class="string">'字段说明'</span>,</div><div class="line">	C.IS_NULLABLE <span class="keyword">AS</span> <span class="string">'允许为空'</span>,</div><div class="line">	C.COLUMN_KEY <span class="keyword">AS</span> <span class="string">'键'</span></div><div class="line"><span class="keyword">FROM</span></div><div class="line">	information_schema.COLUMNS C</div><div class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> information_schema.TABLES T <span class="keyword">ON</span> C.TABLE_SCHEMA = T.TABLE_SCHEMA</div><div class="line"><span class="keyword">AND</span> C.TABLE_NAME = T.TABLE_NAME</div><div class="line"><span class="keyword">WHERE</span></div><div class="line">	T.TABLE_SCHEMA = <span class="string">'数据库名'</span></div></pre></td></tr></table></figure></p>
 ]]></content>
@@ -106,7 +156,7 @@
     <link href="http://aimigit.github.io/2019/02/01/centos-java-env/"/>
     <id>http://aimigit.github.io/2019/02/01/centos-java-env/</id>
     <published>2019-02-01T08:38:49.000Z</published>
-    <updated>2019-02-01T09:27:38.000Z</updated>
+    <updated>2019-02-01T09:27:38.918Z</updated>
     
     <content type="html"><![CDATA[<h2 id="tar方式安装JDK"><a href="#tar方式安装JDK" class="headerlink" title="tar方式安装JDK"></a>tar方式安装JDK</h2><p>在服务器用wget一直下载失败。<br>官网下载jdk1.8，<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>下载后上传到服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#查看服务器java</span></div><div class="line">java version</div><div class="line"></div><div class="line"><span class="comment">#解压</span></div><div class="line">tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/<span class="built_in">local</span>/jdk1.8.0_202</div><div class="line"></div><div class="line"><span class="comment">#配置环境变量</span></div><div class="line">vim /etc/profile</div><div class="line"><span class="comment">#向文件里面追加以下内容：</span></div><div class="line"><span class="comment">#set java environment</span></div><div class="line">JAVA_HOME=/usr/java/jdk1.8.0_152</div><div class="line">JRE_HOME=<span class="variable">$JAVA_HOME</span>/jre</div><div class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$JRE_HOME</span>/bin</div><div class="line">CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar:<span class="variable">$JRE_HOME</span>/lib</div><div class="line"><span class="built_in">export</span> JAVA_HOME JRE_HOME PATH CLASSPATH</div><div class="line"></div><div class="line"><span class="comment">#使配置文件生效</span></div><div class="line"><span class="built_in">source</span> /etc/profile</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -137,7 +187,7 @@
     <link href="http://aimigit.github.io/2019/01/10/js-for/"/>
     <id>http://aimigit.github.io/2019/01/10/js-for/</id>
     <published>2019-01-10T11:41:51.000Z</published>
-    <updated>2019-01-10T12:07:47.000Z</updated>
+    <updated>2019-01-10T12:07:47.631Z</updated>
     
     <content type="html"><![CDATA[<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><p>以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。<br>for..in 不应该被用来迭代一个下标顺序很重要的 Array .<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>, <span class="attr">c</span>:<span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"><span class="comment">/*a = 1</span></div><div class="line"><span class="comment">  b = 2 </span></div><div class="line"><span class="comment">  c = 3 */</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*0 = a </span></div><div class="line"><span class="comment">  1 = b </span></div><div class="line"><span class="comment">  2 = c */</span></div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -168,7 +218,7 @@
     <link href="http://aimigit.github.io/2019/01/09/js-json-object/"/>
     <id>http://aimigit.github.io/2019/01/09/js-json-object/</id>
     <published>2019-01-09T03:17:56.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.194Z</updated>
     
     <content type="html"><![CDATA[<h2 id="json简介"><a href="#json简介" class="headerlink" title="json简介"></a>json简介</h2><p>json是一种数据格式，不管java，php，python，object-c语言都支持，所以用来跨平台数据交互，app端，web端，小程序等等通过服务端API接口返回json数据。xml格式几乎很少见到了。</p>
 <p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。</p>
@@ -212,7 +262,7 @@
     <link href="http://aimigit.github.io/2019/01/09/js-full-screen/"/>
     <id>http://aimigit.github.io/2019/01/09/js-full-screen/</id>
     <published>2019-01-09T02:46:55.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.172Z</updated>
     
     <content type="html"><![CDATA[<h2 id="js浏览器全屏方法"><a href="#js浏览器全屏方法" class="headerlink" title="js浏览器全屏方法"></a>js浏览器全屏方法</h2><p>浏览器F11全屏展示，js代码自动全屏，浏览器会认为有安全问题，所以要放个按钮触发，<br>在Chrome,Firefox,IE11测试通过。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//全屏</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fullscreen</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> el = <span class="built_in">document</span>.documentElement;</div><div class="line">  <span class="keyword">var</span> isFullscreen=<span class="built_in">document</span>.fullScreen||<span class="built_in">document</span>.mozFullScreen||<span class="built_in">document</span>.webkitIsFullScreen;</div><div class="line">  <span class="keyword">if</span>(!isFullscreen)&#123;<span class="comment">//进入全屏,多重短路表达式</span></div><div class="line">	  (el.requestFullscreen&amp;&amp;el.requestFullscreen())||</div><div class="line">	  (el.mozRequestFullScreen&amp;&amp;el.mozRequestFullScreen())||</div><div class="line">	  (el.webkitRequestFullscreen&amp;&amp;el.webkitRequestFullscreen())||(el.msRequestFullscreen&amp;&amp;el.msRequestFullscreen());</div><div class="line">  &#125;<span class="keyword">else</span>&#123; <span class="comment">//退出全屏,三目运算符</span></div><div class="line">	  <span class="built_in">document</span>.exitFullscreen?<span class="built_in">document</span>.exitFullscreen():</div><div class="line">	  <span class="built_in">document</span>.mozCancelFullScreen?<span class="built_in">document</span>.mozCancelFullScreen():</div><div class="line">	  <span class="built_in">document</span>.webkitExitFullscreen?<span class="built_in">document</span>.webkitExitFullscreen():<span class="string">''</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用</span></div><div class="line">$(<span class="string">".fullScreen"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		fullscreen();</div><div class="line">	&#125;);</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -241,7 +291,7 @@
     <link href="http://aimigit.github.io/2018/12/27/aria2-command/"/>
     <id>http://aimigit.github.io/2018/12/27/aria2-command/</id>
     <published>2018-12-27T03:12:49.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.018Z</updated>
     
     <content type="html"><![CDATA[<h2 id="aria2简介"><a href="#aria2简介" class="headerlink" title="aria2简介"></a>aria2简介</h2><p>Aria2是一款免费开源跨平台且不限速的多线程下载软件，Aria2的优点是速度快、体积小、资源占用少；支持 HTTP / FTP / BT / Magnet 磁力链接等类型的文件下载；支持 Win、Mac、Linux系统，甚至在树莓派、NAS、路由器等设备上都能安装它。强大的地方，结合第三方插件，可以扩展，下载百度网盘等资源，居家下片必备神器。<br>官网：<a href="https://aria2.github.io" target="_blank" rel="external">https://aria2.github.io</a></p>
 <a id="more"></a>
@@ -315,7 +365,7 @@
     <link href="http://aimigit.github.io/2018/12/26/mybatis-showsql/"/>
     <id>http://aimigit.github.io/2018/12/26/mybatis-showsql/</id>
     <published>2018-12-26T10:59:21.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.248Z</updated>
     
     <content type="html"><![CDATA[<h2 id="springmvc-配置方式"><a href="#springmvc-配置方式" class="headerlink" title="springmvc 配置方式"></a>springmvc 配置方式</h2><p>在mybatis-config.xml中配置加一个setting<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE configuration</span></div><div class="line"><span class="meta">        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></div><div class="line"><span class="meta">        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 打印查询语句 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"STDOUT_LOGGING"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -343,7 +393,7 @@
     <link href="http://aimigit.github.io/2018/11/30/log4j2/"/>
     <id>http://aimigit.github.io/2018/11/30/log4j2/</id>
     <published>2018-11-30T02:47:00.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.223Z</updated>
     
     <content type="html"><![CDATA[<h2 id="log4j简介"><a href="#log4j简介" class="headerlink" title="log4j简介"></a>log4j简介</h2><p>log4j是java常见的日志输出框架，<br>2015年5月，Apache宣布Log4J 1.x 停止更新。最新版为1.2.17。<br>如今，Log4J 2.x已更新至2.11。<br>官方网址：<a href="http://logging.apache.org/log4j/2.x/" target="_blank" rel="external">http://logging.apache.org/log4j/2.x/</a></p>
 <h2 id="配置文件介绍"><a href="#配置文件介绍" class="headerlink" title="配置文件介绍"></a>配置文件介绍</h2><h3 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h3><p>trace：追踪，就是程序推进一下，可以写个trace输出</p>
@@ -401,7 +451,7 @@
     <link href="http://aimigit.github.io/2018/09/04/some-plugin/"/>
     <id>http://aimigit.github.io/2018/09/04/some-plugin/</id>
     <published>2018-09-04T06:45:58.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.326Z</updated>
     
     <content type="html"><![CDATA[<h2 id="eclipse插件"><a href="#eclipse插件" class="headerlink" title="eclipse插件"></a>eclipse插件</h2><p>Decompiler |java反编译插件<br>Properties |Editor 中文配置文件插件<br>Darkest Dark Theme|黑色主题<br>Subclipse |svn插件</p>
 <h2 id="chrome插件"><a href="#chrome插件" class="headerlink" title="chrome插件"></a>chrome插件</h2><p>uBlock Origin |广告拦截<br>Restlet Client |REST请求测试工具<br>Tampermonkey|油猴脚本管理<br>Chrono下载管理器|下载管理<br>Dark Reader|黑色主题<br>WebRTC Control|关闭WebRTC</p>
@@ -425,7 +475,7 @@
     <link href="http://aimigit.github.io/2018/09/04/hexo-multi-pc/"/>
     <id>http://aimigit.github.io/2018/09/04/hexo-multi-pc/</id>
     <published>2018-09-04T06:21:52.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.057Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-动手前的思考"><a href="#1-动手前的思考" class="headerlink" title="1. 动手前的思考"></a>1. 动手前的思考</h2><p>还是按照我个人的老习惯，在动手前，先来理清思路，看看我们大概需要做哪些操作，为什么要做这些？这篇文章默认读者已经在另外一台电脑上部署好了，现在只是需要在另外一台电脑上部署。如果读者关注的只是如何使用 Hexo + Github Pages 搭建自己的博客，可以移步我之前的一篇文章 《知行合一 | 用 Hexo 搭建博客》。</p>
 <p>既然博客的生产环境是 Hexo + Github Pages，那么重部署的工作就围绕着 Hexo 和 Github Pages 展开。回顾一下，两者在我们搭建博客的时候具体扮演着什么角色。</p>
@@ -462,7 +512,7 @@
     <link href="http://aimigit.github.io/2018/06/13/mysql-cursor-proc/"/>
     <id>http://aimigit.github.io/2018/06/13/mysql-cursor-proc/</id>
     <published>2018-06-13T08:11:03.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.262Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为了处理老数据，从一张父表，两张子表复制数据。涉及到生成id关联以及子表多条记录复制，使用了存储过程，cursor遍历结果集。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>  <a id="more"></a>    
@@ -488,7 +538,7 @@
     <link href="http://aimigit.github.io/2018/04/12/java-gif-image/"/>
     <id>http://aimigit.github.io/2018/04/12/java-gif-image/</id>
     <published>2018-04-12T08:19:55.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.150Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Gif概述"><a href="#Gif概述" class="headerlink" title="Gif概述"></a>Gif概述</h2><p>GIF(Graphics Interchange Format)的原义是“图像互换格式”，是CompuServe公司在 1987 年开发的图像文件格式。GIF文件的数据，是一种基于LZW算法的连续色调的无损压缩格式。其压缩率一般在50%左右，它不属于任何应用程序。GIF格式可以存多幅彩色图像，如果把存于一个文件中的多幅图像数据逐幅读出并显示到屏幕上，就可构成一种最简单的动画。<br>GIF格式自1987年由CompuServe公司引入后，因其体积小、成像相对清晰，特别适合于初期慢速的互联网，而大受欢迎。<br>目前网络上流行的动图表情包，以Gif格式为主。大概原理是多张连续图片，以一定的时间间隔轮播，形成每帧动画效果。<br>要在Gif图片上加文字，就要在每帧的相同位置，画上文字。</p>
 <h2 id="java-画图"><a href="#java-画图" class="headerlink" title="java 画图"></a>java 画图</h2><p>使用了第三方文件  LZWEncoder.java,NeuQuant.java,GifDecoder.java,AnimatedGifEncoder.java</p>
@@ -514,7 +564,7 @@
     <link href="http://aimigit.github.io/2018/03/29/linux-add-font/"/>
     <id>http://aimigit.github.io/2018/03/29/linux-add-font/</id>
     <published>2018-03-29T09:16:37.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.207Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>linux自带的字体比较少，在做图片文字合成时，需要指定的文字字体。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">查看系统中的字体</div><div class="line"><span class="built_in">fc</span>-list</div><div class="line">查看系统中的中文字体</div><div class="line"><span class="built_in">fc</span>-list :lang=zh</div><div class="line"></div><div class="line">[root@localhost ~]<span class="comment"># fc-list</span></div><div class="line">Bitstream Vera Sans Mono:style=Bold</div><div class="line">Bitstream Vera Sans:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Bold</div><div class="line">Bitstream Vera Serif:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Bold Oblique</div><div class="line">Bitstream Vera Sans:style=Bold Oblique</div><div class="line">文鼎PL中楷Uni,AR PL ZenKai Uni:style=Medium</div><div class="line">Bitstream Vera Sans Mono:style=Roman</div><div class="line">Fixed:style=Regular</div><div class="line">文鼎PL细上海宋Uni,AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni:style=Regular</div><div class="line">Bitstream Vera Serif:style=Bold</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -539,7 +589,7 @@
     <link href="http://aimigit.github.io/2018/01/17/html-jump/"/>
     <id>http://aimigit.github.io/2018/01/17/html-jump/</id>
     <published>2018-01-17T08:58:22.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.109Z</updated>
     
     <content type="html"><![CDATA[<h2 id="html的实现"><a href="#html的实现" class="headerlink" title="html的实现"></a>html的实现</h2><p>优点：简单<br>缺点：Struts Tiles中无法使用</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 以下方式只是刷新不跳转到其他页面 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"10"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 以下方式定时转到其他页面 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"5;url=hello.html"</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -569,7 +619,7 @@
     <link href="http://aimigit.github.io/2017/12/07/nginx-worker-connections/"/>
     <id>http://aimigit.github.io/2017/12/07/nginx-worker-connections/</id>
     <published>2017-12-07T07:14:31.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.302Z</updated>
     
     <content type="html"><![CDATA[<h2 id="异常信息"><a href="#异常信息" class="headerlink" title="异常信息"></a>异常信息</h2><p>[alert] 14102#0: 1024 worker_connections are not enough</p>
 <p>worker_connections 参数默认1024，不够用的话配置大一些，同时小于worker_rlimit_nofile 参数值。<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#worker进程数，通常设置等同于CPU数量，auto为自动检测</span></div><div class="line"><span class="attribute">worker_processes</span>  auto;</div><div class="line"><span class="comment">#worker进程打开最大文件数，可CPU*10000设置</span></div><div class="line"><span class="attribute">worker_rlimit_nofile</span> <span class="number">100000</span>;</div><div class="line"></div><div class="line"><span class="section">events</span> &#123;</div><div class="line">    <span class="attribute">worker_connections</span>  <span class="number">10240</span>;</div><div class="line">   <span class="comment">#告诉nginx收到一个新链接通知后接受尽可能多的链接</span></div><div class="line">    <span class="attribute">multi_accept</span> <span class="literal">on</span>;</div><div class="line">   <span class="comment">#设置用于复用客户端线程的轮训方法</span></div><div class="line">   <span class="attribute">use</span> <span class="literal">epoll</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -596,7 +646,7 @@
     <link href="http://aimigit.github.io/2017/11/30/nginx-image-server/"/>
     <id>http://aimigit.github.io/2017/11/30/nginx-image-server/</id>
     <published>2017-11-30T08:57:57.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.290Z</updated>
     
     <content type="html"><![CDATA[<h2 id="nginx-常用命令"><a href="#nginx-常用命令" class="headerlink" title="nginx 常用命令"></a>nginx 常用命令</h2><p>前面写nginx做反向代理，负载均衡的配置。本文写nginx做http服务器的配置，把静态文件都交给nginx管理。</p>
 <ul>
@@ -634,7 +684,7 @@
     <link href="http://aimigit.github.io/2017/11/24/html-to-qq/"/>
     <id>http://aimigit.github.io/2017/11/24/html-to-qq/</id>
     <published>2017-11-24T06:08:47.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.121Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>一般网站会有客户qq，或者aap的html5页面有官方联系方式等，在用户点击qq号，直接打开qq客户端，会更方便友好。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"window.open('tencent://message/?uin=QQ号')"</span>&gt;</span>pc打开方式<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=qq号&amp;card_type=person&amp;source=qrcode"</span>&gt;</span>打开QQ<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mqqapi://card/show_pslcard?src_type=internal&amp;version=1&amp;uin=群号&amp;card_type=group&amp;source=qrcode"</span>&gt;</span>打开QQ群<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -660,7 +710,7 @@
     <link href="http://aimigit.github.io/2017/10/27/java-ehcache/"/>
     <id>http://aimigit.github.io/2017/10/27/java-ehcache/</id>
     <published>2017-10-27T08:31:42.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.136Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>常见的三种缓存技术ehcache,memcache,redis。ehcache的特点是快速，轻量，memcache,redis主要用在分布式集群场景。ehcache快的原因是提供了堆栈缓存，直接存在jvm，程序直接调用。<br>由于不同版本的使用方式不同，本文主要讲ehcache 3.4.0使用方式。<br>官网：<a href="http://www.ehcache.org/" target="_blank" rel="external">http://www.ehcache.org/</a></p>
 <h2 id="Ehcache支持的数据存储"><a href="#Ehcache支持的数据存储" class="headerlink" title="Ehcache支持的数据存储"></a>Ehcache支持的数据存储</h2><ul>
@@ -700,49 +750,6 @@
       <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
       <category term="cache" scheme="http://aimigit.github.io/tags/cache/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>小米电视去广告</title>
-    <link href="http://aimigit.github.io/2017/10/02/xiaomitv-adblock/"/>
-    <id>http://aimigit.github.io/2017/10/02/xiaomitv-adblock/</id>
-    <published>2017-10-02T13:57:12.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="概叙"><a href="#概叙" class="headerlink" title="概叙"></a>概叙</h2><p>小米系列的产品，刚开始主打发烧友，便宜又做工好，性价比高。陆陆续续买了不少小米的产品，主要考虑可以组网，做智能家居。<br>后面公司规模扩大，开始频繁投放广告，产品也变得平庸了。小米电视升级后，开机广告，暂停广告，关机也要广告，实在不能忍。<br>广告类型主要有2种，1个是电视平台的广告，开关机广告那些。另一个是视频播放里面的广告，类似优酷视频那种。<br>目前能去的是第一种，第二种会去的分享一下。</p>
-<h2 id="去广告方法1"><a href="#去广告方法1" class="headerlink" title="去广告方法1"></a>去广告方法1</h2><p>家里路由器有网址屏蔽功能，直接把广告网址屏蔽，<br>“ad.xiaomi.com”,”ad1.xiaomi.com”,”ad.mi.com”添加进黑名单。<br>这个方式是从广告来源过滤，如果小米改了网址就失效了。</p>
-<h2 id="方法2禁用广告app"><a href="#方法2禁用广告app" class="headerlink" title="方法2禁用广告app"></a>方法2禁用广告app</h2><a id="more"></a>
-<p>动手能力强的，推荐用这种。直接连接电视，禁用广告相关app，但是不能乱杀，有开不了机的风险。<br>电视用的是android系统，可以理解为不能打电话的手机。我们不需要root。<br>准备2个软件</p>
-<ul>
-<li>电脑</li>
-<li>adb工具</li>
-<li><p>Debloater<br>在你的电脑安装以上2个软件，adb工具我直接用刷机精灵的adb命令行功能。</p>
-</li>
-<li><p>电脑和电视连接同一个路由，在同一个局域网。</p>
-</li>
-<li>查看电视的ip，比如192.168.1.5。</li>
-<li>电视打开adb调试</li>
-<li>电脑打开adb命令行,输入adb connnet 192.168.1.5，连接成功。</li>
-<li>电脑打开Debloater，Read Device Packages，这时候可以看到所有安装的app</li>
-<li>禁用</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">com.miui.systemAdSolution  广告</div><div class="line">com.xiaomi.mitv.advertise  开屏广告</div><div class="line">com.xiaomi.mitv.assistant.manual</div><div class="line">com.xiaomi.mitv.tvpush.tvpushservice</div><div class="line">com.xiaomi.tv.appupgrade  应用升级</div><div class="line">com.xiaomi.mitv.upgrade  系统升级</div><div class="line">com.miui.cloudservice</div></pre></td></tr></table></figure>
-<p>然后关机，重新开机，系统广告消息了，心情很爽，同事关闭了升级，不会被强制升级。<br>还能禁用更多，网上有精简列表，有兴趣的自行研究，千万不要禁用关键app，电视会启动不了。</p>
-<h2 id="附录包名对应的app，系统版本不同，数量有差异"><a href="#附录包名对应的app，系统版本不同，数量有差异" class="headerlink" title="附录包名对应的app，系统版本不同，数量有差异"></a>附录包名对应的app，系统版本不同，数量有差异</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package:/data/app/com.mitv.video-1.apk=com.mitv.video</div><div class="line">package:/data/app/com.xiaomi.mitv.payment-1.apk=com.xiaomi.mitv.payment</div><div class="line">package:/vendor/app/MiTVWifiDisplay.apk=com.xiaomi.mitv.wfd</div><div class="line">package:/system/priv-app/DefaultContainerService.apk=com.android.defcontainer</div><div class="line">package:/system/app/QuickSearchBox.apk=com.android.quicksearchbox</div><div class="line">package:/system/priv-app/Contacts.apk=com.android.contacts</div><div class="line">package:/system/priv-app/TeleService.apk=com.android.phone</div><div class="line">package:/system/app/HTMLViewer.apk=com.android.htmlviewer</div><div class="line">package:/vendor/app/SmartHomeTV.apk=com.xiaomi.smarthome.tv</div><div class="line">package:/system/app/Bluetooth.apk=com.android.bluetooth</div><div class="line">package:/system/priv-app/CalendarProvider.apk=com.android.providers.calendar</div><div class="line">package:/data/app/com.xiaomi.tv.gallery-2.apk=com.xiaomi.tv.gallery</div><div class="line">package:/vendor/app/MiTVService.apk=com.xiaomi.mitv.services</div><div class="line">package:/system/app/Browser.apk=com.android.browser</div><div class="line">package:/vendor/app/MiMusic2.apk=com.xiaomi.mimusic</div><div class="line">package:/vendor/app/MiTVUpgrade.apk=com.xiaomi.mitv.upgrade</div><div class="line">package:/vendor/app/PushService.apk=com.miui.cloudservice</div><div class="line">package:/vendor/app/MiTVPay.apk=com.xiaomi.mitv.pay</div><div class="line">package:/system/app/DownloadProviderUi.apk=com.android.providers.downloads.ui</div><div class="line">package:/system/app/DocumentsUI.apk=com.android.documentsui</div><div class="line">package:/system/priv-app/SharedStorageBackup.apk=com.android.sharedstoragebackup</div><div class="line">package:/vendor/app/DeviceReport.apk=com.xiaomi.devicereport</div><div class="line">package:/system/priv-app/VpnDialogs.apk=com.android.vpndialogs</div><div class="line">package:/vendor/app/jiajia-jianshenfang_T6.apk=com.jiajia.yundonghui.mitv</div><div class="line">package:/vendor/app/MiTVCommentService.apk=com.xiaomi.mitv.commentservice</div><div class="line">package:/system/app/Provision.apk=com.android.provision</div><div class="line">package:/vendor/app/MiTvGameCenter.apk=com.xiaomi.mibox.gamecenter</div><div class="line">package:/vendor/app/BaiduCloud.apk=com.baidu.tv.download</div><div class="line">package:/system/priv-app/MediaProvider.apk=com.android.providers.media</div><div class="line">package:/vendor/app/AppUpgrade.apk=com.xiaomi.tv.appupgrade</div><div class="line">package:/vendor/app/cm-sdk-release.apk=com.cleanmaster.sdk</div><div class="line">package:/system/app/CertInstaller.apk=com.android.certinstaller</div><div class="line">package:/vendor/app/DlnaTVService.apk=com.xiaomi.dlnatvservice</div><div class="line">package:/vendor/app/MiTVMediaExplorerDaemon.apk=com.xiaomi.mitv.media</div><div class="line">package:/system/app/TvService.apk=mitv.service</div><div class="line">package:/vendor/app/MiTVMultiCast.apk=com.hpplay.happyplay.aw.xm</div><div class="line">package:/vendor/app/MiGameCenterSDKService.apk=com.xiaomi.gamecenter.sdk.service.mibox</div><div class="line">package:/vendor/app/AirkanTVService.apk=com.duokan.airkan.tvbox</div><div class="line">package:/system/priv-app/Settings.apk=com.android.settings</div><div class="line">package:/vendor/app/MiTVSettingsProvider.apk=com.xiaomi.mitv.providers.settings</div><div class="line">package:/vendor/app/PhotoSlideShow.apk=com.duokan.application.photoviewer</div><div class="line">package:/data/app/com.android.packageinstaller-1.apk=com.android.packageinstaller</div><div class="line">package:/system/app/TelephonyProvider.apk=com.android.providers.telephony</div><div class="line">package:/vendor/app/UDTService.apk=com.xiaomi.milink.udt</div><div class="line">package:/system/app/PicoTts.apk=com.svox.pico</div><div class="line">package:/data/app/com.xiaomi.mitv.shop-1.apk=com.xiaomi.mitv.shop</div><div class="line">package:/vendor/app/MiTVSystemUI.apk=com.xiaomi.mitv.systemui</div><div class="line">package:/system/priv-app/FusedLocation.apk=com.android.location.fused</div><div class="line">package:/system/priv-app/BackupRestoreation.apk=com.android.backup</div><div class="line">package:/system/priv-app/SettingsProvider.apk=com.android.providers.settings</div><div class="line">package:/vendor/app/Mipay.apk=com.mipay.wallet.tv</div><div class="line">package:/system/priv-app/DownloadProvider.apk=com.android.providers.downloads</div><div class="line">package:/data/app/com.xiaomi.mitv.advertise-1.apk=com.xiaomi.mitv.advertise</div><div class="line">package:/system/app/SoundRecorder.apk=com.android.soundrecorder</div><div class="line">package:/vendor/app/MiBoxLockScreen.apk=com.xiaomi.mibox.lockscreen</div><div class="line">package:/system/app/LatinIME.apk=com.android.inputmethod.latin</div><div class="line">package:/system/priv-app/ProxyHandler.apk=com.android.proxyhandler</div><div class="line">package:/vendor/app/XMAccountManager.apk=com.xiaomi.account</div><div class="line">package:/vendor/app/TVPushService.apk=com.xiaomi.mitv.tvpush.tvpushservice</div><div class="line">package:/vendor/app/mitvmediaplayer.apk=com.xiaomi.mitv.player</div><div class="line">package:/vendor/app/XMAccountAuth.apk=com.xiaomi.account.auth</div><div class="line">package:/vendor/app/RemoteControllerService.apk=com.xiaomi.mitv.remotecontroller.service</div><div class="line">package:/vendor/app/CloudAlbum.apk=com.duokan.cloudalbum</div><div class="line">package:/data/app/com.xiaomi.tweather-1.apk=com.xiaomi.tweather</div><div class="line">package:/system/app/UserDictionaryProvider.apk=com.android.providers.userdictionary</div><div class="line">package:/system/app/Factory.apk=com.duokan.factorytest</div><div class="line">package:/vendor/app/MiTVPinyinIME.apk=com.android.inputmethod.pinyin</div><div class="line">package:/vendor/app/MiTVDesktop.apk=com.xiaomi.tv.desktop</div><div class="line">package:/vendor/app/MiTVMediaExplorer.apk=com.xiaomi.mitv.mediaexplorer</div><div class="line">package:/system/app/PacProcessor.apk=com.android.pacprocessor</div><div class="line">package:/data/app/com.xiaomi.voicecontrol-1.apk=com.xiaomi.voicecontrol</div><div class="line">package:/vendor/app/MiTVDownload.apk=com.xiaomi.mitv.download</div><div class="line">package:/system/framework/framework-res.apk=android</div><div class="line">package:/system/priv-app/ContactsProvider.apk=com.android.providers.contacts</div><div class="line">package:/system/priv-app/ExternalStorageProvider.apk=com.android.externalstorage</div><div class="line">package:/vendor/app/NameService.apk=com.xiaomi.tv.nameservice</div><div class="line">package:/system/app/BasicDreams.apk=com.android.dreams.basic</div><div class="line">package:/vendor/app/SystemUI_M8.apk=com.android.systemui</div><div class="line">package:/vendor/app/MiTVStat.apk=com.xiaomi.statistic</div><div class="line">package:/system/app/KeyChain.apk=com.android.keychain</div><div class="line">package:/vendor/app/MiTVUserView.apk=com.xiaomi.tv.mitvuser</div><div class="line">package:/system/app/MiTVSettings-new.apk=com.xiaomi.mitv.settings</div><div class="line">package:/system/app/TVCalendar.apk=com.xiaomi.mitv.calendar</div><div class="line">package:/data/app/com.xiaomi.mitv.assistant.manual-1.apk=com.xiaomi.mitv.assistant.manual</div><div class="line">package:/system/priv-app/Keyguard.apk=com.android.keyguard</div><div class="line">package:/vendor/app/BaiduInput.apk=com.baidu.input</div><div class="line">package:/data/app/com.xiaomi.mitv.appstore-2.apk=com.xiaomi.mitv.appstore</div><div class="line">package:/system/priv-app/Shell.apk=com.android.shell</div><div class="line">package:/vendor/app/XiaomiServiceFramework.apk=com.xiaomi.xmsf</div><div class="line">package:/data/app/com.xiaomi.mitv.tvmanager-2.apk=com.xiaomi.mitv.tvmanager</div><div class="line">package:/vendor/app/SearchCenter.apk=com.xiaomi.mitv.searchcenter</div><div class="line">package:/system/priv-app/CleanMasterTV.apk=com.cmcm.cleanmaster.tv</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;概叙&quot;&gt;&lt;a href=&quot;#概叙&quot; class=&quot;headerlink&quot; title=&quot;概叙&quot;&gt;&lt;/a&gt;概叙&lt;/h2&gt;&lt;p&gt;小米系列的产品，刚开始主打发烧友，便宜又做工好，性价比高。陆陆续续买了不少小米的产品，主要考虑可以组网，做智能家居。&lt;br&gt;后面公司规模扩大，开始频繁投放广告，产品也变得平庸了。小米电视升级后，开机广告，暂停广告，关机也要广告，实在不能忍。&lt;br&gt;广告类型主要有2种，1个是电视平台的广告，开关机广告那些。另一个是视频播放里面的广告，类似优酷视频那种。&lt;br&gt;目前能去的是第一种，第二种会去的分享一下。&lt;/p&gt;
-&lt;h2 id=&quot;去广告方法1&quot;&gt;&lt;a href=&quot;#去广告方法1&quot; class=&quot;headerlink&quot; title=&quot;去广告方法1&quot;&gt;&lt;/a&gt;去广告方法1&lt;/h2&gt;&lt;p&gt;家里路由器有网址屏蔽功能，直接把广告网址屏蔽，&lt;br&gt;“ad.xiaomi.com”,”ad1.xiaomi.com”,”ad.mi.com”添加进黑名单。&lt;br&gt;这个方式是从广告来源过滤，如果小米改了网址就失效了。&lt;/p&gt;
-&lt;h2 id=&quot;方法2禁用广告app&quot;&gt;&lt;a href=&quot;#方法2禁用广告app&quot; class=&quot;headerlink&quot; title=&quot;方法2禁用广告app&quot;&gt;&lt;/a&gt;方法2禁用广告app&lt;/h2&gt;
-    
-    </summary>
-    
-    
-      <category term="生活" scheme="http://aimigit.github.io/tags/%E7%94%9F%E6%B4%BB/"/>
-    
-      <category term="去广告" scheme="http://aimigit.github.io/tags/%E5%8E%BB%E5%B9%BF%E5%91%8A/"/>
     
   </entry>
   

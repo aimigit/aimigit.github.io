@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://aimigit.github.io">
-  <title>mybatis打印sql语句 | 埃米的博客</title>
+  <title>Archives: 2019/8 | 埃米的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="springmvc 配置方式在mybatis-config.xml中配置加一个setting12345678910&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;!DOCTYPE configuration        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;        &quot;http://mybati">
-<meta name="keywords" content="技术,java,mybatis">
-<meta property="og:type" content="article">
-<meta property="og:title" content="mybatis打印sql语句">
-<meta property="og:url" content="http://aimigit.github.io/2018/12/26/mybatis-showsql/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="埃米的博客">
+<meta property="og:url" content="http://aimigit.github.io/archives/2019/08/index.html">
 <meta property="og:site_name" content="埃米的博客">
-<meta property="og:description" content="springmvc 配置方式在mybatis-config.xml中配置加一个setting12345678910&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;!DOCTYPE configuration        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;        &quot;http://mybati">
-<meta property="og:updated_time" content="2019-01-10T11:40:45.248Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mybatis打印sql语句">
-<meta name="twitter:description" content="springmvc 配置方式在mybatis-config.xml中配置加一个setting12345678910&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;!DOCTYPE configuration        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;        &quot;http://mybati">
+<meta name="twitter:title" content="埃米的博客">
   
     <link rel="alternative" href="/atom.xml" title="埃米的博客" type="application/atom+xml">
   
@@ -178,74 +173,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-mybatis-showsql" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      mybatis打印sql语句
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/08/12/yapi-deploy/" class="archive-article-date">
+  	<time datetime="2019-08-12T02:18:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/08/12/yapi-deploy/">yapi部署</a>
     </h1>
   
 
-        
-        <a href="/2018/12/26/mybatis-showsql/" class="archive-article-date">
-  	<time datetime="2018-12-26T10:59:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="springmvc-配置方式"><a href="#springmvc-配置方式" class="headerlink" title="springmvc 配置方式"></a>springmvc 配置方式</h2><p>在mybatis-config.xml中配置加一个setting<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE configuration</span></div><div class="line"><span class="meta">        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></div><div class="line"><span class="meta">        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 打印查询语句 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"STDOUT_LOGGING"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>在sqlSessionFactory配置好configLocation属性,引入mybatis-config.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE configuration   </span></div><div class="line"><span class="meta">    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  </span></div><div class="line"><span class="meta">    "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 打印查询语句 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"STDOUT_LOGGING"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></div><div class="line">    </div><div class="line">    <span class="comment">&lt;!-- mapper已经在spring-mybatis.xml中的sqlSessionFactory配置，这里不再需要配置 --&gt;</span></div><div class="line"><span class="comment">&lt;!--     &lt;mappers&gt; --&gt;</span></div><div class="line"><span class="comment">&lt;!--         &lt;mapper resource="com/a/b/c/dao/BusinessInfoDaoMapper.xml" /&gt; --&gt;</span></div><div class="line"><span class="comment">&lt;!--     &lt;/mappers&gt; --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h2 id="springboot-配置方式"><a href="#springboot-配置方式" class="headerlink" title="springboot 配置方式"></a>springboot 配置方式</h2><p>在application.yml（.properties）中增加配置，在控制台打印sql：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mybatis</div><div class="line">  configuration:</div><div class="line">    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</div></pre></td></tr></table></figure></p>
-
-
-        <span id="busuanzi_container_page_pv" style="font-size:12px;font-style:italic;float:right;">
-                点击量 <span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>如有帮助，谢谢赞赏<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/blog_img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/blog_img/wechat_pay.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -255,123 +212,25 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yapi</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://aimigit.github.io/2018/12/26/mybatis-showsql/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/12/27/aria2-command/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          aria2下载神器常用命令
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/11/30/log4j2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">log4j2+Slf4j日志配置文件</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -406,8 +265,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

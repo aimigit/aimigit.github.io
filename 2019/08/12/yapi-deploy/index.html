@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://aimigit.github.io">
-  <title>mybatis打印sql语句 | 埃米的博客</title>
+  <title>yapi部署 | 埃米的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="springmvc 配置方式在mybatis-config.xml中配置加一个setting12345678910&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;!DOCTYPE configuration        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;        &quot;http://mybati">
-<meta name="keywords" content="技术,java,mybatis">
+  <meta name="description" content="1. yapi简介YApi 是一款多人协作的 api 管理平台，提供了 api 文档管理，api 数据 模拟（Mock），调试和自动化测试 api 等功能。主要解决前后端分离带来的以下痛点：  接口文档不可靠。很多小伙伴管理接口文档，有使用wiki的，有word文档的，甚至还有用聊天软件口口相传的，后端接口对于前端就像一个黑盒子，经常遇到问题是接口因未知原因增加参数了，参数名变了，参数被删除了。">
+<meta name="keywords" content="技术,yapi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mybatis打印sql语句">
-<meta property="og:url" content="http://aimigit.github.io/2018/12/26/mybatis-showsql/index.html">
+<meta property="og:title" content="yapi部署">
+<meta property="og:url" content="http://aimigit.github.io/2019/08/12/yapi-deploy/index.html">
 <meta property="og:site_name" content="埃米的博客">
-<meta property="og:description" content="springmvc 配置方式在mybatis-config.xml中配置加一个setting12345678910&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;!DOCTYPE configuration        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;        &quot;http://mybati">
-<meta property="og:updated_time" content="2019-01-10T11:40:45.248Z">
+<meta property="og:description" content="1. yapi简介YApi 是一款多人协作的 api 管理平台，提供了 api 文档管理，api 数据 模拟（Mock），调试和自动化测试 api 等功能。主要解决前后端分离带来的以下痛点：  接口文档不可靠。很多小伙伴管理接口文档，有使用wiki的，有word文档的，甚至还有用聊天软件口口相传的，后端接口对于前端就像一个黑盒子，经常遇到问题是接口因未知原因增加参数了，参数名变了，参数被删除了。">
+<meta property="og:updated_time" content="2019-08-12T02:49:36.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mybatis打印sql语句">
-<meta name="twitter:description" content="springmvc 配置方式在mybatis-config.xml中配置加一个setting12345678910&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;!DOCTYPE configuration        PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;        &quot;http://mybati">
+<meta name="twitter:title" content="yapi部署">
+<meta name="twitter:description" content="1. yapi简介YApi 是一款多人协作的 api 管理平台，提供了 api 文档管理，api 数据 模拟（Mock），调试和自动化测试 api 等功能。主要解决前后端分离带来的以下痛点：  接口文档不可靠。很多小伙伴管理接口文档，有使用wiki的，有word文档的，甚至还有用聊天软件口口相传的，后端接口对于前端就像一个黑盒子，经常遇到问题是接口因未知原因增加参数了，参数名变了，参数被删除了。">
   
     <link rel="alternative" href="/atom.xml" title="埃米的博客" type="application/atom+xml">
   
@@ -178,30 +178,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-mybatis-showsql" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-yapi-deploy" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      mybatis打印sql语句
+      yapi部署
     </h1>
   
 
         
-        <a href="/2018/12/26/mybatis-showsql/" class="archive-article-date">
-  	<time datetime="2018-12-26T10:59:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-26</time>
+        <a href="/2019/08/12/yapi-deploy/" class="archive-article-date">
+  	<time datetime="2019-08-12T02:18:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="springmvc-配置方式"><a href="#springmvc-配置方式" class="headerlink" title="springmvc 配置方式"></a>springmvc 配置方式</h2><p>在mybatis-config.xml中配置加一个setting<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE configuration</span></div><div class="line"><span class="meta">        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></div><div class="line"><span class="meta">        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 打印查询语句 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"STDOUT_LOGGING"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
+        <h1 id="1-yapi简介"><a href="#1-yapi简介" class="headerlink" title="1. yapi简介"></a>1. yapi简介</h1><p>YApi 是一款多人协作的 api 管理平台，提供了 api 文档管理，api 数据 模拟（Mock），调试和自动化测试 api 等功能。主要解决前后端分离带来的以下痛点：</p>
+<ul>
+<li><p>接口文档不可靠。很多小伙伴管理接口文档，有使用wiki的，有word文档的，甚至还有用聊天软件口口相传的，后端接口对于前端就像一个黑盒子，经常遇到问题是接口因未知原因增加参数了，参数名变了，参数被删除了。 </p>
+</li>
+<li><p>mock 数据生成方案没有统一出口。我们都有这样的经历，前端开发功能依赖后端，解决方案有自己在代码注入json的，还有后端工程师临时搭建一套测试数据服务器，这种情况下势必会影响工作效率和代码质量，也不能及时进行更新。 </p>
+</li>
+</ul>
 <a id="more"></a>
-<p>在sqlSessionFactory配置好configLocation属性,引入mybatis-config.xml<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE configuration   </span></div><div class="line"><span class="meta">    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  </span></div><div class="line"><span class="meta">    "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 打印查询语句 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"STDOUT_LOGGING"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></div><div class="line">    </div><div class="line">    <span class="comment">&lt;!-- mapper已经在spring-mybatis.xml中的sqlSessionFactory配置，这里不再需要配置 --&gt;</span></div><div class="line"><span class="comment">&lt;!--     &lt;mappers&gt; --&gt;</span></div><div class="line"><span class="comment">&lt;!--         &lt;mapper resource="com/a/b/c/dao/BusinessInfoDaoMapper.xml" /&gt; --&gt;</span></div><div class="line"><span class="comment">&lt;!--     &lt;/mappers&gt; --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h2 id="springboot-配置方式"><a href="#springboot-配置方式" class="headerlink" title="springboot 配置方式"></a>springboot 配置方式</h2><p>在application.yml（.properties）中增加配置，在控制台打印sql：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mybatis</div><div class="line">  configuration:</div><div class="line">    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>资源分散，无法共享。接口调试每个开发者单独维护一套Postman接口集，每个人无法共用其他人的接口集，存在大量重复填写请求参数工作，最重要的是postman没法跟接口定义关联起来，导致后端没有动力去维护接口文档。 </p>
+</li>
+<li><p>集成 api 自动化测试困难。yapi 提供了可视化的 api 自动化测试方案，只需要简单的填写参数，增加断言，就能实现 api 自动化测试。</p>
+</li>
+</ul>
+<p>项目源码：<a href="https://github.com/YMFE/yapi" target="_blank" rel="external">https://github.com/YMFE/yapi</a><br>帮助文档：<a href="https://hellosean1025.github.io/yapi/documents/index.html" target="_blank" rel="external">https://hellosean1025.github.io/yapi/documents/index.html</a></p>
+<h1 id="2-环境搭建"><a href="#2-环境搭建" class="headerlink" title="2. 环境搭建"></a>2. 环境搭建</h1><h2 id="2-1-安装-Node"><a href="#2-1-安装-Node" class="headerlink" title="2.1 安装 Node"></a>2.1 安装 Node</h2><p>Window：<br>直接下载安装，地址：<a href="https://nodejs.org/en/" target="_blank" rel="external">https://nodejs.org/en/</a><br>Linux：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -sL https://rpm.nodesource.com/setup_8.x | bash -</div><div class="line">yum install -y nodejs</div></pre></td></tr></table></figure></p>
+<h2 id="2-2-安装-MongoDB"><a href="#2-2-安装-MongoDB" class="headerlink" title="2.2 安装 MongoDB"></a>2.2 安装 MongoDB</h2><p>Window：<br>直接下载安装，地址：<a href="https://www.mongodb.com/" target="_blank" rel="external">https://www.mongodb.com/</a><br>Linux：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">vi /etc/yum.repos.d/mongodb-org-4.0.repo</div><div class="line"></div><div class="line">[mongodb-org-4.0]</div><div class="line">name=MongoDB Repository</div><div class="line">baseurl=https://repo.mongodb.org/yum/redhat/<span class="variable">$releasever</span>/mongodb-org/4.0/x86_64/</div><div class="line">gpgcheck=1</div><div class="line">enabled=1</div><div class="line">gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc</div><div class="line"></div><div class="line">sudo yum install -y mongodb-org</div><div class="line">sudo service mongod start</div><div class="line">sudo chkconfig mongod on</div><div class="line">sudo service mongod stop</div><div class="line">sudo service mongod restart</div></pre></td></tr></table></figure></p>
+<h2 id="2-3-安装yapi"><a href="#2-3-安装yapi" class="headerlink" title="2.3 安装yapi"></a>2.3 安装yapi</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install -g yapi-cli --registry https://registry.npm.taobao.org</div><div class="line">yapi server</div><div class="line"></div><div class="line">访问http:\ip:9090进行yapi部署</div></pre></td></tr></table></figure>
+<p>在线安装成功后，提示：<br>初始化管理员账号成功,账号名：”test@xxx.com”，密码：”ymfe.org”<br>部署成功，请切换到部署目录，输入： “node vendors/server/app.js” 指令启动服务器, 然后在浏览器打开 <a href="http://127.0.0.1:3000" target="_blank" rel="external">http://127.0.0.1:3000</a> 访问</p>
+<p>根据提示，请切换到部署目录，输入： “node vendors/server/app.js” 指令启动服务器<br>这时候就部署成功了，但是在命令窗口前端运行，一关掉就停了。</p>
+<h2 id="2-4-安装pm2"><a href="#2-4-安装pm2" class="headerlink" title="2.4 安装pm2"></a>2.4 安装pm2</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install pm2 -g</div><div class="line">启动</div><div class="line">pm2 start <span class="string">"vendors/server/app.js"</span> --name yapi</div><div class="line">查看</div><div class="line">pm2 info yapi</div></pre></td></tr></table></figure>
+<p>END.</p>
 
 
         <span id="busuanzi_container_page_pv" style="font-size:12px;font-style:italic;float:right;">
@@ -255,11 +273,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yapi</a>
         		</li>
       		
 		</ul>
@@ -315,7 +329,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://aimigit.github.io/2018/12/26/mybatis-showsql/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://aimigit.github.io/2019/08/12/yapi-deploy/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -329,18 +343,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/12/27/aria2-command/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          aria2下载神器常用命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/30/log4j2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">log4j2+Slf4j日志配置文件</div>
+    <a href="/2019/06/24/mysql-user-password/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL创建用户与破解密码</div>
       <i class="icon-circle-right"></i>
     </a>
   
