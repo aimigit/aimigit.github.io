@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://aimigit.github.io">
-  <title>Archives: 2018/9 | 埃米的博客</title>
+  <title>java-list-分组方法 | 埃米的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="埃米的博客">
-<meta property="og:url" content="http://aimigit.github.io/archives/2018/09/index.html">
+  <meta name="description" content="1.简介项目开发经常会碰到数据分组，大多数通过sql group by处理，但有时也需要在java做分组。 2.方法定义一个Student类12345678910111213141516171819202122232425262728293031public class Student &amp;#123;	  private Integer id;	  private Integer age;	  pr">
+<meta name="keywords" content="技术,java,stream">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-list-分组方法">
+<meta property="og:url" content="http://aimigit.github.io/2019/08/31/java-list-groupby/index.html">
 <meta property="og:site_name" content="埃米的博客">
+<meta property="og:description" content="1.简介项目开发经常会碰到数据分组，大多数通过sql group by处理，但有时也需要在java做分组。 2.方法定义一个Student类12345678910111213141516171819202122232425262728293031public class Student &amp;#123;	  private Integer id;	  private Integer age;	  pr">
+<meta property="og:updated_time" content="2019-08-31T08:26:09.556Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="埃米的博客">
+<meta name="twitter:title" content="java-list-分组方法">
+<meta name="twitter:description" content="1.简介项目开发经常会碰到数据分组，大多数通过sql group by处理，但有时也需要在java做分组。 2.方法定义一个Student类12345678910111213141516171819202122232425262728293031public class Student &amp;#123;	  private Integer id;	  private Integer age;	  pr">
   
     <link rel="alternative" href="/atom.xml" title="埃米的博客" type="application/atom+xml">
   
@@ -173,36 +178,76 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-java-list-groupby" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/04/some-plugin/" class="archive-article-date">
-  	<time datetime="2018-09-04T06:45:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/04/some-plugin/">一些常用插件</a>
+    <h1 class="article-title" itemprop="name">
+      java-list-分组方法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/31/java-list-groupby/" class="archive-article-date">
+  	<time datetime="2019-08-31T08:15:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>项目开发经常会碰到数据分组，大多数通过sql group by处理，但有时也需要在java做分组。</p>
+<h1 id="2-方法"><a href="#2-方法" class="headerlink" title="2.方法"></a>2.方法</h1><p>定义一个Student类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line"></div><div class="line">	  <span class="keyword">private</span> Integer id;</div><div class="line">	  <span class="keyword">private</span> Integer age;</div><div class="line">	  <span class="keyword">private</span> String name;</div><div class="line">	  <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(Integer couponId, Integer price, String name)</span> </span>&#123;</div><div class="line">	    <span class="keyword">this</span>.id = couponId;</div><div class="line">	    <span class="keyword">this</span>.age = price;</div><div class="line">	    <span class="keyword">this</span>.name = name;</div><div class="line">	  &#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.id = id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>定义一个测试类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListGroupBy</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		List&lt;Student&gt; studentList = <span class="keyword">new</span> ArrayList&lt;Student&gt;();</div><div class="line">		Student student1 = <span class="keyword">new</span> Student(<span class="number">1</span>, <span class="number">16</span>, <span class="string">"学生a"</span>);</div><div class="line">		Student student2 = <span class="keyword">new</span> Student(<span class="number">2</span>, <span class="number">16</span>, <span class="string">"学生b"</span>);</div><div class="line">		Student student3 = <span class="keyword">new</span> Student(<span class="number">3</span>, <span class="number">17</span>, <span class="string">"学生c"</span>);</div><div class="line">		Student student4 = <span class="keyword">new</span> Student(<span class="number">3</span>, <span class="number">18</span>, <span class="string">"学生d"</span>);</div><div class="line">		studentList.add(student1);</div><div class="line">		studentList.add(student2);</div><div class="line">		studentList.add(student3);</div><div class="line">		studentList.add(student4);</div><div class="line">		</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-1-分组方法1"><a href="#2-1-分组方法1" class="headerlink" title="2.1 分组方法1"></a>2.1 分组方法1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 分组</div><div class="line">	Map&lt;String, List&lt;Student&gt;&gt; groupMap2 = new HashMap&lt;String, List&lt;Student&gt;&gt;();</div><div class="line">	for (Student Student : studentList) &#123;</div><div class="line">		String key = Student.getAge() + &quot;&quot;;</div><div class="line">		if (groupMap2.containsKey(key)) &#123;</div><div class="line">			groupMap2.get(key).add(Student);</div><div class="line">		&#125; else &#123;</div><div class="line">			List&lt;Student&gt; grouplist = new ArrayList&lt;Student&gt;();</div><div class="line">			grouplist.add(Student);</div><div class="line">			groupMap2.put(key, grouplist);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	System.out.println(groupMap2);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-2分组方法2"><a href="#2-2分组方法2" class="headerlink" title="2.2分组方法2"></a>2.2分组方法2</h2><p>使用JDK1.8 stream 方法，一行代码搞定，Collectors还有多种方法，有兴趣自行尝试。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Map&lt;Integer, List&lt;Student&gt;&gt; groupMap1 = studentList.stream().collect(Collectors.groupingBy(Student::getAge));</div><div class="line">System.out.println(groupMap1);</div></pre></td></tr></table></figure></p>
+
+
+        <span id="busuanzi_container_page_pv" style="font-size:12px;font-style:italic;float:right;">
+                点击量 <span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>如有帮助，谢谢赞赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blog_img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blog_img/wechat_pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -212,67 +257,114 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">插件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/04/hexo-multi-pc/" class="archive-article-date">
-  	<time datetime="2018-09-04T06:21:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/04/hexo-multi-pc/">多机更新 Hexo 博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">stream</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://aimigit.github.io/2019/08/31/java-list-groupby/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/08/16/js-es6-arrow-functions/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">箭头函数(=&gt;)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -307,8 +399,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
