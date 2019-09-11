@@ -175,6 +175,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript-special-feature" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/javascript-special-feature/">javascript一些特点</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/11/javascript-special-feature/" class="archive-article-date">
+  	<time datetime="2019-09-11T11:08:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>随着前后端分离架构兴起，涌现了一大批前端框架vue，react等，以及后端nodejs的发展，JavaScript又变的火热。<br>温故而知新，温习一下廖雪峰的基础教程，记录一下。</p>
+<h1 id="1-1历史"><a href="#1-1历史" class="headerlink" title="1.1历史"></a>1.1历史</h1><p>在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。</p>
+<p>由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这哥们在两周之内设计出了JavaScript语言。你没看错，这哥们只用了10天时间。</p>
+<p>为什么起名叫JavaScript？原因是当时Java语言非常红火，所以网景公司希望借Java的名气来推广，但事实上JavaScript除了语法上有点像Java，其他部分基本上没啥关系。</p>
+        
+          <a class="article-more-a" href="/2019/09/11/javascript-special-feature/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/11/javascript-special-feature/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-echart-miniprogram-fontsize" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -948,90 +1035,6 @@
 
 
   
-    <article id="post-js-full-screen" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/09/js-full-screen/">js浏览器全屏和时钟方法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/09/js-full-screen/" class="archive-article-date">
-  	<time datetime="2019-01-09T02:46:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="js浏览器全屏方法"><a href="#js浏览器全屏方法" class="headerlink" title="js浏览器全屏方法"></a>js浏览器全屏方法</h2><p>浏览器F11全屏展示，js代码自动全屏，浏览器会认为有安全问题，所以要放个按钮触发，<br>在Chrome,Firefox,IE11测试通过。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//全屏</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fullscreen</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> el = <span class="built_in">document</span>.documentElement;</div><div class="line">  <span class="keyword">var</span> isFullscreen=<span class="built_in">document</span>.fullScreen||<span class="built_in">document</span>.mozFullScreen||<span class="built_in">document</span>.webkitIsFullScreen;</div><div class="line">  <span class="keyword">if</span>(!isFullscreen)&#123;<span class="comment">//进入全屏,多重短路表达式</span></div><div class="line">	  (el.requestFullscreen&amp;&amp;el.requestFullscreen())||</div><div class="line">	  (el.mozRequestFullScreen&amp;&amp;el.mozRequestFullScreen())||</div><div class="line">	  (el.webkitRequestFullscreen&amp;&amp;el.webkitRequestFullscreen())||(el.msRequestFullscreen&amp;&amp;el.msRequestFullscreen());</div><div class="line">  &#125;<span class="keyword">else</span>&#123; <span class="comment">//退出全屏,三目运算符</span></div><div class="line">	  <span class="built_in">document</span>.exitFullscreen?<span class="built_in">document</span>.exitFullscreen():</div><div class="line">	  <span class="built_in">document</span>.mozCancelFullScreen?<span class="built_in">document</span>.mozCancelFullScreen():</div><div class="line">	  <span class="built_in">document</span>.webkitExitFullscreen?<span class="built_in">document</span>.webkitExitFullscreen():<span class="string">''</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用</span></div><div class="line">$(<span class="string">".fullScreen"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		fullscreen();</div><div class="line">	&#125;);</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/01/09/js-full-screen/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/09/js-full-screen/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1173,15 +1176,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">stream</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1189,15 +1184,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">json</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">密码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1205,7 +1200,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">stream</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">时间同步</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1213,7 +1220,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">时间同步</a>
+                <a href="javascript:void(0)" class="js-tag color3">密码</a>
               </li>
              
               <li class="article-tag-list-item">

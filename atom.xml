@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://aimigit.github.io/"/>
-  <updated>2019-09-01T14:35:33.783Z</updated>
+  <updated>2019-09-11T11:28:15.464Z</updated>
   <id>http://aimigit.github.io/</id>
   
   <author>
@@ -16,11 +16,81 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>javascript一些特点</title>
+    <link href="http://aimigit.github.io/2019/09/11/javascript-special-feature/"/>
+    <id>http://aimigit.github.io/2019/09/11/javascript-special-feature/</id>
+    <published>2019-09-11T11:08:32.000Z</published>
+    <updated>2019-09-11T11:28:15.464Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>随着前后端分离架构兴起，涌现了一大批前端框架vue，react等，以及后端nodejs的发展，JavaScript又变的火热。<br>温故而知新，温习一下廖雪峰的基础教程，记录一下。</p>
+<h1 id="1-1历史"><a href="#1-1历史" class="headerlink" title="1.1历史"></a>1.1历史</h1><p>在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。</p>
+<p>由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这哥们在两周之内设计出了JavaScript语言。你没看错，这哥们只用了10天时间。</p>
+<p>为什么起名叫JavaScript？原因是当时Java语言非常红火，所以网景公司希望借Java的名气来推广，但事实上JavaScript除了语法上有点像Java，其他部分基本上没啥关系。</p>
+<a id="more"></a>
+<h1 id="2-特点"><a href="#2-特点" class="headerlink" title="2.特点"></a>2.特点</h1><h2 id="2-1比较运算符"><a href="#2-1比较运算符" class="headerlink" title="2.1比较运算符"></a>2.1比较运算符</h2><p>false == 0; // true<br>false === 0; // false</p>
+<p>要特别注意相等运算符==。JavaScript在设计时，有两种比较运算符：</p>
+<p>第一种是==比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果；</p>
+<p>第二种是===比较，它不会自动转换数据类型，如果数据类型不一致，返回false，如果一致，再比较。</p>
+<h2 id="2-2strict模式"><a href="#2-2strict模式" class="headerlink" title="2.2strict模式"></a>2.2strict模式</h2><p>JavaScript在设计之初，为了方便初学者学习，并不强制要求用var申明变量。这个设计错误带来了严重的后果：如果一个变量没有通过var申明就被使用，那么该变量就自动被申明为全局变量：</p>
+<p>i = 10; // i现在是全局变量</p>
+<p>在同一个页面的不同的JavaScript文件中，如果都不用var申明，恰好都使用了变量i，将造成变量i互相影响，产生难以调试的错误结果。</p>
+<p>使用var申明的变量则不是全局变量，它的范围被限制在该变量被申明的函数体内（函数的概念将稍后讲解），同名变量在不同的函数体内互不冲突。</p>
+<p>为了修补JavaScript这一严重设计缺陷，ECMA在后续规范中推出了strict模式，在strict模式下运行的JavaScript代码，强制通过var申明变量，未使用var申明变量就使用的，将导致运行错误。</p>
+<p>启用strict模式的方法是在JavaScript代码的第一行写上：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line">这是一个字符串，不支持strict模式的浏览器会把它当做一个字符串语句执行，支持strict模式的浏览器将开启strict模式运行JavaScript。</div><div class="line"></div><div class="line"><span class="keyword">var</span> s = <span class="string">'Test'</span>;</div><div class="line">s[<span class="number">0</span>] = <span class="string">'X'</span>;</div><div class="line">alert(s); <span class="comment">// s仍然为'Test'</span></div></pre></td></tr></table></figure></p>
+<p>JavaScript为字符串提供了一些常用方法，注意，调用这些方法本身不会改变原有字符串的内容，而是返回一个新字符串：</p>
+<h2 id="2-3arguments"><a href="#2-3arguments" class="headerlink" title="2.3arguments"></a>2.3arguments</h2><p>JavaScript还有一个免费赠送的关键字arguments，它只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数。arguments类似Array但它不是一个Array：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'x = '</span> + x); <span class="comment">// 10</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'arg '</span> + i + <span class="string">' = '</span> + <span class="built_in">arguments</span>[i]); <span class="comment">// 10, 20, 30</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">foo(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="2-4变量提升"><a href="#2-4变量提升" class="headerlink" title="2.4变量提升"></a>2.4变量提升</h2><p>JavaScript的函数定义有个特点，它会先扫描整个函数体的语句，把所有申明的变量“提升”到函数顶部：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> x = <span class="string">'Hello, '</span> + y;</div><div class="line">    <span class="built_in">console</span>.log(x);</div><div class="line">    <span class="keyword">var</span> y = <span class="string">'Bob'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo();</div></pre></td></tr></table></figure></p>
+<p>虽然是strict模式，但语句var x = ‘Hello, ‘ + y;并不报错，原因是变量y在稍后申明了。但是console.log显示Hello, undefined，说明变量y的值为undefined。这正是因为JavaScript引擎自动提升了变量y的声明，但不会提升变量y的赋值。</p>
+<p>对于上述foo()函数，JavaScript引擎看到的代码相当于：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> y; <span class="comment">// 提升变量y的申明，此时y为undefined</span></div><div class="line">    <span class="keyword">var</span> x = <span class="string">'Hello, '</span> + y;</div><div class="line">    <span class="built_in">console</span>.log(x);</div><div class="line">    y = <span class="string">'Bob'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由于JavaScript的这一怪异的“特性”，我们在函数内部定义变量时，请严格遵守“在函数内部首先申明所有变量”这一规则。最常见的做法是用一个var申明函数内部用到的所有变量：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span></div><div class="line">        x = <span class="number">1</span>, <span class="comment">// x初始化为1</span></div><div class="line">        y = x + <span class="number">1</span>, <span class="comment">// y初始化为2</span></div><div class="line">        z, i; <span class="comment">// z和i为undefined</span></div><div class="line">    <span class="comment">// 其他语句:</span></div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++) &#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-5全局作用域"><a href="#2-5全局作用域" class="headerlink" title="2.5全局作用域"></a>2.5全局作用域</h2><p>不在任何函数内定义的变量就具有全局作用域。实际上，JavaScript默认有一个全局对象window，全局作用域的变量实际上被绑定到window的一个属性：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> course = <span class="string">'Learn JavaScript'</span>;</div><div class="line">alert(course); <span class="comment">// 'Learn JavaScript'</span></div><div class="line">alert(<span class="built_in">window</span>.course); <span class="comment">// 'Learn JavaScript'</span></div></pre></td></tr></table></figure></p>
+<p>因此，直接访问全局变量course和访问window.course是完全一样的。</p>
+<p>你可能猜到了，由于函数定义有两种方式，以变量方式var foo = function () {}定义的函数实际上也是一个全局变量，因此，顶层函数的定义也被视为一个全局变量，并绑定到window对象：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'foo'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(); <span class="comment">// 直接调用foo()</span></div><div class="line"><span class="built_in">window</span>.foo(); <span class="comment">// 通过window.foo()调用</span></div></pre></td></tr></table></figure></p>
+<p>这说明JavaScript实际上只有一个全局作用域。任何变量（函数也视为变量），如果没有在当前函数作用域中找到，就会继续往上查找，最后如果在全局作用域中也没有找到，则报ReferenceError错误。</p>
+<h2 id="2-6名字空间"><a href="#2-6名字空间" class="headerlink" title="2.6名字空间"></a>2.6名字空间</h2><p>全局变量会绑定到window上，不同的JavaScript文件如果使用了相同的全局变量，或者定义了相同名字的顶层函数，都会造成命名冲突，并且很难被发现。</p>
+<p>减少冲突的一个方法是把自己的所有变量和函数全部绑定到一个全局变量中。例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 唯一的全局变量MYAPP:</span></div><div class="line"><span class="keyword">var</span> MYAPP = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 其他变量:</span></div><div class="line">MYAPP.name = <span class="string">'myapp'</span>;</div><div class="line">MYAPP.version = <span class="number">1.0</span>;</div><div class="line"></div><div class="line"><span class="comment">// 其他函数:</span></div><div class="line">MYAPP.foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'foo'</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>把自己的代码全部放入唯一的名字空间MYAPP中，会大大减少全局变量冲突的可能。</p>
+<p>许多著名的JavaScript库都是这么干的：jQuery，YUI，underscore等等。</p>
+<h2 id="2-7在JavaScript中，Date对象用来表示日期和时间。"><a href="#2-7在JavaScript中，Date对象用来表示日期和时间。" class="headerlink" title="2.7在JavaScript中，Date对象用来表示日期和时间。"></a>2.7在JavaScript中，Date对象用来表示日期和时间。</h2><p>要获取系统当前时间，用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">now; <span class="comment">// Wed Jun 24 2015 19:49:22 GMT+0800 (CST)</span></div><div class="line">now.getFullYear(); <span class="comment">// 2015, 年份</span></div><div class="line"> now.getMonth(); <span class="comment">// 5, 月份，注意月份范围是0~11，5表示六月</span></div><div class="line">now.getDate(); <span class="comment">// 24, 表示24号</span></div><div class="line">now.getDay(); <span class="comment">// 3, 表示星期三</span></div><div class="line">now.getHours(); <span class="comment">// 19, 24小时制</span></div><div class="line">now.getMinutes(); <span class="comment">// 49, 分钟</span></div><div class="line">now.getSeconds(); <span class="comment">// 22, 秒</span></div><div class="line">now.getMilliseconds(); <span class="comment">// 875, 毫秒数</span></div><div class="line">now.getTime(); <span class="comment">// 1435146562875, 以number形式表示的时间戳</span></div></pre></td></tr></table></figure></p>
+<p>注意，当前时间是浏览器从本机操作系统获取的时间，所以不一定准确，因为用户可以把当前时间设定为任何值。</p>
+<p>如果要创建一个指定日期和时间的Date对象，可以用：</p>
+<p>var d = new Date(2015, 5, 19, 20, 15, 30, 123);<br>d; // Fri Jun 19 2015 20:15:30 GMT+0800 (CST)</p>
+<p>你可能观察到了一个非常非常坑爹的地方，就是JavaScript的月份范围用整数表示是0~11，0表示一月，1表示二月……，所以要表示6月，我们传入的是5！这绝对是JavaScript的设计者当时脑抽了一下，但是现在要修复已经不可能了。</p>
+<h2 id="2-8-null和undefined"><a href="#2-8-null和undefined" class="headerlink" title="2.8 null和undefined"></a>2.8 null和undefined</h2><p>null属于对象（object）的一种，意思是该对象为空；undefined则是一种数据类型，表示未定义。</p>
+<p>　　typeof null; // object</p>
+<p>　　typeof undefined; // undefined</p>
+<p>两者非常容易混淆，但是含义完全不同。</p>
+<p>　　var foo;</p>
+<p>　　alert(foo == null); // true</p>
+<p>　　alert(foo == undefined); // true</p>
+<p>　　alert(foo === null); // false</p>
+<p>　　alert(foo === undefined); // true</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1.简介&quot;&gt;&lt;/a&gt;1.简介&lt;/h1&gt;&lt;p&gt;随着前后端分离架构兴起，涌现了一大批前端框架vue，react等，以及后端nodejs的发展，JavaScript又变的火热。&lt;br&gt;温故而知新，温习一下廖雪峰的基础教程，记录一下。&lt;/p&gt;
+&lt;h1 id=&quot;1-1历史&quot;&gt;&lt;a href=&quot;#1-1历史&quot; class=&quot;headerlink&quot; title=&quot;1.1历史&quot;&gt;&lt;/a&gt;1.1历史&lt;/h1&gt;&lt;p&gt;在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。&lt;/p&gt;
+&lt;p&gt;由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这哥们在两周之内设计出了JavaScript语言。你没看错，这哥们只用了10天时间。&lt;/p&gt;
+&lt;p&gt;为什么起名叫JavaScript？原因是当时Java语言非常红火，所以网景公司希望借Java的名气来推广，但事实上JavaScript除了语法上有点像Java，其他部分基本上没啥关系。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="js" scheme="http://aimigit.github.io/tags/js/"/>
+    
+      <category term="bug" scheme="http://aimigit.github.io/tags/bug/"/>
+    
+  </entry>
+  
+  <entry>
     <title>echart小程序字体大小失效问题</title>
     <link href="http://aimigit.github.io/2019/09/01/echart-miniprogram-fontsize/"/>
     <id>http://aimigit.github.io/2019/09/01/echart-miniprogram-fontsize/</id>
     <published>2019-09-01T14:23:13.000Z</published>
-    <updated>2019-09-01T14:35:33.783Z</updated>
+    <updated>2019-09-01T14:35:33.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="echart简介"><a href="#echart简介" class="headerlink" title="echart简介"></a>echart简介</h1><p>ECharts，一个使用 JavaScript 实现的开源可视化库，可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器（IE8/9/10/11，Chrome，Firefox，Safari等），底层依赖矢量图形库 ZRender，提供直观，交互丰富，可高度个性化定制的数据可视化图表。</p>
 <p>ECharts 提供了常规的折线图、柱状图、散点图、饼图、K线图，用于统计的盒形图，用于地理数据可视化的地图、热力图、线图，用于关系数据可视化的关系图、treemap、旭日图，多维数据可视化的平行坐标，还有用于 BI 的漏斗图，仪表盘，并且支持图与图之间的混搭。</p>
@@ -50,7 +120,7 @@
     <link href="http://aimigit.github.io/2019/08/31/java-list-groupby/"/>
     <id>http://aimigit.github.io/2019/08/31/java-list-groupby/</id>
     <published>2019-08-31T08:15:04.000Z</published>
-    <updated>2019-08-31T08:26:09.000Z</updated>
+    <updated>2019-08-31T08:26:09.556Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>项目开发经常会碰到数据分组，大多数通过sql group by处理，但有时也需要在java做分组。</p>
 <h1 id="2-方法"><a href="#2-方法" class="headerlink" title="2.方法"></a>2.方法</h1><p>定义一个Student类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line"></div><div class="line">	  <span class="keyword">private</span> Integer id;</div><div class="line">	  <span class="keyword">private</span> Integer age;</div><div class="line">	  <span class="keyword">private</span> String name;</div><div class="line">	  <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(Integer couponId, Integer price, String name)</span> </span>&#123;</div><div class="line">	    <span class="keyword">this</span>.id = couponId;</div><div class="line">	    <span class="keyword">this</span>.age = price;</div><div class="line">	    <span class="keyword">this</span>.name = name;</div><div class="line">	  &#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.id = id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -81,7 +151,7 @@
     <link href="http://aimigit.github.io/2019/08/16/js-es6-arrow-functions/"/>
     <id>http://aimigit.github.io/2019/08/16/js-es6-arrow-functions/</id>
     <published>2019-08-16T01:36:20.000Z</published>
-    <updated>2019-08-16T02:12:39.000Z</updated>
+    <updated>2019-08-16T02:12:39.604Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>箭头函数表达式的语法比函数表达式更简洁，并且没有自己的this，arguments，super或 new.target。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。</p>
 <h1 id="2-语法"><a href="#2-语法" class="headerlink" title="2.语法"></a>2.语法</h1><h2 id="2-1-基础语法"><a href="#2-1-基础语法" class="headerlink" title="2.1 基础语法"></a>2.1 基础语法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">(参数<span class="number">1</span>, 参数<span class="number">2</span>, …, 参数N) =&gt; &#123; 函数声明 &#125;</div><div class="line"></div><div class="line"><span class="comment">//相当于：(参数1, 参数2, …, 参数N) =&gt;&#123; return 表达式; &#125;</span></div><div class="line">(参数<span class="number">1</span>, 参数<span class="number">2</span>, …, 参数N) =&gt; 表达式（单一）</div><div class="line"></div><div class="line"><span class="comment">// 当只有一个参数时，圆括号是可选的：</span></div><div class="line">(单一参数) =&gt; &#123;函数声明&#125;</div><div class="line">单一参数 =&gt; &#123;函数声明&#125;</div><div class="line"></div><div class="line"><span class="comment">// 没有参数的函数应该写成一对圆括号。</span></div><div class="line">() =&gt; &#123;函数声明&#125;</div></pre></td></tr></table></figure>
@@ -848,7 +918,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2019/08/12/yapi-deploy/"/>
     <id>http://aimigit.github.io/2019/08/12/yapi-deploy/</id>
     <published>2019-08-12T02:18:12.000Z</published>
-    <updated>2019-08-12T03:41:57.000Z</updated>
+    <updated>2019-08-12T03:41:57.116Z</updated>
     
     <content type="html"><![CDATA[<h1 id="1-yapi简介"><a href="#1-yapi简介" class="headerlink" title="1. yapi简介"></a>1. yapi简介</h1><p>YApi 是一款多人协作的 api 管理平台，提供了 api 文档管理，api 数据 模拟（Mock），调试和自动化测试 api 等功能。主要解决前后端分离带来的以下痛点：</p>
 <ul>
@@ -892,7 +962,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2019/06/24/mysql-user-password/"/>
     <id>http://aimigit.github.io/2019/06/24/mysql-user-password/</id>
     <published>2019-06-24T15:01:23.000Z</published>
-    <updated>2019-06-25T15:38:52.351Z</updated>
+    <updated>2019-06-25T15:38:52.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="MySQL创建用户与破解密码"><a href="#MySQL创建用户与破解密码" class="headerlink" title="MySQL创建用户与破解密码"></a>MySQL创建用户与破解密码</h1><h2 id="一-创建用户"><a href="#一-创建用户" class="headerlink" title="一. 创建用户"></a>一. 创建用户</h2><p>命令:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'username'</span>@<span class="string">'host'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</div></pre></td></tr></table></figure></p>
 <p>说明：<br>username：你将创建的用户名<br>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%<br>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</p>
@@ -955,7 +1025,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2019/03/27/mysql-table-dic/"/>
     <id>http://aimigit.github.io/2019/03/27/mysql-table-dic/</id>
     <published>2019-03-27T11:56:30.000Z</published>
-    <updated>2019-03-27T11:59:48.000Z</updated>
+    <updated>2019-03-27T11:59:48.421Z</updated>
     
     <content type="html"><![CDATA[<h2 id="mysql生成数据字典"><a href="#mysql生成数据字典" class="headerlink" title="mysql生成数据字典"></a>mysql生成数据字典</h2><p>通过information_schema 读取数据库信息<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">	C.TABLE_NAME <span class="keyword">AS</span> <span class="string">'表'</span>,</div><div class="line">	T.TABLE_COMMENT <span class="keyword">AS</span> <span class="string">'表名'</span>,</div><div class="line">	C.COLUMN_NAME <span class="keyword">AS</span> <span class="string">'字段名'</span>,</div><div class="line">	C.COLUMN_TYPE <span class="keyword">AS</span> <span class="string">'数据类型'</span>,</div><div class="line">	C.COLUMN_COMMENT <span class="keyword">AS</span> <span class="string">'字段说明'</span>,</div><div class="line">	C.IS_NULLABLE <span class="keyword">AS</span> <span class="string">'允许为空'</span>,</div><div class="line">	C.COLUMN_KEY <span class="keyword">AS</span> <span class="string">'键'</span></div><div class="line"><span class="keyword">FROM</span></div><div class="line">	information_schema.COLUMNS C</div><div class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> information_schema.TABLES T <span class="keyword">ON</span> C.TABLE_SCHEMA = T.TABLE_SCHEMA</div><div class="line"><span class="keyword">AND</span> C.TABLE_NAME = T.TABLE_NAME</div><div class="line"><span class="keyword">WHERE</span></div><div class="line">	T.TABLE_SCHEMA = <span class="string">'数据库名'</span></div></pre></td></tr></table></figure></p>
 ]]></content>
@@ -978,7 +1048,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2019/02/01/centos-java-env/"/>
     <id>http://aimigit.github.io/2019/02/01/centos-java-env/</id>
     <published>2019-02-01T08:38:49.000Z</published>
-    <updated>2019-02-01T09:27:38.000Z</updated>
+    <updated>2019-02-01T09:27:38.918Z</updated>
     
     <content type="html"><![CDATA[<h2 id="tar方式安装JDK"><a href="#tar方式安装JDK" class="headerlink" title="tar方式安装JDK"></a>tar方式安装JDK</h2><p>在服务器用wget一直下载失败。<br>官网下载jdk1.8，<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>下载后上传到服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#查看服务器java</span></div><div class="line">java version</div><div class="line"></div><div class="line"><span class="comment">#解压</span></div><div class="line">tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/<span class="built_in">local</span>/jdk1.8.0_202</div><div class="line"></div><div class="line"><span class="comment">#配置环境变量</span></div><div class="line">vim /etc/profile</div><div class="line"><span class="comment">#向文件里面追加以下内容：</span></div><div class="line"><span class="comment">#set java environment</span></div><div class="line">JAVA_HOME=/usr/java/jdk1.8.0_152</div><div class="line">JRE_HOME=<span class="variable">$JAVA_HOME</span>/jre</div><div class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$JRE_HOME</span>/bin</div><div class="line">CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar:<span class="variable">$JRE_HOME</span>/lib</div><div class="line"><span class="built_in">export</span> JAVA_HOME JRE_HOME PATH CLASSPATH</div><div class="line"></div><div class="line"><span class="comment">#使配置文件生效</span></div><div class="line"><span class="built_in">source</span> /etc/profile</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -1009,7 +1079,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2019/01/10/js-for/"/>
     <id>http://aimigit.github.io/2019/01/10/js-for/</id>
     <published>2019-01-10T11:41:51.000Z</published>
-    <updated>2019-01-10T12:07:47.000Z</updated>
+    <updated>2019-01-10T12:07:47.631Z</updated>
     
     <content type="html"><![CDATA[<h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><p>以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。<br>for..in 不应该被用来迭代一个下标顺序很重要的 Array .<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>, <span class="attr">c</span>:<span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"><span class="comment">/*a = 1</span></div><div class="line"><span class="comment">  b = 2 </span></div><div class="line"><span class="comment">  c = 3 */</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*0 = a </span></div><div class="line"><span class="comment">  1 = b </span></div><div class="line"><span class="comment">  2 = c */</span></div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -1040,7 +1110,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2019/01/09/js-json-object/"/>
     <id>http://aimigit.github.io/2019/01/09/js-json-object/</id>
     <published>2019-01-09T03:17:56.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.194Z</updated>
     
     <content type="html"><![CDATA[<h2 id="json简介"><a href="#json简介" class="headerlink" title="json简介"></a>json简介</h2><p>json是一种数据格式，不管java，php，python，object-c语言都支持，所以用来跨平台数据交互，app端，web端，小程序等等通过服务端API接口返回json数据。xml格式几乎很少见到了。</p>
 <p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。</p>
@@ -1084,7 +1154,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2019/01/09/js-full-screen/"/>
     <id>http://aimigit.github.io/2019/01/09/js-full-screen/</id>
     <published>2019-01-09T02:46:55.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.172Z</updated>
     
     <content type="html"><![CDATA[<h2 id="js浏览器全屏方法"><a href="#js浏览器全屏方法" class="headerlink" title="js浏览器全屏方法"></a>js浏览器全屏方法</h2><p>浏览器F11全屏展示，js代码自动全屏，浏览器会认为有安全问题，所以要放个按钮触发，<br>在Chrome,Firefox,IE11测试通过。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//全屏</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fullscreen</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> el = <span class="built_in">document</span>.documentElement;</div><div class="line">  <span class="keyword">var</span> isFullscreen=<span class="built_in">document</span>.fullScreen||<span class="built_in">document</span>.mozFullScreen||<span class="built_in">document</span>.webkitIsFullScreen;</div><div class="line">  <span class="keyword">if</span>(!isFullscreen)&#123;<span class="comment">//进入全屏,多重短路表达式</span></div><div class="line">	  (el.requestFullscreen&amp;&amp;el.requestFullscreen())||</div><div class="line">	  (el.mozRequestFullScreen&amp;&amp;el.mozRequestFullScreen())||</div><div class="line">	  (el.webkitRequestFullscreen&amp;&amp;el.webkitRequestFullscreen())||(el.msRequestFullscreen&amp;&amp;el.msRequestFullscreen());</div><div class="line">  &#125;<span class="keyword">else</span>&#123; <span class="comment">//退出全屏,三目运算符</span></div><div class="line">	  <span class="built_in">document</span>.exitFullscreen?<span class="built_in">document</span>.exitFullscreen():</div><div class="line">	  <span class="built_in">document</span>.mozCancelFullScreen?<span class="built_in">document</span>.mozCancelFullScreen():</div><div class="line">	  <span class="built_in">document</span>.webkitExitFullscreen?<span class="built_in">document</span>.webkitExitFullscreen():<span class="string">''</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//调用</span></div><div class="line">$(<span class="string">".fullScreen"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		fullscreen();</div><div class="line">	&#125;);</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -1113,7 +1183,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2018/12/27/aria2-command/"/>
     <id>http://aimigit.github.io/2018/12/27/aria2-command/</id>
     <published>2018-12-27T03:12:49.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.018Z</updated>
     
     <content type="html"><![CDATA[<h2 id="aria2简介"><a href="#aria2简介" class="headerlink" title="aria2简介"></a>aria2简介</h2><p>Aria2是一款免费开源跨平台且不限速的多线程下载软件，Aria2的优点是速度快、体积小、资源占用少；支持 HTTP / FTP / BT / Magnet 磁力链接等类型的文件下载；支持 Win、Mac、Linux系统，甚至在树莓派、NAS、路由器等设备上都能安装它。强大的地方，结合第三方插件，可以扩展，下载百度网盘等资源，居家下片必备神器。<br>官网：<a href="https://aria2.github.io" target="_blank" rel="external">https://aria2.github.io</a></p>
 <a id="more"></a>
@@ -1187,7 +1257,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2018/12/26/mybatis-showsql/"/>
     <id>http://aimigit.github.io/2018/12/26/mybatis-showsql/</id>
     <published>2018-12-26T10:59:21.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.248Z</updated>
     
     <content type="html"><![CDATA[<h2 id="springmvc-配置方式"><a href="#springmvc-配置方式" class="headerlink" title="springmvc 配置方式"></a>springmvc 配置方式</h2><p>在mybatis-config.xml中配置加一个setting<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE configuration</span></div><div class="line"><span class="meta">        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></div><div class="line"><span class="meta">        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 打印查询语句 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"logImpl"</span> <span class="attr">value</span>=<span class="string">"STDOUT_LOGGING"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -1215,7 +1285,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2018/11/30/log4j2/"/>
     <id>http://aimigit.github.io/2018/11/30/log4j2/</id>
     <published>2018-11-30T02:47:00.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.223Z</updated>
     
     <content type="html"><![CDATA[<h2 id="log4j简介"><a href="#log4j简介" class="headerlink" title="log4j简介"></a>log4j简介</h2><p>log4j是java常见的日志输出框架，<br>2015年5月，Apache宣布Log4J 1.x 停止更新。最新版为1.2.17。<br>如今，Log4J 2.x已更新至2.11。<br>官方网址：<a href="http://logging.apache.org/log4j/2.x/" target="_blank" rel="external">http://logging.apache.org/log4j/2.x/</a></p>
 <h2 id="配置文件介绍"><a href="#配置文件介绍" class="headerlink" title="配置文件介绍"></a>配置文件介绍</h2><h3 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h3><p>trace：追踪，就是程序推进一下，可以写个trace输出</p>
@@ -1273,7 +1343,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2018/09/04/some-plugin/"/>
     <id>http://aimigit.github.io/2018/09/04/some-plugin/</id>
     <published>2018-09-04T06:45:58.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.326Z</updated>
     
     <content type="html"><![CDATA[<h2 id="eclipse插件"><a href="#eclipse插件" class="headerlink" title="eclipse插件"></a>eclipse插件</h2><p>Decompiler |java反编译插件<br>Properties |Editor 中文配置文件插件<br>Darkest Dark Theme|黑色主题<br>Subclipse |svn插件</p>
 <h2 id="chrome插件"><a href="#chrome插件" class="headerlink" title="chrome插件"></a>chrome插件</h2><p>uBlock Origin |广告拦截<br>Restlet Client |REST请求测试工具<br>Tampermonkey|油猴脚本管理<br>Chrono下载管理器|下载管理<br>Dark Reader|黑色主题<br>WebRTC Control|关闭WebRTC</p>
@@ -1297,7 +1367,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2018/09/04/hexo-multi-pc/"/>
     <id>http://aimigit.github.io/2018/09/04/hexo-multi-pc/</id>
     <published>2018-09-04T06:21:52.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.057Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-动手前的思考"><a href="#1-动手前的思考" class="headerlink" title="1. 动手前的思考"></a>1. 动手前的思考</h2><p>还是按照我个人的老习惯，在动手前，先来理清思路，看看我们大概需要做哪些操作，为什么要做这些？这篇文章默认读者已经在另外一台电脑上部署好了，现在只是需要在另外一台电脑上部署。如果读者关注的只是如何使用 Hexo + Github Pages 搭建自己的博客，可以移步我之前的一篇文章 《知行合一 | 用 Hexo 搭建博客》。</p>
 <p>既然博客的生产环境是 Hexo + Github Pages，那么重部署的工作就围绕着 Hexo 和 Github Pages 展开。回顾一下，两者在我们搭建博客的时候具体扮演着什么角色。</p>
@@ -1334,7 +1404,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2018/06/13/mysql-cursor-proc/"/>
     <id>http://aimigit.github.io/2018/06/13/mysql-cursor-proc/</id>
     <published>2018-06-13T08:11:03.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.262Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>为了处理老数据，从一张父表，两张子表复制数据。涉及到生成id关联以及子表多条记录复制，使用了存储过程，cursor遍历结果集。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>  <a id="more"></a>    
@@ -1360,7 +1430,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2018/04/12/java-gif-image/"/>
     <id>http://aimigit.github.io/2018/04/12/java-gif-image/</id>
     <published>2018-04-12T08:19:55.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.150Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Gif概述"><a href="#Gif概述" class="headerlink" title="Gif概述"></a>Gif概述</h2><p>GIF(Graphics Interchange Format)的原义是“图像互换格式”，是CompuServe公司在 1987 年开发的图像文件格式。GIF文件的数据，是一种基于LZW算法的连续色调的无损压缩格式。其压缩率一般在50%左右，它不属于任何应用程序。GIF格式可以存多幅彩色图像，如果把存于一个文件中的多幅图像数据逐幅读出并显示到屏幕上，就可构成一种最简单的动画。<br>GIF格式自1987年由CompuServe公司引入后，因其体积小、成像相对清晰，特别适合于初期慢速的互联网，而大受欢迎。<br>目前网络上流行的动图表情包，以Gif格式为主。大概原理是多张连续图片，以一定的时间间隔轮播，形成每帧动画效果。<br>要在Gif图片上加文字，就要在每帧的相同位置，画上文字。</p>
 <h2 id="java-画图"><a href="#java-画图" class="headerlink" title="java 画图"></a>java 画图</h2><p>使用了第三方文件  LZWEncoder.java,NeuQuant.java,GifDecoder.java,AnimatedGifEncoder.java</p>
@@ -1386,7 +1456,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2018/03/29/linux-add-font/"/>
     <id>http://aimigit.github.io/2018/03/29/linux-add-font/</id>
     <published>2018-03-29T09:16:37.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.207Z</updated>
     
     <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>linux自带的字体比较少，在做图片文字合成时，需要指定的文字字体。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">查看系统中的字体</div><div class="line"><span class="built_in">fc</span>-list</div><div class="line">查看系统中的中文字体</div><div class="line"><span class="built_in">fc</span>-list :lang=zh</div><div class="line"></div><div class="line">[root@localhost ~]<span class="comment"># fc-list</span></div><div class="line">Bitstream Vera Sans Mono:style=Bold</div><div class="line">Bitstream Vera Sans:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Bold</div><div class="line">Bitstream Vera Serif:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Bold Oblique</div><div class="line">Bitstream Vera Sans:style=Bold Oblique</div><div class="line">文鼎PL中楷Uni,AR PL ZenKai Uni:style=Medium</div><div class="line">Bitstream Vera Sans Mono:style=Roman</div><div class="line">Fixed:style=Regular</div><div class="line">文鼎PL细上海宋Uni,AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni:style=Regular</div><div class="line">Bitstream Vera Serif:style=Bold</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
@@ -1411,7 +1481,7 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
     <link href="http://aimigit.github.io/2018/01/17/html-jump/"/>
     <id>http://aimigit.github.io/2018/01/17/html-jump/</id>
     <published>2018-01-17T08:58:22.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
+    <updated>2019-01-10T11:40:45.109Z</updated>
     
     <content type="html"><![CDATA[<h2 id="html的实现"><a href="#html的实现" class="headerlink" title="html的实现"></a>html的实现</h2><p>优点：简单<br>缺点：Struts Tiles中无法使用</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 以下方式只是刷新不跳转到其他页面 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"10"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 以下方式定时转到其他页面 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"refresh"</span> <span class="attr">content</span>=<span class="string">"5;url=hello.html"</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -1433,33 +1503,6 @@ AAAAoBKICwAAAAAAAABQCcQFAAAAAAAAAKgE4gIAAAAAAAAAVAJxAQAAAAAAAAAq8f8Bf+StBIva
       <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
     
       <category term="html5" scheme="http://aimigit.github.io/tags/html5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx_worker_connections异常</title>
-    <link href="http://aimigit.github.io/2017/12/07/nginx-worker-connections/"/>
-    <id>http://aimigit.github.io/2017/12/07/nginx-worker-connections/</id>
-    <published>2017-12-07T07:14:31.000Z</published>
-    <updated>2019-01-10T11:40:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="异常信息"><a href="#异常信息" class="headerlink" title="异常信息"></a>异常信息</h2><p>[alert] 14102#0: 1024 worker_connections are not enough</p>
-<p>worker_connections 参数默认1024，不够用的话配置大一些，同时小于worker_rlimit_nofile 参数值。<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#worker进程数，通常设置等同于CPU数量，auto为自动检测</span></div><div class="line"><span class="attribute">worker_processes</span>  auto;</div><div class="line"><span class="comment">#worker进程打开最大文件数，可CPU*10000设置</span></div><div class="line"><span class="attribute">worker_rlimit_nofile</span> <span class="number">100000</span>;</div><div class="line"></div><div class="line"><span class="section">events</span> &#123;</div><div class="line">    <span class="attribute">worker_connections</span>  <span class="number">10240</span>;</div><div class="line">   <span class="comment">#告诉nginx收到一个新链接通知后接受尽可能多的链接</span></div><div class="line">    <span class="attribute">multi_accept</span> <span class="literal">on</span>;</div><div class="line">   <span class="comment">#设置用于复用客户端线程的轮训方法</span></div><div class="line">   <span class="attribute">use</span> <span class="literal">epoll</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<a id="more"></a>    
-<h2 id="linux打开文件数配置"><a href="#linux打开文件数配置" class="headerlink" title="linux打开文件数配置"></a>linux打开文件数配置</h2><p>调大open files参数值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">[delvep@localhost ~]$ <span class="built_in">ulimit</span> -a</div><div class="line">core file size          (blocks, -c) 0</div><div class="line">data seg size           (kbytes, -d) unlimited</div><div class="line">scheduling priority             (-e) 0</div><div class="line">file size               (blocks, -f) unlimited</div><div class="line">pending signals                 (-i) 77824</div><div class="line">max locked memory       (kbytes, -l) 32</div><div class="line">max memory size         (kbytes, -m) unlimited</div><div class="line">open files                      (-n) 65535</div><div class="line">pipe size            (512 bytes, -p) 8</div><div class="line">POSIX message queues     (bytes, -q) 819200</div><div class="line">real-time priority              (-r) 0</div><div class="line">stack size              (kbytes, -s) 10240</div><div class="line">cpu time               (seconds, -t) unlimited</div><div class="line">max user processes              (-u) 77824</div><div class="line">virtual memory          (kbytes, -v) unlimited</div><div class="line">file locks                      (-x) unlimited</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;异常信息&quot;&gt;&lt;a href=&quot;#异常信息&quot; class=&quot;headerlink&quot; title=&quot;异常信息&quot;&gt;&lt;/a&gt;异常信息&lt;/h2&gt;&lt;p&gt;[alert] 14102#0: 1024 worker_connections are not enough&lt;/p&gt;
-&lt;p&gt;worker_connections 参数默认1024，不够用的话配置大一些，同时小于worker_rlimit_nofile 参数值。&lt;br&gt;&lt;figure class=&quot;highlight nginx&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#worker进程数，通常设置等同于CPU数量，auto为自动检测&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;worker_processes&lt;/span&gt;  auto;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#worker进程打开最大文件数，可CPU*10000设置&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;attribute&quot;&gt;worker_rlimit_nofile&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;100000&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;events&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;worker_connections&lt;/span&gt;  &lt;span class=&quot;number&quot;&gt;10240&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;#告诉nginx收到一个新链接通知后接受尽可能多的链接&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;attribute&quot;&gt;multi_accept&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;on&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;#设置用于复用客户端线程的轮训方法&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &lt;span class=&quot;attribute&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;epoll&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="技术" scheme="http://aimigit.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="nginx" scheme="http://aimigit.github.io/tags/nginx/"/>
     
   </entry>
   

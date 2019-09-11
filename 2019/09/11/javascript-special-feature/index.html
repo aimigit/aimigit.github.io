@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://aimigit.github.io">
-  <title>Archives: 2019 | 埃米的博客</title>
+  <title>javascript一些特点 | 埃米的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="埃米的博客">
-<meta property="og:url" content="http://aimigit.github.io/archives/2019/index.html">
+  <meta name="description" content="1.简介随着前后端分离架构兴起，涌现了一大批前端框架vue，react等，以及后端nodejs的发展，JavaScript又变的火热。温故而知新，温习一下廖雪峰的基础教程，记录一下。 1.1历史在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。 由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这">
+<meta name="keywords" content="技术,js,bug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript一些特点">
+<meta property="og:url" content="http://aimigit.github.io/2019/09/11/javascript-special-feature/index.html">
 <meta property="og:site_name" content="埃米的博客">
+<meta property="og:description" content="1.简介随着前后端分离架构兴起，涌现了一大批前端框架vue，react等，以及后端nodejs的发展，JavaScript又变的火热。温故而知新，温习一下廖雪峰的基础教程，记录一下。 1.1历史在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。 由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这">
+<meta property="og:updated_time" content="2019-09-11T11:28:15.464Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="埃米的博客">
+<meta name="twitter:title" content="javascript一些特点">
+<meta name="twitter:description" content="1.简介随着前后端分离架构兴起，涌现了一大批前端框架vue，react等，以及后端nodejs的发展，JavaScript又变的火热。温故而知新，温习一下廖雪峰的基础教程，记录一下。 1.1历史在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。 由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这">
   
     <link rel="alternative" href="/atom.xml" title="埃米的博客" type="application/atom+xml">
   
@@ -173,36 +178,113 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-javascript-special-feature" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/javascript-special-feature/" class="archive-article-date">
-  	<time datetime="2019-09-11T11:08:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/javascript-special-feature/">javascript一些特点</a>
+    <h1 class="article-title" itemprop="name">
+      javascript一些特点
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/11/javascript-special-feature/" class="archive-article-date">
+  	<time datetime="2019-09-11T11:08:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>随着前后端分离架构兴起，涌现了一大批前端框架vue，react等，以及后端nodejs的发展，JavaScript又变的火热。<br>温故而知新，温习一下廖雪峰的基础教程，记录一下。</p>
+<h1 id="1-1历史"><a href="#1-1历史" class="headerlink" title="1.1历史"></a>1.1历史</h1><p>在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。</p>
+<p>由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这哥们在两周之内设计出了JavaScript语言。你没看错，这哥们只用了10天时间。</p>
+<p>为什么起名叫JavaScript？原因是当时Java语言非常红火，所以网景公司希望借Java的名气来推广，但事实上JavaScript除了语法上有点像Java，其他部分基本上没啥关系。</p>
+<a id="more"></a>
+<h1 id="2-特点"><a href="#2-特点" class="headerlink" title="2.特点"></a>2.特点</h1><h2 id="2-1比较运算符"><a href="#2-1比较运算符" class="headerlink" title="2.1比较运算符"></a>2.1比较运算符</h2><p>false == 0; // true<br>false === 0; // false</p>
+<p>要特别注意相等运算符==。JavaScript在设计时，有两种比较运算符：</p>
+<p>第一种是==比较，它会自动转换数据类型再比较，很多时候，会得到非常诡异的结果；</p>
+<p>第二种是===比较，它不会自动转换数据类型，如果数据类型不一致，返回false，如果一致，再比较。</p>
+<h2 id="2-2strict模式"><a href="#2-2strict模式" class="headerlink" title="2.2strict模式"></a>2.2strict模式</h2><p>JavaScript在设计之初，为了方便初学者学习，并不强制要求用var申明变量。这个设计错误带来了严重的后果：如果一个变量没有通过var申明就被使用，那么该变量就自动被申明为全局变量：</p>
+<p>i = 10; // i现在是全局变量</p>
+<p>在同一个页面的不同的JavaScript文件中，如果都不用var申明，恰好都使用了变量i，将造成变量i互相影响，产生难以调试的错误结果。</p>
+<p>使用var申明的变量则不是全局变量，它的范围被限制在该变量被申明的函数体内（函数的概念将稍后讲解），同名变量在不同的函数体内互不冲突。</p>
+<p>为了修补JavaScript这一严重设计缺陷，ECMA在后续规范中推出了strict模式，在strict模式下运行的JavaScript代码，强制通过var申明变量，未使用var申明变量就使用的，将导致运行错误。</p>
+<p>启用strict模式的方法是在JavaScript代码的第一行写上：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line">这是一个字符串，不支持strict模式的浏览器会把它当做一个字符串语句执行，支持strict模式的浏览器将开启strict模式运行JavaScript。</div><div class="line"></div><div class="line"><span class="keyword">var</span> s = <span class="string">'Test'</span>;</div><div class="line">s[<span class="number">0</span>] = <span class="string">'X'</span>;</div><div class="line">alert(s); <span class="comment">// s仍然为'Test'</span></div></pre></td></tr></table></figure></p>
+<p>JavaScript为字符串提供了一些常用方法，注意，调用这些方法本身不会改变原有字符串的内容，而是返回一个新字符串：</p>
+<h2 id="2-3arguments"><a href="#2-3arguments" class="headerlink" title="2.3arguments"></a>2.3arguments</h2><p>JavaScript还有一个免费赠送的关键字arguments，它只在函数内部起作用，并且永远指向当前函数的调用者传入的所有参数。arguments类似Array但它不是一个Array：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'x = '</span> + x); <span class="comment">// 10</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'arg '</span> + i + <span class="string">' = '</span> + <span class="built_in">arguments</span>[i]); <span class="comment">// 10, 20, 30</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">foo(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="2-4变量提升"><a href="#2-4变量提升" class="headerlink" title="2.4变量提升"></a>2.4变量提升</h2><p>JavaScript的函数定义有个特点，它会先扫描整个函数体的语句，把所有申明的变量“提升”到函数顶部：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> x = <span class="string">'Hello, '</span> + y;</div><div class="line">    <span class="built_in">console</span>.log(x);</div><div class="line">    <span class="keyword">var</span> y = <span class="string">'Bob'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo();</div></pre></td></tr></table></figure></p>
+<p>虽然是strict模式，但语句var x = ‘Hello, ‘ + y;并不报错，原因是变量y在稍后申明了。但是console.log显示Hello, undefined，说明变量y的值为undefined。这正是因为JavaScript引擎自动提升了变量y的声明，但不会提升变量y的赋值。</p>
+<p>对于上述foo()函数，JavaScript引擎看到的代码相当于：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> y; <span class="comment">// 提升变量y的申明，此时y为undefined</span></div><div class="line">    <span class="keyword">var</span> x = <span class="string">'Hello, '</span> + y;</div><div class="line">    <span class="built_in">console</span>.log(x);</div><div class="line">    y = <span class="string">'Bob'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>由于JavaScript的这一怪异的“特性”，我们在函数内部定义变量时，请严格遵守“在函数内部首先申明所有变量”这一规则。最常见的做法是用一个var申明函数内部用到的所有变量：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span></div><div class="line">        x = <span class="number">1</span>, <span class="comment">// x初始化为1</span></div><div class="line">        y = x + <span class="number">1</span>, <span class="comment">// y初始化为2</span></div><div class="line">        z, i; <span class="comment">// z和i为undefined</span></div><div class="line">    <span class="comment">// 其他语句:</span></div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++) &#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-5全局作用域"><a href="#2-5全局作用域" class="headerlink" title="2.5全局作用域"></a>2.5全局作用域</h2><p>不在任何函数内定义的变量就具有全局作用域。实际上，JavaScript默认有一个全局对象window，全局作用域的变量实际上被绑定到window的一个属性：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> course = <span class="string">'Learn JavaScript'</span>;</div><div class="line">alert(course); <span class="comment">// 'Learn JavaScript'</span></div><div class="line">alert(<span class="built_in">window</span>.course); <span class="comment">// 'Learn JavaScript'</span></div></pre></td></tr></table></figure></p>
+<p>因此，直接访问全局变量course和访问window.course是完全一样的。</p>
+<p>你可能猜到了，由于函数定义有两种方式，以变量方式var foo = function () {}定义的函数实际上也是一个全局变量，因此，顶层函数的定义也被视为一个全局变量，并绑定到window对象：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">'foo'</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(); <span class="comment">// 直接调用foo()</span></div><div class="line"><span class="built_in">window</span>.foo(); <span class="comment">// 通过window.foo()调用</span></div></pre></td></tr></table></figure></p>
+<p>这说明JavaScript实际上只有一个全局作用域。任何变量（函数也视为变量），如果没有在当前函数作用域中找到，就会继续往上查找，最后如果在全局作用域中也没有找到，则报ReferenceError错误。</p>
+<h2 id="2-6名字空间"><a href="#2-6名字空间" class="headerlink" title="2.6名字空间"></a>2.6名字空间</h2><p>全局变量会绑定到window上，不同的JavaScript文件如果使用了相同的全局变量，或者定义了相同名字的顶层函数，都会造成命名冲突，并且很难被发现。</p>
+<p>减少冲突的一个方法是把自己的所有变量和函数全部绑定到一个全局变量中。例如：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 唯一的全局变量MYAPP:</span></div><div class="line"><span class="keyword">var</span> MYAPP = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 其他变量:</span></div><div class="line">MYAPP.name = <span class="string">'myapp'</span>;</div><div class="line">MYAPP.version = <span class="number">1.0</span>;</div><div class="line"></div><div class="line"><span class="comment">// 其他函数:</span></div><div class="line">MYAPP.foo = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">'foo'</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>把自己的代码全部放入唯一的名字空间MYAPP中，会大大减少全局变量冲突的可能。</p>
+<p>许多著名的JavaScript库都是这么干的：jQuery，YUI，underscore等等。</p>
+<h2 id="2-7在JavaScript中，Date对象用来表示日期和时间。"><a href="#2-7在JavaScript中，Date对象用来表示日期和时间。" class="headerlink" title="2.7在JavaScript中，Date对象用来表示日期和时间。"></a>2.7在JavaScript中，Date对象用来表示日期和时间。</h2><p>要获取系统当前时间，用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line">now; <span class="comment">// Wed Jun 24 2015 19:49:22 GMT+0800 (CST)</span></div><div class="line">now.getFullYear(); <span class="comment">// 2015, 年份</span></div><div class="line"> now.getMonth(); <span class="comment">// 5, 月份，注意月份范围是0~11，5表示六月</span></div><div class="line">now.getDate(); <span class="comment">// 24, 表示24号</span></div><div class="line">now.getDay(); <span class="comment">// 3, 表示星期三</span></div><div class="line">now.getHours(); <span class="comment">// 19, 24小时制</span></div><div class="line">now.getMinutes(); <span class="comment">// 49, 分钟</span></div><div class="line">now.getSeconds(); <span class="comment">// 22, 秒</span></div><div class="line">now.getMilliseconds(); <span class="comment">// 875, 毫秒数</span></div><div class="line">now.getTime(); <span class="comment">// 1435146562875, 以number形式表示的时间戳</span></div></pre></td></tr></table></figure></p>
+<p>注意，当前时间是浏览器从本机操作系统获取的时间，所以不一定准确，因为用户可以把当前时间设定为任何值。</p>
+<p>如果要创建一个指定日期和时间的Date对象，可以用：</p>
+<p>var d = new Date(2015, 5, 19, 20, 15, 30, 123);<br>d; // Fri Jun 19 2015 20:15:30 GMT+0800 (CST)</p>
+<p>你可能观察到了一个非常非常坑爹的地方，就是JavaScript的月份范围用整数表示是0~11，0表示一月，1表示二月……，所以要表示6月，我们传入的是5！这绝对是JavaScript的设计者当时脑抽了一下，但是现在要修复已经不可能了。</p>
+<h2 id="2-8-null和undefined"><a href="#2-8-null和undefined" class="headerlink" title="2.8 null和undefined"></a>2.8 null和undefined</h2><p>null属于对象（object）的一种，意思是该对象为空；undefined则是一种数据类型，表示未定义。</p>
+<p>　　typeof null; // object</p>
+<p>　　typeof undefined; // undefined</p>
+<p>两者非常容易混淆，但是含义完全不同。</p>
+<p>　　var foo;</p>
+<p>　　alert(foo == null); // true</p>
+<p>　　alert(foo == undefined); // true</p>
+<p>　　alert(foo === null); // false</p>
+<p>　　alert(foo === undefined); // true</p>
+
+
+        <span id="busuanzi_container_page_pv" style="font-size:12px;font-style:italic;float:right;">
+                点击量 <span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>如有帮助，谢谢赞赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blog_img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blog_img/wechat_pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -222,432 +304,103 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://aimigit.github.io/2019/09/11/javascript-special-feature/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/01/echart-miniprogram-fontsize/" class="archive-article-date">
-  	<time datetime="2019-09-01T14:23:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/01/echart-miniprogram-fontsize/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">echart小程序字体大小失效问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/01/echart-miniprogram-fontsize/">echart小程序字体大小失效问题</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">echart</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/31/java-list-groupby/" class="archive-article-date">
-  	<time datetime="2019-08-31T08:15:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/31/java-list-groupby/">java-list-分组方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">stream</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/16/js-es6-arrow-functions/" class="archive-article-date">
-  	<time datetime="2019-08-16T01:36:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/16/js-es6-arrow-functions/">箭头函数(=&gt;)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/12/yapi-deploy/" class="archive-article-date">
-  	<time datetime="2019-08-12T02:18:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/12/yapi-deploy/">yapi部署</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yapi</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/24/mysql-user-password/" class="archive-article-date">
-  	<time datetime="2019-06-24T15:01:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/24/mysql-user-password/">MySQL创建用户与破解密码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">密码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/27/mysql-table-dic/" class="archive-article-date">
-  	<time datetime="2019-03-27T11:56:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/27/mysql-table-dic/">mysql生成数据字典</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/01/centos-java-env/" class="archive-article-date">
-  	<time datetime="2019-02-01T08:38:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/01/centos-java-env/">centos7 安装java环境</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/10/js-for/" class="archive-article-date">
-  	<time datetime="2019-01-10T11:41:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/10/js-for/">js-for循环遍历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/09/js-json-object/" class="archive-article-date">
-  	<time datetime="2019-01-09T03:17:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/09/js-json-object/">js-json对象和字符串转换</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -683,8 +436,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
