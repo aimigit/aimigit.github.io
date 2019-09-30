@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://aimigit.github.io">
-  <title>埃米的博客</title>
+  <title>http-header-安全策略 | 埃米的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="埃米的博客">
-<meta property="og:url" content="http://aimigit.github.io/index.html">
+  <meta name="description" content="1.简介一个java web项目使用华为云漏洞扫描服务，扫出了几百个低危漏洞，仔细查看一下，大多数是http header 安全策略配置。解决思路，使用Filter过滤大多数请求，添加请求头，解决大部分问题，剩下的具体分析。 2. 方法1 Filter过滤2.1 MySecurityFilter1234567891011121314151617181920212223242526272829303">
+<meta name="keywords" content="技术,http,漏洞">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http-header-安全策略">
+<meta property="og:url" content="http://aimigit.github.io/2019/09/30/http-header-security/index.html">
 <meta property="og:site_name" content="埃米的博客">
+<meta property="og:description" content="1.简介一个java web项目使用华为云漏洞扫描服务，扫出了几百个低危漏洞，仔细查看一下，大多数是http header 安全策略配置。解决思路，使用Filter过滤大多数请求，添加请求头，解决大部分问题，剩下的具体分析。 2. 方法1 Filter过滤2.1 MySecurityFilter1234567891011121314151617181920212223242526272829303">
+<meta property="og:updated_time" content="2019-09-30T08:46:47.687Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="埃米的博客">
+<meta name="twitter:title" content="http-header-安全策略">
+<meta name="twitter:description" content="1.简介一个java web项目使用华为云漏洞扫描服务，扫出了几百个低危漏洞，仔细查看一下，大多数是http header 安全策略配置。解决思路，使用Filter过滤大多数请求，添加请求头，解决大部分问题，剩下的具体分析。 2. 方法1 Filter过滤2.1 MySecurityFilter1234567891011121314151617181920212223242526272829303">
   
     <link rel="alternative" href="/atom.xml" title="埃米的博客" type="application/atom+xml">
   
@@ -173,16 +178,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-http-header-security" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-http-header-security" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/30/http-header-security/">http-header-安全策略</a>
+    <h1 class="article-title" itemprop="name">
+      http-header-安全策略
     </h1>
   
 
@@ -197,11 +200,64 @@
       
         <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>一个java web项目使用华为云漏洞扫描服务，扫出了几百个低危漏洞，仔细查看一下，大多数是http header 安全策略配置。解决思路，使用Filter过滤大多数请求，添加请求头，解决大部分问题，剩下的具体分析。</p>
 <h1 id="2-方法1-Filter过滤"><a href="#2-方法1-Filter过滤" class="headerlink" title="2. 方法1 Filter过滤"></a>2. 方法1 Filter过滤</h1><h2 id="2-1-MySecurityFilter"><a href="#2-1-MySecurityFilter" class="headerlink" title="2.1 MySecurityFilter"></a>2.1 MySecurityFilter</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: MySecurityFilter </span></div><div class="line"><span class="comment"> * <span class="doctag">@Description</span>: 请求安全过滤</span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span>: aimigit</span></div><div class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019年9月26日 上午11:03:24</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySecurityFilter</span> <span class="keyword">implements</span> <span class="title">Filter</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span></span></div><div class="line"><span class="function">			<span class="keyword">throws</span> IOException, ServletException </span>&#123;</div><div class="line">		HttpServletRequest req = (HttpServletRequest) request;</div><div class="line">		HttpServletResponse res = (HttpServletResponse) response;</div><div class="line">		res.setHeader(<span class="string">"x-frame-options"</span>, <span class="string">"SAMEORIGIN"</span>);</div><div class="line">		res.setHeader(<span class="string">"X-XSS-Protection"</span>, <span class="string">"1; mode=block"</span>);</div><div class="line">		res.setHeader(<span class="string">"X-Content-Type-Options"</span>, <span class="string">"nosniff"</span>);</div><div class="line"><span class="comment">//		res.setHeader("Content-Security-Policy", "default-src 'self';");</span></div><div class="line">		chain.doFilter(request, response);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/09/30/http-header-security/#more">more >></a>
-        
+<a id="more"></a>
+<h2 id="2-2web-xml配置"><a href="#2-2web-xml配置" class="headerlink" title="2.2web.xml配置"></a>2.2web.xml配置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>MySecurityFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.fourfaith.baseManager.filters.MySecurityFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>MySecurityFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="方法2，使用apache-HttpHeaderSecurityFilter"><a href="#方法2，使用apache-HttpHeaderSecurityFilter" class="headerlink" title="方法2，使用apache HttpHeaderSecurityFilter"></a>方法2，使用apache HttpHeaderSecurityFilter</h1><p>tomcat8+版本支持HttpHeaderSecurityFilter,tomcat8以下版本需要下载httpHeaderSecurity.jar这个包.<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>httpHeaderSecurity<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>org.apache.catalina.filters.HttpHeaderSecurityFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">async-supported</span>&gt;</span>true<span class="tag">&lt;/<span class="name">async-supported</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>antiClickJackingEnabled<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">init-param</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>antiClickJackingOption<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>SAMEORIGIN<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>httpHeaderSecurity<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h1 id="3-http-header-参数说明"><a href="#3-http-header-参数说明" class="headerlink" title="3.http header 参数说明"></a>3.http header 参数说明</h1><h2 id="3-1x-frame-options"><a href="#3-1x-frame-options" class="headerlink" title="3.1x-frame-options"></a>3.1x-frame-options</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">The X-Frame-Options HTTP 响应头是用来给浏览器 指示允许一个页面 可否在 <span class="tag">&lt;<span class="name">frame</span>&gt;</span>, <span class="tag">&lt;<span class="name">iframe</span>&gt;</span>, <span class="tag">&lt;<span class="name">embed</span>&gt;</span> 或者 <span class="tag">&lt;<span class="name">object</span>&gt;</span> 中展现的标记。站点可以通过确保网站没有被嵌入到别人的站点里面，从而避免 clickjacking 攻击。</div></pre></td></tr></table></figure>
+<p>The added security is only provided if the user accessing the document is using a browser supporting X-Frame-Options. Content-Security-Policy HTTP 头中的 frame-ancestors 指令会替代这个非标准的 header。CSP 的 frame-ancestors 会在 Gecko 4.0 中支持，但是并不会被所有浏览器支持。然而 X-Frame-Options 是个已广泛支持的非官方标准，可以和 CSP 结合使用。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">X-Frame-Options 有三个可能的值：</div><div class="line">X-Frame-Options: deny</div><div class="line">X-Frame-Options: sameorigin</div><div class="line">X-Frame-Options: allow-from https://example.com/</div><div class="line"></div><div class="line">换一句话说，如果设置为 deny，不光在别人的网站 frame 嵌入时会无法加载，在同域名页面中同样会无法加载。另一方面，如果设置为sameorigin，那么页面就可以在同域名页面的 frame 中嵌套。</div><div class="line"></div><div class="line">deny</div><div class="line">表示该页面不允许在 frame 中展示，即便是在相同域名的页面中嵌套也不允许。</div><div class="line">sameorigin</div><div class="line">表示该页面可以在相同域名页面的 frame 中展示。</div><div class="line">allow-from uri</div><div class="line">表示该页面可以在指定来源的 frame 中展示。</div></pre></td></tr></table></figure></p>
+<p>参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/X-Frame-Options" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/X-Frame-Options</a></p>
+<h2 id="3-2X-XSS-Protection"><a href="#3-2X-XSS-Protection" class="headerlink" title="3.2X-XSS-Protection"></a>3.2X-XSS-Protection</h2><p>HTTP X-XSS-Protection 响应头是Internet Explorer，Chrome和Safari的一个功能，当检测到跨站脚本攻击 (XSS)时，浏览器将停止加载页面。虽然这些保护在现代浏览器中基本上是不必要的，当网站实施一个强大的Content-Security-Policy来禁用内联的JavaScript (‘unsafe-inline’)时, 他们仍然可以为尚不支持 CSP 的旧版浏览器的用户提供保护。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">语法</div><div class="line">X-XSS-Protection: 0</div><div class="line">X-XSS-Protection: 1</div><div class="line">X-XSS-Protection: 1; mode=block</div><div class="line">X-XSS-Protection: 1; report=<span class="tag">&lt;<span class="name">reporting-uri</span>&gt;</span></div><div class="line">0</div><div class="line">禁止XSS过滤。</div><div class="line">1</div><div class="line">启用XSS过滤（通常浏览器是默认的）。 如果检测到跨站脚本攻击，浏览器将清除页面（删除不安全的部分）。</div><div class="line">1;mode=block</div><div class="line">启用XSS过滤。 如果检测到攻击，浏览器将不会清除页面，而是阻止页面加载。</div><div class="line">1; report=<span class="tag">&lt;<span class="name">reporting-URI</span>&gt;</span>  (Chromium only)</div><div class="line">启用XSS过滤。 如果检测到跨站脚本攻击，浏览器将清除页面并使用CSP report-uri指令的功能发送违规报告。</div></pre></td></tr></table></figure></p>
+<p>参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-XSS-Protection" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-XSS-Protection</a></p>
+<h2 id="3-3X-Content-Type-Options"><a href="#3-3X-Content-Type-Options" class="headerlink" title="3.3X-Content-Type-Options"></a>3.3X-Content-Type-Options</h2><p>X-Content-Type-Options 响应首部相当于一个提示标志，被服务器用来提示客户端一定要遵循在 Content-Type 首部中对  MIME 类型 的设定，而不能对其进行修改。这就禁用了客户端的 MIME 类型嗅探行为，换句话说，也就是意味着网站管理员确定自己的设置没有问题。</p>
+<p>这个消息首部最初是由微软在 IE 8 浏览器中引入的，提供给网站管理员用作禁用内容嗅探的手段，内容嗅探技术可能会把不可执行的 MIME 类型转变为可执行的 MIME 类型。在此之后，其他浏览器也相继引入了这个首部，尽管它们的 MIME 嗅探算法没有那么有侵略性。</p>
+<p>站点安全测试人员通常欢迎对这个首部进行设置。</p>
+<p>注意: nosniff 只应用于 “script” 和 “style” 两种类型。事实证明，将其应用于图片类型的文件会导致与现有的站点冲突。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">语法</div><div class="line">X-Content-Type-Options: nosniff</div><div class="line"></div><div class="line">下面两种情况的请求将被阻止：</div><div class="line">请求类型是"style" 但是 MIME 类型不是 "text/css"，</div><div class="line">请求类型是"script" 但是 MIME 类型不是  JavaScript MIME 类型。</div></pre></td></tr></table></figure></p>
+<p>参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Content-Type-Options" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Content-Type-Options</a></p>
+<h2 id="3-4-Content-Security-Policy"><a href="#3-4-Content-Security-Policy" class="headerlink" title="3.4 Content-Security-Policy"></a>3.4 Content-Security-Policy</h2><p>内容安全策略   (CSP) 是一个额外的安全层，用于检测并削弱某些特定类型的攻击，包括跨站脚本 (XSS) 和数据注入攻击等。无论是数据盗取、网站内容污染还是散发恶意软件，这些攻击都是主要的手段。</p>
+<p>CSP 被设计成完全向后兼容（除CSP2 在向后兼容有明确提及的不一致;  更多细节查看这里 章节1.1）。不支持CSP的浏览器也能与实现了CSP的服务器正常合作，反之亦然：不支持 CSP 的浏览器只会忽略它，如常运行，默认为网页内容使用标准的同源策略。如果网站不提供 CSP 头部，浏览器也使用标准的同源策略。</p>
+<p>为使CSP可用, 你需要配置你的网络服务器返回  Content-Security-Policy  HTTP头部 ( 有时你会看到一些关于X-Content-Security-Policy头部的提法, 那是旧版本，你无须再如此指定它)。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">除此之外,  <span class="tag">&lt;<span class="name">meta</span>&gt;</span>  元素也可以被用来配置该策略, 例如</div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Security-Policy"</span> <span class="attr">content</span>=<span class="string">"default-src 'self'; img-src https://*; child-src 'none';"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">使用 CSP</div><div class="line">配置内容安全策略涉及到添加 Content-Security-Policy  HTTP头部到一个页面，并配置相应的值，以控制用户代理（浏览器等）可以为该页面获取哪些资源。比如一个可以上传文件和显示图片页面，应该允许图片来自任何地方，但限制表单的action属性只可以赋值为指定的端点。一个经过恰当设计的内容安全策略应该可以有效的保护页面免受跨站脚本攻击。本文阐述如何恰当的构造这样的头部，并提供了一些例子。</div><div class="line"></div><div class="line">制定策略</div><div class="line">你可以使用  Content-Security-Policy HTTP头部 来指定你的策略，像这样:</div><div class="line">Content-Security-Policy: policy</div><div class="line">policy参数是一个包含了各种描述你的CSP策略指令的字符串。</div><div class="line"></div><div class="line">描述策略</div><div class="line">一个策略由一系列策略指令所组成，每个策略指令都描述了一个针对某个特定类型资源以及生效范围的策略。你的策略应当包含一个default-src策略指令，在其他资源类型没有符合自己的策略时应用该策略(有关完整列表查看default-src )。一个策略可以包含 default-src  或者 script-src 指令来防止内联脚本运行, 并杜绝eval()的使用。 一个策略也可包含一个 default-src 或  style-src 指令去限制来自一个 <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"> 元素或者style属性的內联样式。</span></div></pre></td></tr></table></figure>
+<h1 id="4-其他"><a href="#4-其他" class="headerlink" title="4.其他"></a>4.其他</h1><p>IBM的AppScan软件也可以用来漏洞检测。</p>
+<p>EOF.</p>
+
+
+        <span id="busuanzi_container_page_pv" style="font-size:12px;font-style:italic;float:right;">
+                点击量 <span id="busuanzi_value_page_pv"></span>次
+        </span>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>如有帮助，谢谢赞赏<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blog_img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blog_img/wechat_pay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -229,16 +285,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/30/http-header-security/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://aimigit.github.io/2019/09/30/http-header-security/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/11/javascript-special-feature/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">javascript一些特点</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -258,781 +373,12 @@
 
 
 
-
-  
-    <article id="post-javascript-special-feature" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/11/javascript-special-feature/">javascript一些特点</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/11/javascript-special-feature/" class="archive-article-date">
-  	<time datetime="2019-09-11T11:08:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>随着前后端分离架构兴起，涌现了一大批前端框架vue，react等，以及后端nodejs的发展，JavaScript又变的火热。<br>温故而知新，温习一下廖雪峰的基础教程，记录一下。</p>
-<h1 id="1-1历史"><a href="#1-1历史" class="headerlink" title="1.1历史"></a>1.1历史</h1><p>在上个世纪的1995年，当时的网景公司正凭借其Navigator浏览器成为Web时代开启时最著名的第一代互联网公司。</p>
-<p>由于网景公司希望能在静态HTML页面上添加一些动态效果，于是叫Brendan Eich这哥们在两周之内设计出了JavaScript语言。你没看错，这哥们只用了10天时间。</p>
-<p>为什么起名叫JavaScript？原因是当时Java语言非常红火，所以网景公司希望借Java的名气来推广，但事实上JavaScript除了语法上有点像Java，其他部分基本上没啥关系。</p>
-        
-          <a class="article-more-a" href="/2019/09/11/javascript-special-feature/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/11/javascript-special-feature/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-echart-miniprogram-fontsize" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/01/echart-miniprogram-fontsize/">echart小程序字体大小失效问题</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/01/echart-miniprogram-fontsize/" class="archive-article-date">
-  	<time datetime="2019-09-01T14:23:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="echart简介"><a href="#echart简介" class="headerlink" title="echart简介"></a>echart简介</h1><p>ECharts，一个使用 JavaScript 实现的开源可视化库，可以流畅的运行在 PC 和移动设备上，兼容当前绝大部分浏览器（IE8/9/10/11，Chrome，Firefox，Safari等），底层依赖矢量图形库 ZRender，提供直观，交互丰富，可高度个性化定制的数据可视化图表。</p>
-<p>ECharts 提供了常规的折线图、柱状图、散点图、饼图、K线图，用于统计的盒形图，用于地理数据可视化的地图、热力图、线图，用于关系数据可视化的关系图、treemap、旭日图，多维数据可视化的平行坐标，还有用于 BI 的漏斗图，仪表盘，并且支持图与图之间的混搭。</p>
-        
-          <a class="article-more-a" href="/2019/09/01/echart-miniprogram-fontsize/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">小程序</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">echart</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/01/echart-miniprogram-fontsize/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-java-list-groupby" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/31/java-list-groupby/">java-list-分组方法</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/31/java-list-groupby/" class="archive-article-date">
-  	<time datetime="2019-08-31T08:15:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>项目开发经常会碰到数据分组，大多数通过sql group by处理，但有时也需要在java做分组。</p>
-<h1 id="2-方法"><a href="#2-方法" class="headerlink" title="2.方法"></a>2.方法</h1><p>定义一个Student类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line"></div><div class="line">	  <span class="keyword">private</span> Integer id;</div><div class="line">	  <span class="keyword">private</span> Integer age;</div><div class="line">	  <span class="keyword">private</span> String name;</div><div class="line">	  <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(Integer couponId, Integer price, String name)</span> </span>&#123;</div><div class="line">	    <span class="keyword">this</span>.id = couponId;</div><div class="line">	    <span class="keyword">this</span>.age = price;</div><div class="line">	    <span class="keyword">this</span>.name = name;</div><div class="line">	  &#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.id = id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getAge</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(Integer age)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/08/31/java-list-groupby/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">stream</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/31/java-list-groupby/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js-es6-arrow-functions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/16/js-es6-arrow-functions/">箭头函数(=&gt;)</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/16/js-es6-arrow-functions/" class="archive-article-date">
-  	<time datetime="2019-08-16T01:36:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>箭头函数表达式的语法比函数表达式更简洁，并且没有自己的this，arguments，super或 new.target。这些函数表达式更适用于那些本来需要匿名函数的地方，并且它们不能用作构造函数。</p>
-<h1 id="2-语法"><a href="#2-语法" class="headerlink" title="2.语法"></a>2.语法</h1><h2 id="2-1-基础语法"><a href="#2-1-基础语法" class="headerlink" title="2.1 基础语法"></a>2.1 基础语法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">(参数<span class="number">1</span>, 参数<span class="number">2</span>, …, 参数N) =&gt; &#123; 函数声明 &#125;</div><div class="line"></div><div class="line"><span class="comment">//相当于：(参数1, 参数2, …, 参数N) =&gt;&#123; return 表达式; &#125;</span></div><div class="line">(参数<span class="number">1</span>, 参数<span class="number">2</span>, …, 参数N) =&gt; 表达式（单一）</div><div class="line"></div><div class="line"><span class="comment">// 当只有一个参数时，圆括号是可选的：</span></div><div class="line">(单一参数) =&gt; &#123;函数声明&#125;</div><div class="line">单一参数 =&gt; &#123;函数声明&#125;</div><div class="line"></div><div class="line"><span class="comment">// 没有参数的函数应该写成一对圆括号。</span></div><div class="line">() =&gt; &#123;函数声明&#125;</div></pre></td></tr></table></figure>
-<h2 id="2-2-高级语法"><a href="#2-2-高级语法" class="headerlink" title="2.2 高级语法"></a>2.2 高级语法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//加括号的函数体返回对象字面表达式：</span></div><div class="line">参数=&gt; (&#123;<span class="attr">foo</span>: bar&#125;)</div><div class="line"></div><div class="line"><span class="comment">//支持剩余参数和默认参数</span></div><div class="line">(参数<span class="number">1</span>, 参数<span class="number">2</span>, ...rest) =&gt; &#123;函数声明&#125;</div><div class="line">(参数<span class="number">1</span> = 默认值<span class="number">1</span>,参数<span class="number">2</span>, …, 参数N = 默认值N) =&gt; &#123;函数声明&#125;</div><div class="line"></div><div class="line"><span class="comment">//同样支持参数列表解构</span></div><div class="line"><span class="keyword">let</span> f = <span class="function">(<span class="params">[a, b] = [<span class="number">1</span>, <span class="number">2</span>], &#123;x: c&#125; = &#123;x: a + b&#125;</span>) =&gt;</span> a + b + c;</div><div class="line">f();  <span class="comment">// 6</span></div></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/08/16/js-es6-arrow-functions/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/16/js-es6-arrow-functions/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-yapi-deploy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/12/yapi-deploy/">yapi部署</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/12/yapi-deploy/" class="archive-article-date">
-  	<time datetime="2019-08-12T02:18:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="1-yapi简介"><a href="#1-yapi简介" class="headerlink" title="1. yapi简介"></a>1. yapi简介</h1><p>YApi 是一款多人协作的 api 管理平台，提供了 api 文档管理，api 数据 模拟（Mock），调试和自动化测试 api 等功能。主要解决前后端分离带来的以下痛点：</p>
-<ul>
-<li>接口文档不可靠。很多小伙伴管理接口文档，有使用wiki的，有word文档的，甚至还有用聊天软件口口相传的，后端接口对于前端就像一个黑盒子，经常遇到问题是接口因未知原因增加参数了，参数名变了，参数被删除了。 </li>
-<li>mock 数据生成方案没有统一出口。我们都有这样的经历，前端开发功能依赖后端，解决方案有自己在代码注入json的，还有后端工程师临时搭建一套测试数据服务器，这种情况下势必会影响工作效率和代码质量，也不能及时进行更新。 </li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/08/12/yapi-deploy/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yapi</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/12/yapi-deploy/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mysql-user-password" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/24/mysql-user-password/">MySQL创建用户与破解密码</a>
-    </h1>
-  
-
-        
-        <a href="/2019/06/24/mysql-user-password/" class="archive-article-date">
-  	<time datetime="2019-06-24T15:01:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="MySQL创建用户与破解密码"><a href="#MySQL创建用户与破解密码" class="headerlink" title="MySQL创建用户与破解密码"></a>MySQL创建用户与破解密码</h1><h2 id="一-创建用户"><a href="#一-创建用户" class="headerlink" title="一. 创建用户"></a>一. 创建用户</h2><p>命令:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'username'</span>@<span class="string">'host'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'password'</span>;</div></pre></td></tr></table></figure></p>
-<p>说明：<br>username：你将创建的用户名<br>host：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符%<br>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</p>
-<p>例子：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'dog'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'123456'</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'pig'</span>@<span class="string">'192.168.1.101_'</span> IDENDIFIED <span class="keyword">BY</span> <span class="string">'123456'</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'pig'</span>@<span class="string">'%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'123456'</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'pig'</span>@<span class="string">'%'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">''</span>;</div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">'pig'</span>@<span class="string">'%'</span>;</div></pre></td></tr></table></figure></p>
-<h2 id="二-授权"><a href="#二-授权" class="headerlink" title="二. 授权:"></a>二. 授权:</h2><p>命令:<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GRANT</span> <span class="keyword">privileges</span> <span class="keyword">ON</span> databasename.tablename <span class="keyword">TO</span> <span class="string">'username'</span>@<span class="string">'host'</span></div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/06/24/mysql-user-password/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">密码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/06/24/mysql-user-password/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mysql-table-dic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/27/mysql-table-dic/">mysql生成数据字典</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/27/mysql-table-dic/" class="archive-article-date">
-  	<time datetime="2019-03-27T11:56:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="mysql生成数据字典"><a href="#mysql生成数据字典" class="headerlink" title="mysql生成数据字典"></a>mysql生成数据字典</h2><p>通过information_schema 读取数据库信息<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span></div><div class="line">	C.TABLE_NAME <span class="keyword">AS</span> <span class="string">'表'</span>,</div><div class="line">	T.TABLE_COMMENT <span class="keyword">AS</span> <span class="string">'表名'</span>,</div><div class="line">	C.COLUMN_NAME <span class="keyword">AS</span> <span class="string">'字段名'</span>,</div><div class="line">	C.COLUMN_TYPE <span class="keyword">AS</span> <span class="string">'数据类型'</span>,</div><div class="line">	C.COLUMN_COMMENT <span class="keyword">AS</span> <span class="string">'字段说明'</span>,</div><div class="line">	C.IS_NULLABLE <span class="keyword">AS</span> <span class="string">'允许为空'</span>,</div><div class="line">	C.COLUMN_KEY <span class="keyword">AS</span> <span class="string">'键'</span></div><div class="line"><span class="keyword">FROM</span></div><div class="line">	information_schema.COLUMNS C</div><div class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> information_schema.TABLES T <span class="keyword">ON</span> C.TABLE_SCHEMA = T.TABLE_SCHEMA</div><div class="line"><span class="keyword">AND</span> C.TABLE_NAME = T.TABLE_NAME</div><div class="line"><span class="keyword">WHERE</span></div><div class="line">	T.TABLE_SCHEMA = <span class="string">'数据库名'</span></div></pre></td></tr></table></figure></p>
-
-
-        <span id="busuanzi_container_page_pv" style="font-size:12px;font-style:italic;float:right;">
-                点击量 <span id="busuanzi_value_page_pv"></span>次
-        </span>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/27/mysql-table-dic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-centos-java-env" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/01/centos-java-env/">centos7 安装java环境</a>
-    </h1>
-  
-
-        
-        <a href="/2019/02/01/centos-java-env/" class="archive-article-date">
-  	<time datetime="2019-02-01T08:38:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="tar方式安装JDK"><a href="#tar方式安装JDK" class="headerlink" title="tar方式安装JDK"></a>tar方式安装JDK</h2><p>在服务器用wget一直下载失败。<br>官网下载jdk1.8，<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html</a><br>下载后上传到服务器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#查看服务器java</span></div><div class="line">java version</div><div class="line"></div><div class="line"><span class="comment">#解压</span></div><div class="line">tar -zxvf jdk-8u202-linux-x64.tar.gz -C /usr/<span class="built_in">local</span>/jdk1.8.0_202</div><div class="line"></div><div class="line"><span class="comment">#配置环境变量</span></div><div class="line">vim /etc/profile</div><div class="line"><span class="comment">#向文件里面追加以下内容：</span></div><div class="line"><span class="comment">#set java environment</span></div><div class="line">JAVA_HOME=/usr/java/jdk1.8.0_152</div><div class="line">JRE_HOME=<span class="variable">$JAVA_HOME</span>/jre</div><div class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$JRE_HOME</span>/bin</div><div class="line">CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar:<span class="variable">$JRE_HOME</span>/lib</div><div class="line"><span class="built_in">export</span> JAVA_HOME JRE_HOME PATH CLASSPATH</div><div class="line"></div><div class="line"><span class="comment">#使配置文件生效</span></div><div class="line"><span class="built_in">source</span> /etc/profile</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/02/01/centos-java-env/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/02/01/centos-java-env/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js-for" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/js-for/">js-for循环遍历</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/10/js-for/" class="archive-article-date">
-  	<time datetime="2019-01-10T11:41:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><p>以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。<br>for..in 不应该被用来迭代一个下标顺序很重要的 Array .<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>, <span class="attr">c</span>:<span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"><span class="comment">/*a = 1</span></div><div class="line"><span class="comment">  b = 2 </span></div><div class="line"><span class="comment">  c = 3 */</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*0 = a </span></div><div class="line"><span class="comment">  1 = b </span></div><div class="line"><span class="comment">  2 = c */</span></div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/01/10/js-for/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/10/js-for/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -1067,8 +413,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
