@@ -175,6 +175,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js-for" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/10/js-for/">js-for循环遍历</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/10/js-for/" class="archive-article-date">
+  	<time datetime="2019-01-10T11:41:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><p>以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。<br>for..in 不应该被用来迭代一个下标顺序很重要的 Array .<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>, <span class="attr">c</span>:<span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"><span class="comment">/*a = 1</span></div><div class="line"><span class="comment">  b = 2 </span></div><div class="line"><span class="comment">  c = 3 */</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*0 = a </span></div><div class="line"><span class="comment">  1 = b </span></div><div class="line"><span class="comment">  2 = c */</span></div></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2019/01/10/js-for/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/10/js-for/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js-json-object" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -935,86 +1019,6 @@
 
 
   
-    <article id="post-linux-add-font" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/29/linux-add-font/">linux添加字体</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/29/linux-add-font/" class="archive-article-date">
-  	<time datetime="2018-03-29T09:16:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>linux自带的字体比较少，在做图片文字合成时，需要指定的文字字体。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">查看系统中的字体</div><div class="line"><span class="built_in">fc</span>-list</div><div class="line">查看系统中的中文字体</div><div class="line"><span class="built_in">fc</span>-list :lang=zh</div><div class="line"></div><div class="line">[root@localhost ~]<span class="comment"># fc-list</span></div><div class="line">Bitstream Vera Sans Mono:style=Bold</div><div class="line">Bitstream Vera Sans:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Oblique</div><div class="line">Bitstream Vera Sans:style=Bold</div><div class="line">Bitstream Vera Serif:style=Roman</div><div class="line">Bitstream Vera Sans Mono:style=Bold Oblique</div><div class="line">Bitstream Vera Sans:style=Bold Oblique</div><div class="line">文鼎PL中楷Uni,AR PL ZenKai Uni:style=Medium</div><div class="line">Bitstream Vera Sans Mono:style=Roman</div><div class="line">Fixed:style=Regular</div><div class="line">文鼎PL细上海宋Uni,AR PL ShanHeiSun Uni,文鼎PL細上海宋Uni:style=Regular</div><div class="line">Bitstream Vera Serif:style=Bold</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2018/03/29/linux-add-font/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/29/linux-add-font/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1140,14 +1144,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
@@ -1156,15 +1152,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1172,7 +1168,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">stream</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1180,7 +1176,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">stream</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1188,11 +1188,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">插件</a>
+                <a href="javascript:void(0)" class="js-tag color3">密码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,11 +1204,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yapi</a>
+                <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">密码</a>
+                <a href="javascript:void(0)" class="js-tag color5">yapi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1229,6 +1233,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">aria2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mybatisplus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">logback</a>
               </li>
              
               <li class="article-tag-list-item">

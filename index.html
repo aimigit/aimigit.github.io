@@ -175,6 +175,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-springboot-mybatisplus-lombok-logback-config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/05/springboot-mybatisplus-lombok-logback-config/">springboot-mybatisplus-lombok-logback-配置文件</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/05/springboot-mybatisplus-lombok-logback-config/" class="archive-article-date">
+  	<time datetime="2019-12-05T01:21:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-简介"><a href="#1-简介" class="headerlink" title="1.简介"></a>1.简介</h1><p>主要记录一下配置文件，方便查找。<br>技术资料：</p>
+<ul>
+<li>druid：<a href="https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter" target="_blank" rel="external">https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter</a></li>
+<li>Mybatis Plus： <a href="https://mp.baomidou.com/guide/" target="_blank" rel="external">https://mp.baomidou.com/guide/</a></li>
+<li>Layui:<a href="https://www.layui.com/doc/" target="_blank" rel="external">https://www.layui.com/doc/</a></li>
+<li>Lombok:<a href="https://projectlombok.org/features/all" target="_blank" rel="external">https://projectlombok.org/features/all</a><h1 id="2-springboot-配置"><a href="#2-springboot-配置" class="headerlink" title="2.springboot 配置"></a>2.springboot 配置</h1>application.yml 文件<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="attr">server:</span></div><div class="line"><span class="attr">  port:</span> <span class="number">8081</span>  </div><div class="line"><span class="attr">  tomcat:</span></div><div class="line"><span class="attr">    uri-encoding:</span> <span class="string">UTF-8</span></div><div class="line"></div><div class="line"><span class="attr">spring:</span></div><div class="line"><span class="attr">  profiles:</span></div><div class="line"><span class="attr">    active:</span> <span class="string">local</span>  <span class="comment">#切换配置文件</span></div><div class="line"><span class="attr">  http:</span></div><div class="line"><span class="attr">    encoding:</span></div><div class="line"><span class="attr">      charset:</span> <span class="string">UTF-8</span></div><div class="line"><span class="attr">      enabled:</span> <span class="literal">true</span></div><div class="line"><span class="attr">      force:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  jackson:</span></div><div class="line"><span class="attr">    date-format:</span> <span class="string">yyyy-MM-dd</span> <span class="attr">HH:mm:ss</span></div><div class="line"><span class="attr">    serialization:</span></div><div class="line"><span class="attr">      write-dates-as-timestamps:</span> <span class="literal">false</span></div><div class="line"><span class="attr">    time-zone:</span> <span class="string">GMT+8</span></div><div class="line"><span class="attr">  redis:</span></div><div class="line"><span class="attr">    database:</span> <span class="number">0</span></div><div class="line"><span class="attr">    host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></div><div class="line"><span class="attr">    jedis:</span></div><div class="line"><span class="attr">        pool:</span></div><div class="line"><span class="attr">          max-active:</span> <span class="number">8</span> <span class="comment"># 连接池最大连接数（使用负值表示没有限制）</span></div><div class="line"><span class="attr">          max-idle:</span> <span class="number">8</span>   <span class="comment"># 连接池中的最大空闲连接</span></div><div class="line"><span class="attr">          max-wait:</span> <span class="bullet">-1</span>  <span class="comment"># 连接池最大阻塞等待时间（使用负值表示没有限制）</span></div><div class="line"><span class="attr">          min-idle:</span> <span class="number">0</span>   <span class="comment"># 连接池中的最小空闲连接</span></div><div class="line"><span class="attr">    password:</span> <span class="string">''</span></div><div class="line"><span class="attr">    port:</span> <span class="number">6379</span></div><div class="line"><span class="attr">    timeout:</span> <span class="number">10000</span></div><div class="line"><span class="attr">  servlet:</span></div><div class="line"><span class="attr">    multipart:</span></div><div class="line"><span class="attr">      max-file-size:</span> <span class="number">30</span><span class="string">MB</span></div><div class="line"><span class="attr">      max-request-size:</span> <span class="number">50</span><span class="string">MB</span></div><div class="line"><span class="attr">log:</span></div><div class="line"><span class="attr">  path:</span> <span class="string">logs</span></div><div class="line"><span class="attr">mybatis-plus:</span></div><div class="line"><span class="attr">  mapper-locations:</span> <span class="attr">classpath:/com/pkg/*/mapping/*.xml</span></div><div class="line"><span class="attr">  typeAliasesPackage:</span> <span class="string">com.pkg.*.entity</span></div><div class="line"><span class="attr">activiti:</span></div><div class="line"><span class="attr">  check-process-definitions:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  database-schema-update:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  process-definition-location-prefix:</span> <span class="attr">classpath:/processes/</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/12/05/springboot-mybatisplus-lombok-logback-config/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">springboot</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">mybatisplus</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">logback</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/05/springboot-mybatisplus-lombok-logback-config/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-http-header-security" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -945,90 +1040,6 @@
 
 
   
-    <article id="post-js-for" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/01/10/js-for/">js-for循环遍历</a>
-    </h1>
-  
-
-        
-        <a href="/2019/01/10/js-for/" class="archive-article-date">
-  	<time datetime="2019-01-10T11:41:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="for…in"><a href="#for…in" class="headerlink" title="for…in"></a>for…in</h2><p>以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。<br>for..in 不应该被用来迭代一个下标顺序很重要的 Array .<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;<span class="attr">a</span>:<span class="number">1</span>, <span class="attr">b</span>:<span class="number">2</span>, <span class="attr">c</span>:<span class="number">3</span>&#125;;</div><div class="line"><span class="keyword">var</span> obj2 = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"><span class="comment">/*a = 1</span></div><div class="line"><span class="comment">  b = 2 </span></div><div class="line"><span class="comment">  c = 3 */</span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj1) &#123;</div><div class="line">  <span class="built_in">console</span>.log( key + <span class="string">" = "</span> + obj1[key]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*0 = a </span></div><div class="line"><span class="comment">  1 = b </span></div><div class="line"><span class="comment">  2 = c */</span></div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2019/01/10/js-for/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/01/10/js-for/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1154,14 +1165,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小程序</a>
               </li>
              
@@ -1170,15 +1173,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hightlight</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1186,7 +1189,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">stream</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1194,7 +1197,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">stream</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1202,11 +1209,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">插件</a>
+                <a href="javascript:void(0)" class="js-tag color3">密码</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,11 +1225,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yapi</a>
+                <a href="javascript:void(0)" class="js-tag color3">插件</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">密码</a>
+                <a href="javascript:void(0)" class="js-tag color5">yapi</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1243,6 +1254,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">aria2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mybatisplus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">logback</a>
               </li>
              
               <li class="article-tag-list-item">
